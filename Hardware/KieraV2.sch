@@ -455,14 +455,6 @@ Wire Notes Line
 	3750 500  3750 5000
 Wire Notes Line
 	3750 5000 500  5000
-$Sheet
-S 8800 850  800  400 
-U 61A6380E
-F0 "Power" 50
-F1 "Power.sch" 50
-$EndSheet
-Text Label 9100 1100 0    50   ~ 0
-TODO
 $Comp
 L Connector:Conn_01x06_Male J1
 U 1 1 61A68069
@@ -577,10 +569,10 @@ Connection ~ 5800 6000
 Wire Wire Line
 	5700 6000 5700 6100
 $Comp
-L Connector:Conn_01x04_Male J?
+L Connector:Conn_01x04_Male J2
 U 1 1 61A93711
 P 9600 4100
-F 0 "J?" H 9572 3982 50  0000 R CNN
+F 0 "J2" H 9572 3982 50  0000 R CNN
 F 1 "Conn_01x04_Male" H 9572 4073 50  0000 R CNN
 F 2 "" H 9600 4100 50  0001 C CNN
 F 3 "~" H 9600 4100 50  0001 C CNN
@@ -629,4 +621,10 @@ Wire Notes Line
 	11200 4550 8000 4550
 Wire Notes Line
 	8000 550  8000 4550
+$Sheet
+S 8800 850  800  400 
+U 61A6380E
+F0 "Power" 50
+F1 "Power.sch" 50
+$EndSheet
 $EndSCHEMATC
