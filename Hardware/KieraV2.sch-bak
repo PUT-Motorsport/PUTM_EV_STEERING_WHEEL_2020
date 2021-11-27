@@ -16,12 +16,12 @@ $EndDescr
 $Comp
 L KieraV2-rescue:STM32L4P5RET6-STM32L4P5RET6 U?
 U 1 1 619BCA75
-P 5700 2550
-F 0 "U?" H 5700 561 50  0000 C CNN
-F 1 "STM32L4P5RET6" H 5700 470 50  0000 C CNN
-F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 5700 350 50  0001 C CNN
-F 3 "https://www.st.com/en/microcontrollers-microprocessors/stm32l4p5re.html#documentation" H 5700 350 50  0001 C CNN
-	1    5700 2550
+P 5700 3900
+F 0 "U?" H 5700 1911 50  0000 C CNN
+F 1 "STM32L4P5RET6" H 5700 1820 50  0000 C CNN
+F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 5700 1700 50  0001 C CNN
+F 3 "https://www.st.com/en/microcontrollers-microprocessors/stm32l4p5re.html#documentation" H 5700 1700 50  0001 C CNN
+	1    5700 3900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -360,24 +360,24 @@ Connection ~ 750  3200
 Wire Wire Line
 	750  3200 750  3800
 Wire Wire Line
-	5000 2950 4850 2950
+	5000 4300 4850 4300
 Wire Wire Line
-	5000 3050 4850 3050
+	5000 4400 4850 4400
 Wire Wire Line
-	5000 3150 4850 3150
+	5000 4500 4850 4500
 Wire Wire Line
-	6400 1050 6600 1050
+	6400 2400 6600 2400
 Wire Wire Line
-	6400 1150 6600 1150
-Text GLabel 6600 1050 2    50   Input ~ 0
+	6400 2500 6600 2500
+Text GLabel 6600 2400 2    50   Input ~ 0
 SW1
-Text GLabel 6600 1150 2    50   Input ~ 0
+Text GLabel 6600 2500 2    50   Input ~ 0
 SW2
-Text GLabel 4850 2950 0    50   Input ~ 0
+Text GLabel 4850 4300 0    50   Input ~ 0
 SW3
-Text GLabel 4850 3050 0    50   Input ~ 0
+Text GLabel 4850 4400 0    50   Input ~ 0
 SW4
-Text GLabel 4850 3150 0    50   Input ~ 0
+Text GLabel 4850 4500 0    50   Input ~ 0
 SW5
 Text GLabel 2900 4400 2    50   Input ~ 0
 SW5
@@ -391,23 +391,23 @@ Text GLabel 3350 1350 2    50   Input ~ 0
 SW5
 Connection ~ 2100 3800
 $Sheet
-S 7950 2000 800  400 
+S 8800 2000 800  400 
 U 61B35764
 F0 "CAN" 50
 F1 "CAN.sch" 50
-F2 "CAN-RX" O L 7950 2150 50 
-F3 "CAN-TX" I L 7950 2250 50 
-F4 "CANH" B R 8750 2150 50 
-F5 "CANL" B R 8750 2250 50 
+F2 "CAN-RX" O L 8800 2150 50 
+F3 "CAN-TX" I L 8800 2250 50 
+F4 "CANH" B R 9600 2150 50 
+F5 "CANL" B R 9600 2250 50 
 $EndSheet
-Text Label 6450 2150 0    50   ~ 0
+Text Label 6450 3500 0    50   ~ 0
 CAN1_TX
-Text Label 6450 2250 0    50   ~ 0
+Text Label 6450 3600 0    50   ~ 0
 CAN1_RX
 Wire Wire Line
-	6400 2250 6800 2250
+	6400 3600 6800 3600
 Wire Wire Line
-	6400 2150 6800 2150
+	6400 3500 6800 3500
 $Comp
 L Switch:SW_Rotary2x4 SW1
 U 1 1 61A1A252
@@ -456,34 +456,92 @@ Wire Notes Line
 Wire Notes Line
 	3750 5000 500  5000
 $Sheet
-S 7950 1000 800  400 
+S 8800 1000 800  400 
 U 61A6380E
 F0 "Power" 50
 F1 "Power.sch" 50
 $EndSheet
-Text Label 8250 1250 0    50   ~ 0
+Text Label 9100 1250 0    50   ~ 0
 TODO
 $Comp
 L Connector:Conn_01x06_Male J1
 U 1 1 61A68069
-P 8750 3300
-F 0 "J1" H 8722 3182 50  0000 R CNN
-F 1 "Conn_01x06_Male" H 8722 3273 50  0000 R CNN
-F 2 "" H 8750 3300 50  0001 C CNN
-F 3 "~" H 8750 3300 50  0001 C CNN
-	1    8750 3300
+P 9600 3250
+F 0 "J1" H 9572 3132 50  0000 R CNN
+F 1 "Conn_01x06_Male" H 9572 3223 50  0000 R CNN
+F 2 "" H 9600 3250 50  0001 C CNN
+F 3 "~" H 9600 3250 50  0001 C CNN
+	1    9600 3250
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	8550 3000 8300 3000
+	4850 2950 5000 2950
+Text GLabel 4850 2950 0    50   Input ~ 0
+NRST
 Wire Wire Line
-	8550 3100 8300 3100
+	6400 3800 6600 3800
+Text GLabel 6600 3800 2    50   Input ~ 0
+SWCLK
 Wire Wire Line
-	8550 3200 8300 3200
+	6400 3700 6600 3700
+Text GLabel 6600 3700 2    50   Input ~ 0
+SWDIO
 Wire Wire Line
-	8550 3300 8300 3300
+	6400 4400 6600 4400
+Text GLabel 6600 4400 2    50   Input ~ 0
+SWO
+Text GLabel 9250 3050 0    50   Input ~ 0
+SWO
+Text GLabel 9250 3150 0    50   Input ~ 0
+SWDIO
+Text GLabel 9250 2950 0    50   Input ~ 0
+NRST
+$Comp
+L power:GND #PWR?
+U 1 1 61A4CEAD
+P 8500 3300
+F 0 "#PWR?" H 8500 3050 50  0001 C CNN
+F 1 "GND" H 8505 3127 50  0000 C CNN
+F 2 "" H 8500 3300 50  0001 C CNN
+F 3 "" H 8500 3300 50  0001 C CNN
+	1    8500 3300
+	1    0    0    -1  
+$EndComp
+Text GLabel 9250 3350 0    50   Input ~ 0
+SWCLK
+$Comp
+L power:VCC #PWR?
+U 1 1 61A51913
+P 8800 3400
+F 0 "#PWR?" H 8800 3250 50  0001 C CNN
+F 1 "VCC" H 8700 3500 50  0000 C CNN
+F 2 "" H 8800 3400 50  0001 C CNN
+F 3 "" H 8800 3400 50  0001 C CNN
+	1    8800 3400
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	8550 3400 8300 3400
+	8500 3300 8500 3250
 Wire Wire Line
-	8550 3500 8300 3500
+	8500 3250 9400 3250
+Wire Wire Line
+	8800 3400 8800 3450
+Wire Wire Line
+	8800 3450 9400 3450
+Wire Wire Line
+	9400 3350 9250 3350
+Wire Wire Line
+	9250 3150 9400 3150
+Wire Wire Line
+	9400 3050 9250 3050
+Wire Wire Line
+	9250 2950 9400 2950
+Wire Notes Line
+	8000 550  8000 3600
+Wire Notes Line
+	8000 2650 11200 2650
+Wire Notes Line
+	8000 1700 11200 1700
+Wire Notes Line
+	8000 3600 11200 3600
 $EndSCHEMATC
