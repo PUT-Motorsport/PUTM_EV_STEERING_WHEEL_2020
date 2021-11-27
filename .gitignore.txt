@@ -78,3 +78,7 @@ fp-info-cache
 *.mod*
 *.cmd
 .tmp_versions/
+
+
+# moje
+*.rar
