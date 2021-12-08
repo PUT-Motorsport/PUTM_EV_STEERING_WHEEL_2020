@@ -3,38 +3,25 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 4
-Title ""
+Sheet 4 4
+Title "CAN"
 Date ""
 Rev ""
-Comp ""
+Comp "Konrad Borowik"
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Interface_CAN_LIN:MCP2562-E-MF U3
-U 1 1 61A168ED
-P 5700 3950
-AR Path="/61A14ADD/61A168ED" Ref="U3"  Part="1" 
-AR Path="/61A9D384/61A168ED" Ref="U4"  Part="1" 
-AR Path="/61B35764/61A168ED" Ref="U3"  Part="1" 
-F 0 "U3" H 6100 4450 50  0000 C CNN
-F 1 "ATA6561-GAQW-N" H 6200 4350 50  0000 C CNN
-F 2 "Package_DFN_QFN:DFN-8-1EP_3x3mm_P0.65mm_EP1.55x2.4mm" H 5700 3450 50  0001 C CIN
-F 3 "https://pl.mouser.com/datasheet/2/268/ATA6560_ATA6561_High_Speed_CAN_Transceiver_DS20005-1384933.pdf" H 5700 3950 50  0001 C CNN
-	1    5700 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR015
+L power:GND #PWR?
 U 1 1 61A1851F
 P 5700 4450
-AR Path="/61A14ADD/61A1851F" Ref="#PWR015"  Part="1" 
-AR Path="/61A9D384/61A1851F" Ref="#PWR022"  Part="1" 
-AR Path="/61B35764/61A1851F" Ref="#PWR022"  Part="1" 
-F 0 "#PWR022" H 5700 4200 50  0001 C CNN
+AR Path="/61A14ADD/61A1851F" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61A1851F" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61A1851F" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61A1851F" Ref="#PWR037"  Part="1" 
+F 0 "#PWR037" H 5700 4200 50  0001 C CNN
 F 1 "GND" H 5705 4277 50  0000 C CNN
 F 2 "" H 5700 4450 50  0001 C CNN
 F 3 "" H 5700 4450 50  0001 C CNN
@@ -42,40 +29,18 @@ F 3 "" H 5700 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5700 4450 5700 4400
-Wire Wire Line
-	5700 4400 5600 4400
-Wire Wire Line
-	5600 4400 5600 4350
-Wire Wire Line
-	5700 4400 5700 4350
-Connection ~ 5700 4400
-Wire Wire Line
 	6200 3850 6700 3850
 Wire Wire Line
 	6200 4050 6700 4050
 $Comp
-L Device:D_TVS_x2_AAC D12
-U 1 1 61A7E65E
-P 7750 3950
-AR Path="/61A14ADD/61A7E65E" Ref="D12"  Part="1" 
-AR Path="/61A9D384/61A7E65E" Ref="D2"  Part="1" 
-AR Path="/61B35764/61A7E65E" Ref="D2"  Part="1" 
-F 0 "D2" H 7700 4200 50  0000 L CNN
-F 1 "PESD2CAN.215" H 7450 4100 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 7600 3950 50  0001 C CNN
-F 3 "~" H 7600 3950 50  0001 C CNN
-	1    7750 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR032
+L power:GND #PWR?
 U 1 1 600B5EEE
 P 7750 4250
-AR Path="/61A14ADD/600B5EEE" Ref="#PWR032"  Part="1" 
-AR Path="/61A9D384/600B5EEE" Ref="#PWR023"  Part="1" 
-AR Path="/61B35764/600B5EEE" Ref="#PWR023"  Part="1" 
-F 0 "#PWR023" H 7750 4000 50  0001 C CNN
+AR Path="/61A14ADD/600B5EEE" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/600B5EEE" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/600B5EEE" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/600B5EEE" Ref="#PWR033"  Part="1" 
+F 0 "#PWR033" H 7750 4000 50  0001 C CNN
 F 1 "GND" H 7755 4077 50  0000 C CNN
 F 2 "" H 7750 4250 50  0001 C CNN
 F 3 "" H 7750 4250 50  0001 C CNN
@@ -86,96 +51,10 @@ Wire Wire Line
 	5200 3750 4900 3750
 Wire Wire Line
 	5200 3850 4900 3850
-$Comp
-L power:+5V #PWR09
-U 1 1 61A24688
-P 2350 3650
-AR Path="/61A14ADD/61A24688" Ref="#PWR09"  Part="1" 
-AR Path="/61A9D384/61A24688" Ref="#PWR016"  Part="1" 
-AR Path="/61B35764/61A24688" Ref="#PWR016"  Part="1" 
-F 0 "#PWR016" H 2350 3500 50  0001 C CNN
-F 1 "+5V" H 2365 3823 50  0000 C CNN
-F 2 "" H 2350 3650 50  0001 C CNN
-F 3 "" H 2350 3650 50  0001 C CNN
-	1    2350 3650
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C6
-U 1 1 61A25B3D
-P 4300 4250
-AR Path="/61A14ADD/61A25B3D" Ref="C6"  Part="1" 
-AR Path="/61A9D384/61A25B3D" Ref="C9"  Part="1" 
-AR Path="/61B35764/61A25B3D" Ref="C5"  Part="1" 
-F 0 "C5" H 4392 4296 50  0000 L CNN
-F 1 "100nF" H 4392 4205 50  0000 L CNN
-F 2 "" H 4300 4250 50  0001 C CNN
-F 3 "~" H 4300 4250 50  0001 C CNN
-	1    4300 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR013
-U 1 1 61A26C0E
-P 4300 4400
-AR Path="/61A14ADD/61A26C0E" Ref="#PWR013"  Part="1" 
-AR Path="/61A9D384/61A26C0E" Ref="#PWR020"  Part="1" 
-AR Path="/61B35764/61A26C0E" Ref="#PWR020"  Part="1" 
-F 0 "#PWR020" H 4300 4150 50  0001 C CNN
-F 1 "GND" H 4305 4227 50  0000 C CNN
-F 2 "" H 4300 4400 50  0001 C CNN
-F 3 "" H 4300 4400 50  0001 C CNN
-	1    4300 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4300 4400 4300 4350
 Text HLabel 4900 3850 0    50   Output ~ 0
 CAN-RX
 Text HLabel 4900 3750 0    50   Input ~ 0
 CAN-TX
-$Comp
-L Device:Ferrite_Bead_Small FB?
-U 1 1 61A2B363
-P 4300 3850
-AR Path="/61A064B3/61A2B363" Ref="FB?"  Part="1" 
-AR Path="/61A14ADD/61A2B363" Ref="FB4"  Part="1" 
-AR Path="/61A9D384/61A2B363" Ref="FB6"  Part="1" 
-AR Path="/61B35764/61A2B363" Ref="FB6"  Part="1" 
-F 0 "FB6" H 4400 3896 50  0000 L CNN
-F 1 "60R@100MHz" H 4400 3805 50  0000 L CNN
-F 2 "Inductor_SMD:L_0603_1608Metric" V 4230 3850 50  0001 C CNN
-F 3 "~" H 4300 3850 50  0001 C CNN
-F 4 "" H 4300 3850 50  0001 C CNN "LCSC"
-	1    4300 3850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 61A2B36B
-P 4300 3650
-AR Path="/61A064B3/61A2B36B" Ref="#PWR?"  Part="1" 
-AR Path="/61A14ADD/61A2B36B" Ref="#PWR012"  Part="1" 
-AR Path="/61A9D384/61A2B36B" Ref="#PWR019"  Part="1" 
-AR Path="/61B35764/61A2B36B" Ref="#PWR019"  Part="1" 
-F 0 "#PWR019" H 4300 3500 50  0001 C CNN
-F 1 "+3V3" H 4315 3823 50  0000 C CNN
-F 2 "" H 4300 3650 50  0001 C CNN
-F 3 "" H 4300 3650 50  0001 C CNN
-	1    4300 3650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4300 3650 4300 3750
-Wire Wire Line
-	4300 4050 4300 3950
-Wire Wire Line
-	4300 4050 5200 4050
-Wire Wire Line
-	4300 4050 4300 4150
-Connection ~ 4300 4050
-Text Label 4600 4050 0    50   ~ 0
-+3V3_VIO
 Wire Wire Line
 	7400 3950 7350 3950
 Wire Wire Line
@@ -196,8 +75,6 @@ Text Label 7350 3650 3    50   ~ 0
 CAN-
 Text Label 8150 3650 3    50   ~ 0
 CAN+
-Text Label 5400 3350 0    50   ~ 0
-+5V_CAN_VDD
 Text HLabel 6700 3850 2    50   BiDi ~ 0
 CANH
 Text HLabel 6700 4050 2    50   BiDi ~ 0
@@ -206,34 +83,6 @@ Text Label 8650 4400 0    50   ~ 0
 CAN-
 Text Label 8650 3550 0    50   ~ 0
 CAN+
-$Comp
-L Device:Jumper_NO_Small JP1
-U 1 1 61A8843A
-P 8900 3750
-AR Path="/61A14ADD/61A8843A" Ref="JP1"  Part="1" 
-AR Path="/61A9D384/61A8843A" Ref="JP2"  Part="1" 
-AR Path="/61B35764/61A8843A" Ref="JP2"  Part="1" 
-F 0 "JP2" V 8854 3798 50  0000 L CNN
-F 1 "CAN_terminanion_jumper" V 8945 3798 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8900 3750 50  0001 C CNN
-F 3 "~" H 8900 3750 50  0001 C CNN
-	1    8900 3750
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 61A896F4
-P 8900 4100
-AR Path="/61A14ADD/61A896F4" Ref="R3"  Part="1" 
-AR Path="/61A9D384/61A896F4" Ref="R4"  Part="1" 
-AR Path="/61B35764/61A896F4" Ref="R15"  Part="1" 
-F 0 "R15" H 8970 4146 50  0000 L CNN
-F 1 "120R" H 8970 4055 50  0000 L CNN
-F 2 "" V 8830 4100 50  0001 C CNN
-F 3 "~" H 8900 4100 50  0001 C CNN
-	1    8900 4100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8650 4400 8900 4400
 Wire Wire Line
@@ -244,146 +93,35 @@ Wire Wire Line
 	8900 3550 8900 3650
 Wire Wire Line
 	8900 3850 8900 3950
-Text Notes 9300 3650 0    79   ~ 16
-dip switch?
-Text Notes 4850 5400 0    50   ~ 0
+Text Notes 5200 5350 0    50   ~ 0
 A  high  level  on  the  STBY  pin  selects  the  Standby\nmode. In this mode, the transceiver cannot transmit or\ncorrectly receive data via the bus lines.
 Wire Wire Line
 	4950 4150 5200 4150
 Text Label 4950 4150 0    50   ~ 0
 SHDN
-Text Label 4250 5150 0    50   ~ 0
+Text Label 4600 5100 0    50   ~ 0
 SHDN
 Wire Wire Line
-	4250 5150 4450 5150
+	4600 5100 4800 5100
 Wire Wire Line
-	4450 5150 4450 5200
+	4800 5100 4800 5150
 Wire Wire Line
-	4450 5400 4450 5450
+	4800 5350 4800 5400
 $Comp
-L power:GND #PWR014
+L power:GND #PWR?
 U 1 1 61A94FC7
-P 4450 5450
-AR Path="/61A14ADD/61A94FC7" Ref="#PWR014"  Part="1" 
-AR Path="/61A9D384/61A94FC7" Ref="#PWR021"  Part="1" 
-AR Path="/61B35764/61A94FC7" Ref="#PWR021"  Part="1" 
-F 0 "#PWR021" H 4450 5200 50  0001 C CNN
-F 1 "GND" H 4455 5277 50  0000 C CNN
-F 2 "" H 4450 5450 50  0001 C CNN
-F 3 "" H 4450 5450 50  0001 C CNN
-	1    4450 5450
+P 4800 5400
+AR Path="/61A14ADD/61A94FC7" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61A94FC7" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61A94FC7" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61A94FC7" Ref="#PWR038"  Part="1" 
+F 0 "#PWR038" H 4800 5150 50  0001 C CNN
+F 1 "GND" H 4805 5227 50  0000 C CNN
+F 2 "" H 4800 5400 50  0001 C CNN
+F 3 "" H 4800 5400 50  0001 C CNN
+	1    4800 5400
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:Net-Tie_2 NT1
-U 1 1 61A96008
-P 4450 5300
-AR Path="/61A14ADD/61A96008" Ref="NT1"  Part="1" 
-AR Path="/61A9D384/61A96008" Ref="NT2"  Part="1" 
-AR Path="/61B35764/61A96008" Ref="NT2"  Part="1" 
-F 0 "NT2" V 4404 5344 50  0000 L CNN
-F 1 "Net-Tie" V 4495 5344 50  0000 L CNN
-F 2 "" H 4450 5300 50  0001 C CNN
-F 3 "~" H 4450 5300 50  0001 C CNN
-	1    4450 5300
-	0    1    1    0   
-$EndComp
-Text Label 3300 4050 2    50   ~ 0
-+5V_CAN_VDD
-$Comp
-L Device:C_Small C4
-U 1 1 61AA448F
-P 2350 4250
-AR Path="/61A14ADD/61AA448F" Ref="C4"  Part="1" 
-AR Path="/61A9D384/61AA448F" Ref="C7"  Part="1" 
-AR Path="/61B35764/61AA448F" Ref="C3"  Part="1" 
-F 0 "C3" H 2442 4296 50  0000 L CNN
-F 1 "100nF" H 2442 4205 50  0000 L CNN
-F 2 "" H 2350 4250 50  0001 C CNN
-F 3 "~" H 2350 4250 50  0001 C CNN
-	1    2350 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR010
-U 1 1 61AA4495
-P 2350 4400
-AR Path="/61A14ADD/61AA4495" Ref="#PWR010"  Part="1" 
-AR Path="/61A9D384/61AA4495" Ref="#PWR017"  Part="1" 
-AR Path="/61B35764/61AA4495" Ref="#PWR017"  Part="1" 
-F 0 "#PWR017" H 2350 4150 50  0001 C CNN
-F 1 "GND" H 2355 4227 50  0000 C CNN
-F 2 "" H 2350 4400 50  0001 C CNN
-F 3 "" H 2350 4400 50  0001 C CNN
-	1    2350 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2350 4400 2350 4350
-$Comp
-L Device:Ferrite_Bead_Small FB?
-U 1 1 61AA449D
-P 2350 3850
-AR Path="/61A064B3/61AA449D" Ref="FB?"  Part="1" 
-AR Path="/61A14ADD/61AA449D" Ref="FB2"  Part="1" 
-AR Path="/61A9D384/61AA449D" Ref="FB5"  Part="1" 
-AR Path="/61B35764/61AA449D" Ref="FB5"  Part="1" 
-F 0 "FB5" H 2450 3896 50  0000 L CNN
-F 1 "60R@100MHz" H 2450 3805 50  0000 L CNN
-F 2 "Inductor_SMD:L_0603_1608Metric" V 2280 3850 50  0001 C CNN
-F 3 "~" H 2350 3850 50  0001 C CNN
-F 4 "" H 2350 3850 50  0001 C CNN "LCSC"
-	1    2350 3850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2350 3650 2350 3750
-Wire Wire Line
-	2350 4050 2350 3950
-Wire Wire Line
-	2350 4050 2750 4050
-Wire Wire Line
-	2350 4050 2350 4150
-Connection ~ 2350 4050
-Wire Wire Line
-	5400 3350 5700 3350
-Wire Wire Line
-	5700 3350 5700 3550
-$Comp
-L Device:C_Small C5
-U 1 1 61AAD0CE
-P 2750 4250
-AR Path="/61A14ADD/61AAD0CE" Ref="C5"  Part="1" 
-AR Path="/61A9D384/61AAD0CE" Ref="C8"  Part="1" 
-AR Path="/61B35764/61AAD0CE" Ref="C4"  Part="1" 
-F 0 "C4" H 2842 4296 50  0000 L CNN
-F 1 "10uF" H 2842 4205 50  0000 L CNN
-F 2 "" H 2750 4250 50  0001 C CNN
-F 3 "~" H 2750 4250 50  0001 C CNN
-	1    2750 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR011
-U 1 1 61AAD57B
-P 2750 4400
-AR Path="/61A14ADD/61AAD57B" Ref="#PWR011"  Part="1" 
-AR Path="/61A9D384/61AAD57B" Ref="#PWR018"  Part="1" 
-AR Path="/61B35764/61AAD57B" Ref="#PWR018"  Part="1" 
-F 0 "#PWR018" H 2750 4150 50  0001 C CNN
-F 1 "GND" H 2755 4227 50  0000 C CNN
-F 2 "" H 2750 4400 50  0001 C CNN
-F 3 "" H 2750 4400 50  0001 C CNN
-	1    2750 4400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2750 4400 2750 4350
-Wire Wire Line
-	2750 4150 2750 4050
-Connection ~ 2750 4050
-Wire Wire Line
-	2750 4050 3300 4050
 $Bitmap
 Pos 2450 6650
 Scale 1.000000
@@ -1625,4 +1363,262 @@ BA 00 00 00 00 CA 80 A8 0B 00 00 00 A0 0C 88 BA 00 00 00 00 CA 80 A8 0B 00 00 00
 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+Wire Wire Line
+	2750 4050 3300 4050
+Connection ~ 2750 4050
+Wire Wire Line
+	2750 4150 2750 4050
+Wire Wire Line
+	2750 4400 2750 4350
+$Comp
+L power:GND #PWR?
+U 1 1 61AAD57B
+P 2750 4400
+AR Path="/61A14ADD/61AAD57B" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61AAD57B" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61AAD57B" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61AAD57B" Ref="#PWR035"  Part="1" 
+F 0 "#PWR035" H 2750 4150 50  0001 C CNN
+F 1 "GND" H 2755 4227 50  0000 C CNN
+F 2 "" H 2750 4400 50  0001 C CNN
+F 3 "" H 2750 4400 50  0001 C CNN
+	1    2750 4400
+	1    0    0    -1  
+$EndComp
+Connection ~ 2350 4050
+Wire Wire Line
+	2350 4050 2350 4150
+Wire Wire Line
+	2350 4050 2750 4050
+Wire Wire Line
+	2350 4050 2350 3950
+Wire Wire Line
+	2350 3650 2350 3750
+Wire Wire Line
+	2350 4400 2350 4350
+$Comp
+L power:GND #PWR?
+U 1 1 61AA4495
+P 2350 4400
+AR Path="/61A14ADD/61AA4495" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61AA4495" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61AA4495" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61AA4495" Ref="#PWR034"  Part="1" 
+F 0 "#PWR034" H 2350 4150 50  0001 C CNN
+F 1 "GND" H 2355 4227 50  0000 C CNN
+F 2 "" H 2350 4400 50  0001 C CNN
+F 3 "" H 2350 4400 50  0001 C CNN
+	1    2350 4400
+	1    0    0    -1  
+$EndComp
+Text Label 3300 4050 2    50   ~ 0
++5V_CAN_VDD
+Wire Wire Line
+	4300 3650 4300 3750
+$Comp
+L power:+3V3 #PWR?
+U 1 1 61A2B36B
+P 4300 3650
+AR Path="/61A064B3/61A2B36B" Ref="#PWR?"  Part="1" 
+AR Path="/61A14ADD/61A2B36B" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61A2B36B" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61A2B36B" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61A2B36B" Ref="#PWR032"  Part="1" 
+F 0 "#PWR032" H 4300 3500 50  0001 C CNN
+F 1 "+3V3" H 4315 3823 50  0000 C CNN
+F 2 "" H 4300 3650 50  0001 C CNN
+F 3 "" H 4300 3650 50  0001 C CNN
+	1    4300 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 4400 4300 4350
+$Comp
+L power:GND #PWR?
+U 1 1 61A26C0E
+P 4300 4400
+AR Path="/61A14ADD/61A26C0E" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61A26C0E" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61A26C0E" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61A26C0E" Ref="#PWR036"  Part="1" 
+F 0 "#PWR036" H 4300 4150 50  0001 C CNN
+F 1 "GND" H 4305 4227 50  0000 C CNN
+F 2 "" H 4300 4400 50  0001 C CNN
+F 3 "" H 4300 4400 50  0001 C CNN
+	1    4300 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 61A24688
+P 2350 3650
+AR Path="/61A14ADD/61A24688" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/61A24688" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/61A24688" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/61A24688" Ref="#PWR031"  Part="1" 
+F 0 "#PWR031" H 2350 3500 50  0001 C CNN
+F 1 "+5V" H 2365 3823 50  0000 C CNN
+F 2 "" H 2350 3650 50  0001 C CNN
+F 3 "" H 2350 3650 50  0001 C CNN
+	1    2350 3650
+	1    0    0    -1  
+$EndComp
+Connection ~ 4300 4050
+Wire Wire Line
+	4300 4050 4300 4150
+Wire Wire Line
+	4300 4050 4300 3950
+Text Label 4600 4050 0    50   ~ 0
++3V3_VIO
+Wire Wire Line
+	4300 4050 5200 4050
+Wire Wire Line
+	5700 3350 5700 3550
+Wire Wire Line
+	5400 3350 5700 3350
+Text Label 5400 3350 0    50   ~ 0
++5V_CAN_VDD
+$Comp
+L Device:D_TVS_x2_AAC D?
+U 1 1 61A7E65E
+P 7750 3950
+AR Path="/61A14ADD/61A7E65E" Ref="D?"  Part="1" 
+AR Path="/61A9D384/61A7E65E" Ref="D?"  Part="1" 
+AR Path="/61B3EE71/61A7E65E" Ref="D?"  Part="1" 
+AR Path="/620E9BA8/61A7E65E" Ref="D3"  Part="1" 
+F 0 "D3" H 7700 4200 50  0000 L CNN
+F 1 "PESD2CAN.215" H 7450 4100 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7600 3950 50  0001 C CNN
+F 3 "https://pl.mouser.com/datasheet/2/916/PESD2CAN-1320343.pdf" H 7600 3950 50  0001 C CNN
+	1    7750 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 61A25B3D
+P 4300 4250
+AR Path="/61A14ADD/61A25B3D" Ref="C?"  Part="1" 
+AR Path="/61A9D384/61A25B3D" Ref="C?"  Part="1" 
+AR Path="/61B3EE71/61A25B3D" Ref="C?"  Part="1" 
+AR Path="/620E9BA8/61A25B3D" Ref="C22"  Part="1" 
+F 0 "C22" H 4392 4296 50  0000 L CNN
+F 1 "100nF" H 4392 4205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4300 4250 50  0001 C CNN
+F 3 "~" H 4300 4250 50  0001 C CNN
+	1    4300 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 61A8843A
+P 8900 3750
+AR Path="/61A14ADD/61A8843A" Ref="JP?"  Part="1" 
+AR Path="/61A9D384/61A8843A" Ref="JP?"  Part="1" 
+AR Path="/61B3EE71/61A8843A" Ref="JP?"  Part="1" 
+AR Path="/620E9BA8/61A8843A" Ref="JP1"  Part="1" 
+F 0 "JP1" V 8854 3798 50  0000 L CNN
+F 1 "CAN_termination_jumper" V 8945 3798 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8900 3750 50  0001 C CNN
+F 3 "~" H 8900 3750 50  0001 C CNN
+	1    8900 3750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61A896F4
+P 8900 4100
+AR Path="/61A14ADD/61A896F4" Ref="R?"  Part="1" 
+AR Path="/61A9D384/61A896F4" Ref="R?"  Part="1" 
+AR Path="/61B3EE71/61A896F4" Ref="R?"  Part="1" 
+AR Path="/620E9BA8/61A896F4" Ref="R21"  Part="1" 
+F 0 "R21" H 8970 4146 50  0000 L CNN
+F 1 "120R" H 8970 4055 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8830 4100 50  0001 C CNN
+F 3 "~" H 8900 4100 50  0001 C CNN
+	1    8900 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Net-Tie_2 NT?
+U 1 1 61A96008
+P 4800 5250
+AR Path="/61A14ADD/61A96008" Ref="NT?"  Part="1" 
+AR Path="/61A9D384/61A96008" Ref="NT?"  Part="1" 
+AR Path="/61B3EE71/61A96008" Ref="NT?"  Part="1" 
+AR Path="/620E9BA8/61A96008" Ref="NT1"  Part="1" 
+F 0 "NT1" V 4754 5294 50  0000 L CNN
+F 1 "Net-Tie" V 4845 5294 50  0000 L CNN
+F 2 "NetTie:NetTie-2_SMD_Pad0.5mm" H 4800 5250 50  0001 C CNN
+F 3 "~" H 4800 5250 50  0001 C CNN
+	1    4800 5250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 61AA448F
+P 2350 4250
+AR Path="/61A14ADD/61AA448F" Ref="C?"  Part="1" 
+AR Path="/61A9D384/61AA448F" Ref="C?"  Part="1" 
+AR Path="/61B3EE71/61AA448F" Ref="C?"  Part="1" 
+AR Path="/620E9BA8/61AA448F" Ref="C20"  Part="1" 
+F 0 "C20" H 2442 4296 50  0000 L CNN
+F 1 "100nF" H 2442 4205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2350 4250 50  0001 C CNN
+F 3 "~" H 2350 4250 50  0001 C CNN
+	1    2350 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 61AAD0CE
+P 2750 4250
+AR Path="/61A14ADD/61AAD0CE" Ref="C?"  Part="1" 
+AR Path="/61A9D384/61AAD0CE" Ref="C?"  Part="1" 
+AR Path="/61B3EE71/61AAD0CE" Ref="C?"  Part="1" 
+AR Path="/620E9BA8/61AAD0CE" Ref="C21"  Part="1" 
+F 0 "C21" H 2842 4296 50  0000 L CNN
+F 1 "1uF" H 2842 4205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2750 4250 50  0001 C CNN
+F 3 "~" H 2750 4250 50  0001 C CNN
+	1    2750 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Interface_CAN_LIN:MCP2558FD-xSN U?
+U 1 1 61CAF1CC
+P 5700 3950
+AR Path="/61A14ADD/61CAF1CC" Ref="U?"  Part="1" 
+AR Path="/61B3EE71/61CAF1CC" Ref="U?"  Part="1" 
+AR Path="/620E9BA8/61CAF1CC" Ref="U4"  Part="1" 
+F 0 "U4" H 6050 4400 50  0000 C CNN
+F 1 "ATA6561-GAQW-N" H 6150 4300 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5700 3350 50  0001 C CNN
+F 3 "https://pl.mouser.com/datasheet/2/268/ATA6560_ATA6561_High_Speed_CAN_Transceiver_DS20005-1384933.pdf" H 5700 3950 50  0001 C CNN
+	1    5700 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 4350 5700 4450
+$Comp
+L Device:Ferrite_Bead_Small FB2
+U 1 1 62104FA3
+P 2350 3850
+F 0 "FB2" H 2450 3896 50  0000 L CNN
+F 1 "60R@100MHz" H 2450 3805 50  0000 L CNN
+F 2 "Inductor_SMD:L_0603_1608Metric" V 2280 3850 50  0001 C CNN
+F 3 "~" H 2350 3850 50  0001 C CNN
+	1    2350 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Ferrite_Bead_Small FB3
+U 1 1 62107CFA
+P 4300 3850
+F 0 "FB3" H 4050 3900 50  0000 L CNN
+F 1 "60R@100MHz" H 3700 3800 50  0000 L CNN
+F 2 "Inductor_SMD:L_0603_1608Metric" V 4230 3850 50  0001 C CNN
+F 3 "~" H 4300 3850 50  0001 C CNN
+	1    4300 3850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
