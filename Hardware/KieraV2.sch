@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title "Kiera V2"
 Date ""
 Rev ""
@@ -173,12 +173,8 @@ Wire Wire Line
 	3250 1350 3250 1450
 Connection ~ 3250 1350
 Wire Wire Line
-	3250 1350 3350 1350
-Wire Wire Line
 	3250 2300 3250 2400
 Connection ~ 3250 2300
-Wire Wire Line
-	3250 2300 3350 2300
 $Comp
 L Device:R R5
 U 1 1 61A5033D
@@ -340,7 +336,7 @@ F 3 "" H 2100 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1650 4400 2100 4400
+	1650 4400 1700 4400
 Connection ~ 2100 4400
 Wire Wire Line
 	2100 4400 2450 4400
@@ -349,7 +345,7 @@ Wire Wire Line
 Wire Wire Line
 	2100 3800 2450 3800
 Wire Wire Line
-	1650 3200 2100 3200
+	1650 3200 1700 3200
 Connection ~ 2100 3200
 Wire Wire Line
 	2100 3200 2450 3200
@@ -359,53 +355,19 @@ Wire Wire Line
 Connection ~ 750  3200
 Wire Wire Line
 	750  3200 750  3800
-Wire Wire Line
-	5500 4450 5350 4450
-Wire Wire Line
-	5500 4550 5350 4550
-Wire Wire Line
-	5500 4650 5350 4650
-Wire Wire Line
-	6900 2550 7100 2550
-Wire Wire Line
-	6900 2650 7100 2650
-Text GLabel 7100 2550 2    50   Input ~ 0
-SW1
-Text GLabel 7100 2650 2    50   Input ~ 0
-SW2
-Text GLabel 5350 4450 0    50   Input ~ 0
-SW3
-Text GLabel 5350 4550 0    50   Input ~ 0
-SW4
-Text GLabel 5350 4650 0    50   Input ~ 0
-SW5
-Text GLabel 2900 4400 2    50   Input ~ 0
-SW5
-Text GLabel 2900 3800 2    50   Input ~ 0
-SW4
-Text GLabel 2900 3200 2    50   Input ~ 0
-SW3
-Text GLabel 3350 2300 2    50   Input ~ 0
-SW2
-Text GLabel 3350 1350 2    50   Input ~ 0
-SW1
 Connection ~ 2100 3800
 $Sheet
-S 5450 800  800  400 
+S 5800 850  800  400 
 U 61B35764
 F0 "CAN" 50
 F1 "CAN.sch" 50
-F2 "CAN-RX" O L 5450 950 50 
-F3 "CAN-TX" I L 5450 1050 50 
-F4 "CANH" B R 6250 950 50 
-F5 "CANL" B R 6250 1050 50 
+F2 "CAN-RX" O R 6600 1000 50 
+F3 "CAN-TX" I R 6600 1100 50 
+F4 "CANH" B L 5800 1000 50 
+F5 "CANL" B L 5800 1100 50 
 $EndSheet
-Text Label 6950 3750 0    50   ~ 0
-CAN1_RX
-Wire Wire Line
-	6900 3750 7300 3750
-Wire Wire Line
-	6900 3650 7300 3650
+Text Label 7100 3750 0    50   ~ 0
+CAN_RX
 $Comp
 L Switch:SW_Rotary2x4 SW1
 U 1 1 61A1A252
@@ -453,45 +415,17 @@ Wire Notes Line
 	3750 500  3750 5000
 Wire Notes Line
 	3750 5000 500  5000
-Wire Wire Line
-	5350 3100 5500 3100
-Text GLabel 5350 3100 0    50   Input ~ 0
-NRST
-Wire Wire Line
-	6900 3950 7100 3950
-Text GLabel 7100 3950 2    50   Input ~ 0
-SWCLK
-Wire Wire Line
-	6900 3850 7100 3850
-Text GLabel 7100 3850 2    50   Input ~ 0
-SWDIO
-Wire Wire Line
-	6900 4550 7100 4550
-Text GLabel 7100 4550 2    50   Input ~ 0
-SWO
-Text GLabel 8000 1150 2    50   Input ~ 0
-SWDIO
-Text GLabel 8000 1250 2    50   Input ~ 0
-NRST
 $Comp
 L power:GND #PWR025
 U 1 1 61A4CEAD
-P 8400 1050
-F 0 "#PWR025" H 8400 800 50  0001 C CNN
-F 1 "GND" H 8405 877 50  0000 C CNN
-F 2 "" H 8400 1050 50  0001 C CNN
-F 3 "" H 8400 1050 50  0001 C CNN
-	1    8400 1050
+P 8800 1100
+F 0 "#PWR025" H 8800 850 50  0001 C CNN
+F 1 "GND" H 8805 927 50  0000 C CNN
+F 2 "" H 8800 1100 50  0001 C CNN
+F 3 "" H 8800 1100 50  0001 C CNN
+	1    8800 1100
 	1    0    0    -1  
 $EndComp
-Text GLabel 8000 950  2    50   Input ~ 0
-SWCLK
-Wire Wire Line
-	7850 950  8000 950 
-Wire Wire Line
-	8000 1150 7850 1150
-Wire Wire Line
-	7850 1250 8000 1250
 $Comp
 L power:GND #PWR015
 U 1 1 61A87240
@@ -545,14 +479,6 @@ Wire Wire Line
 	10250 850  10350 850 
 Wire Wire Line
 	10350 850  10350 800 
-Wire Wire Line
-	10250 950  10350 950 
-Wire Wire Line
-	10250 1050 10350 1050
-Text GLabel 10350 1050 2    50   Input ~ 0
-CAN_TX
-Text GLabel 10350 950  2    50   Input ~ 0
-CAN_RX
 $Comp
 L power:+5V #PWR027
 U 1 1 61A9DC54
@@ -576,7 +502,7 @@ F 3 "" H 10350 1200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 4150 800  800  400 
+S 4150 850  800  400 
 U 61A6380E
 F0 "Power" 50
 F1 "Power.sch" 50
@@ -584,40 +510,26 @@ $EndSheet
 $Comp
 L Connector:Conn_01x05_Male J1
 U 1 1 61ACE4C5
-P 7650 1050
-F 0 "J1" H 7550 1100 50  0000 C CNN
-F 1 "Conn_01x05_Male" H 7250 1000 50  0000 C CNN
-F 2 "" H 7650 1050 50  0001 C CNN
-F 3 "~" H 7650 1050 50  0001 C CNN
-	1    7650 1050
+P 8050 1100
+F 0 "J1" H 7950 1150 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 7650 1050 50  0000 C CNN
+F 2 "" H 8050 1100 50  0001 C CNN
+F 3 "~" H 8050 1100 50  0001 C CNN
+	1    8050 1100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8400 1050 7850 1050
+	8800 1100 8250 1100
 Wire Wire Line
-	8400 850  7850 850 
-Text Notes 6550 650  0    79   ~ 0
+	8800 900  8250 900 
+Text Notes 7300 650  0    79   ~ 0
 SWD
-Wire Wire Line
-	6100 2300 6100 2150
-Wire Wire Line
-	6200 2300 6200 2150
-Wire Wire Line
-	6300 2150 6300 2300
-Wire Wire Line
-	6400 2150 6400 2300
-Wire Wire Line
-	6500 2150 6500 2300
-Wire Wire Line
-	6000 2150 6000 2300
-Text GLabel 6100 2150 1    50   Input ~ 0
-VREF+
 Wire Notes Line
-	5250 500  5250 1500
+	5400 500  5400 1500
 Wire Notes Line
 	3750 1500 11200 1500
 Wire Notes Line
-	6500 500  6500 1500
+	7250 500  7250 1500
 Wire Notes Line
 	9000 500  9000 1500
 $Comp
@@ -686,14 +598,6 @@ F 3 "~" H 1300 5950 50  0001 C CNN
 	1    1300 5950
 	1    0    0    -1  
 $EndComp
-Text GLabel 6500 2150 1    50   Input ~ 0
-VDD
-Text GLabel 6300 2150 1    50   Input ~ 0
-VDD
-Text GLabel 6200 2150 1    50   Input ~ 0
-VDD
-Text GLabel 800  5700 0    50   Input ~ 0
-VDD
 Wire Wire Line
 	1300 5700 1300 5800
 Wire Wire Line
@@ -737,8 +641,6 @@ F 3 "" H 1050 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	800  5700 1050 5700
-Wire Wire Line
 	1050 5700 1050 5650
 Connection ~ 1050 5700
 Wire Wire Line
@@ -768,12 +670,6 @@ F 3 "" H 2700 7450 50  0001 C CNN
 	1    2700 7450
 	1    0    0    -1  
 $EndComp
-Text GLabel 6400 2150 1    50   Input ~ 0
-VDDUSB
-Text GLabel 6000 2150 1    50   Input ~ 0
-VBAT
-Text GLabel 3850 7050 0    50   Input ~ 0
-VDDUSB
 $Comp
 L Device:C C10
 U 1 1 61BC7316
@@ -785,8 +681,6 @@ F 3 "~" H 4250 7200 50  0001 C CNN
 	1    4250 7200
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3850 7050 4050 7050
 $Comp
 L power:GND #PWR014
 U 1 1 61BD088B
@@ -812,8 +706,6 @@ $EndComp
 Connection ~ 4050 7050
 Wire Wire Line
 	4050 7050 4250 7050
-Wire Wire Line
-	1200 6950 1450 6950
 Connection ~ 1450 6950
 Wire Wire Line
 	1450 6950 1700 6950
@@ -839,7 +731,7 @@ Wire Wire Line
 Connection ~ 2200 7450
 Wire Wire Line
 	2200 7450 2700 7450
-Text Notes 5300 650  0    79   ~ 0
+Text Notes 5650 700  0    79   ~ 0
 CAN
 Text Notes 3800 650  0    79   ~ 0
 POWER REGULATOR
@@ -847,16 +739,6 @@ Text Notes 9050 650  0    79   ~ 0
 POWER SUPPLY
 Text Notes 2350 5250 0    79   ~ 0
 uC SUPPLY
-Wire Wire Line
-	5350 3500 5500 3500
-Wire Wire Line
-	5350 3600 5500 3600
-Text GLabel 5350 3500 0    50   Input ~ 0
-OSC_IN
-Text GLabel 5350 3600 0    50   Input ~ 0
-OSC_OUT
-Text GLabel 9450 2350 0    50   Input ~ 0
-OSC_OUT
 $Comp
 L Device:Crystal Y1
 U 1 1 61C845B0
@@ -914,8 +796,6 @@ Wire Wire Line
 	9800 1950 9800 1850
 Wire Wire Line
 	9800 2250 9800 2350
-Text GLabel 9450 1850 0    50   Input ~ 0
-OSC_IN
 Wire Wire Line
 	9800 2350 10100 2350
 Wire Notes Line
@@ -932,8 +812,6 @@ Wire Notes Line
 	11200 2650 8600 2650
 Text Notes 8650 1650 0    79   ~ 0
 CRYSTAL
-Text GLabel 9450 3400 0    50   Input ~ 0
-NRST
 $Comp
 L power:GND #PWR029
 U 1 1 61DCF62E
@@ -949,11 +827,9 @@ Wire Wire Line
 	10400 3900 9750 3900
 Wire Wire Line
 	9750 3900 9750 3800
-Wire Wire Line
-	9450 3400 9600 3400
 Text Notes 8650 2800 0    79   ~ 0
 RESET
-Text HLabel 4150 950  2    50   Input ~ 0
+Text HLabel 4150 1050 2    50   Input ~ 0
 +5V
 Text Notes 1750 650  0    79   ~ 0
 SWITCHES
@@ -968,8 +844,6 @@ F 3 "" H 4250 6100 50  0001 C CNN
 	1    4250 6100
 	1    0    0    -1  
 $EndComp
-Text GLabel 3850 5800 0    50   Input ~ 0
-VBAT
 $Comp
 L Device:C C17
 U 1 1 61E85A6A
@@ -992,33 +866,27 @@ F 3 "" H 4050 5800 50  0001 C CNN
 	1    4050 5800
 	1    0    0    -1  
 $EndComp
-Text HLabel 4150 1050 2    50   Output ~ 0
+Text HLabel 4950 1050 0    50   Output ~ 0
 +3V3
 $Comp
 L power:+3.3V #PWR024
 U 1 1 61B51C6E
-P 8400 800
-F 0 "#PWR024" H 8400 650 50  0001 C CNN
-F 1 "+3.3V" H 8415 973 50  0000 C CNN
-F 2 "" H 8400 800 50  0001 C CNN
-F 3 "" H 8400 800 50  0001 C CNN
-	1    8400 800 
+P 8800 850
+F 0 "#PWR024" H 8800 700 50  0001 C CNN
+F 1 "+3.3V" H 8815 1023 50  0000 C CNN
+F 2 "" H 8800 850 50  0001 C CNN
+F 3 "" H 8800 850 50  0001 C CNN
+	1    8800 850 
 	1    0    0    -1  
 $EndComp
-Text Label 6950 3650 0    50   ~ 0
-CAN1_TX
+Text Label 7100 3650 0    50   ~ 0
+CAN_TX
 Wire Wire Line
-	8400 850  8400 800 
-Wire Wire Line
-	9450 1850 9800 1850
+	8800 900  8800 850 
 Connection ~ 9800 1850
-Wire Wire Line
-	9800 2350 9450 2350
 Connection ~ 9800 2350
 Wire Wire Line
 	4250 5800 4050 5800
-Wire Wire Line
-	3850 5800 4050 5800
 Connection ~ 4050 5800
 $Comp
 L Device:R R16
@@ -1079,12 +947,8 @@ F 3 "~" H 9750 3650 50  0001 C CNN
 $EndComp
 Wire Notes Line
 	11200 4200 8600 4200
-Wire Notes Line
-	8600 1500 8600 4200
 Wire Wire Line
 	2700 7050 2700 6950
-Text GLabel 1200 6950 0    50   Input ~ 0
-VREF+
 $Comp
 L Device:C C13
 U 1 1 61A748B1
@@ -1126,8 +990,6 @@ Wire Wire Line
 	2450 4100 2100 4100
 Connection ~ 2100 4100
 Connection ~ 2450 3800
-Wire Wire Line
-	2450 3800 2900 3800
 $Comp
 L Device:R R18
 U 1 1 61AB2BD3
@@ -1190,9 +1052,239 @@ $EndComp
 Wire Wire Line
 	2450 3500 2100 3500
 Connection ~ 2450 3200
-Wire Wire Line
-	2450 3200 2900 3200
 Connection ~ 2450 4400
+$Sheet
+S 9550 4600 1300 800 
+U 61B14672
+F0 "IMU" 50
+F1 "IMU.sch" 50
+F2 "SPI_MISO" I L 9550 4650 50 
+F3 "SPI_MOSI" I L 9550 4750 50 
+F4 "SPI_CLK" I L 9550 4850 50 
+F5 "SPI_CS" I L 9550 4950 50 
+F6 "~INT1" I L 9550 5250 50 
+F7 "~INT2" I L 9550 5350 50 
+$EndSheet
 Wire Wire Line
-	2450 4400 2900 4400
+	2000 3200 2100 3200
+Wire Wire Line
+	2000 4400 2100 4400
+Text Label 7100 2950 0    50   ~ 0
+IMU_SPI1_NSS
+Text Label 7100 3050 0    50   ~ 0
+IMU_SPI1_SCK
+Text Label 7100 3150 0    50   ~ 0
+IMU_SPI1_MISO
+Text Label 7100 3250 0    50   ~ 0
+IMU_SPI1_MOSI
+Text Label 5000 4850 0    50   ~ 0
+IMU_INT1
+Text Label 5000 4950 0    50   ~ 0
+IMU_INT2
+Wire Wire Line
+	6900 3250 7650 3250
+Wire Wire Line
+	6900 3150 7650 3150
+Wire Wire Line
+	6900 3050 7650 3050
+Wire Wire Line
+	6900 2950 7650 2950
+Text Label 8850 4650 0    50   ~ 0
+IMU_SPI1_MISO
+Text Label 8850 4750 0    50   ~ 0
+IMU_SPI1_MOSI
+Text Label 8850 4850 0    50   ~ 0
+IMU_SPI1_CLK
+Text Label 8850 4950 0    50   ~ 0
+IMU_SPI1_CS
+Text Label 8850 5350 0    50   ~ 0
+IMU_INT2
+Text Label 8850 5250 0    50   ~ 0
+IMU_INT1
+Wire Wire Line
+	8850 5250 9550 5250
+Wire Wire Line
+	8850 5350 9550 5350
+Wire Wire Line
+	9250 3400 9600 3400
+Text Label 9250 3400 0    50   ~ 0
+NRST
+Text Label 9300 2350 0    50   ~ 0
+OSC_OUT
+Text Label 9300 1850 0    50   ~ 0
+OSC_IN
+Wire Wire Line
+	9300 2350 9800 2350
+Wire Wire Line
+	9300 1850 9800 1850
+Wire Wire Line
+	10250 950  10700 950 
+Wire Wire Line
+	10250 1050 10700 1050
+Text Label 10500 1050 0    50   ~ 0
+CAN-
+Text Label 8400 1000 0    50   ~ 0
+SWCLK
+Text Label 8400 1300 0    50   ~ 0
+NRST
+Text Label 8400 1200 0    50   ~ 0
+SWDIO
+Wire Wire Line
+	8250 1000 8650 1000
+Wire Wire Line
+	8250 1200 8650 1200
+Wire Wire Line
+	8250 1300 8650 1300
+Wire Wire Line
+	5800 1100 5600 1100
+Wire Wire Line
+	5800 1000 5600 1000
+Text Label 10500 950  0    50   ~ 0
+CAN+
+Text Label 5600 1000 0    50   ~ 0
+CAN+
+Text Label 5600 1100 0    50   ~ 0
+CAN-
+Wire Wire Line
+	6800 1000 6600 1000
+Wire Wire Line
+	6800 1100 6600 1100
+Text Label 6650 1000 0    50   ~ 0
+CAN_RX
+Text Label 6650 1100 0    50   ~ 0
+CAN_TX
+Wire Wire Line
+	3850 1050 4150 1050
+Wire Wire Line
+	4950 1050 5250 1050
+Text Notes 5050 1050 0    50   ~ 0
++3V3
+Text Notes 3850 1050 0    50   ~ 0
++5V\n
+Text Notes 8650 4400 0    79   ~ 0
+IMU\n
+Wire Notes Line
+	11200 5700 8600 5700
+Wire Notes Line
+	8600 1500 8600 5700
+Wire Wire Line
+	8850 4650 9550 4650
+Wire Wire Line
+	8850 4750 9550 4750
+Wire Wire Line
+	8850 4850 9550 4850
+Wire Wire Line
+	8850 4950 9550 4950
+Wire Wire Line
+	5000 4850 5500 4850
+Wire Wire Line
+	5000 4950 5500 4950
+Wire Wire Line
+	5000 4650 5500 4650
+Wire Wire Line
+	5000 4550 5500 4550
+Wire Wire Line
+	5000 4450 5500 4450
+Text Label 5000 4450 0    50   ~ 0
+SW3
+Text Label 5000 4550 0    50   ~ 0
+SW4
+Text Label 5000 4650 0    50   ~ 0
+SW5
+Text Label 5000 3500 0    50   ~ 0
+OSC_IN
+Text Label 5000 3600 0    50   ~ 0
+OSC_OUT
+Wire Wire Line
+	5000 3500 5500 3500
+Wire Wire Line
+	5000 3600 5500 3600
+Wire Wire Line
+	5000 3100 5500 3100
+Text Label 5000 3100 0    50   ~ 0
+NRST
+Text Label 7100 2550 0    50   ~ 0
+SW1
+Text Label 7100 2650 0    50   ~ 0
+SW2
+Text Label 7100 3850 0    50   ~ 0
+SWDIO
+Text Label 7100 3950 0    50   ~ 0
+SWCLK
+Text Label 7100 4550 0    50   ~ 0
+SWO
+Wire Wire Line
+	7250 2550 6900 2550
+Wire Wire Line
+	7250 2650 6900 2650
+Wire Wire Line
+	7250 4550 6900 4550
+Wire Wire Line
+	7350 3950 6900 3950
+Wire Wire Line
+	7350 3850 6900 3850
+Wire Wire Line
+	7400 3750 6900 3750
+Wire Wire Line
+	7400 3650 6900 3650
+Text Label 6000 2150 1    50   ~ 0
+VBAT
+Text Label 6100 2150 1    50   ~ 0
+VREF+
+Text Label 6200 2150 1    50   ~ 0
+VDD
+Text Label 6300 2150 1    50   ~ 0
+VDD
+Text Label 6400 2150 1    50   ~ 0
+VDDUSB
+Text Label 6500 2150 1    50   ~ 0
+VDD
+Wire Wire Line
+	6000 1950 6000 2300
+Wire Wire Line
+	6100 1900 6100 2300
+Wire Wire Line
+	6200 2000 6200 2300
+Wire Wire Line
+	6300 2000 6300 2300
+Wire Wire Line
+	6400 1850 6400 2300
+Wire Wire Line
+	6500 2000 6500 2300
+Text Label 3400 1350 0    50   ~ 0
+SW1
+Text Label 3400 2300 0    50   ~ 0
+SW2
+Text Label 2900 3200 0    50   ~ 0
+SW3
+Text Label 2900 3800 0    50   ~ 0
+SW4
+Text Label 2900 4400 0    50   ~ 0
+SW5
+Wire Wire Line
+	3250 1350 3550 1350
+Wire Wire Line
+	3250 2300 3550 2300
+Wire Wire Line
+	2450 3200 3050 3200
+Wire Wire Line
+	2450 3800 3050 3800
+Wire Wire Line
+	2450 4400 3050 4400
+Text Label 700  5700 0    50   ~ 0
+VDD
+Text Label 1050 6950 0    50   ~ 0
+VREF+
+Text Label 3750 5800 0    50   ~ 0
+VBAT
+Text Label 3650 7050 0    50   ~ 0
+VDDUSB
+Wire Wire Line
+	3650 7050 4050 7050
+Wire Wire Line
+	3750 5800 4050 5800
+Wire Wire Line
+	1050 6950 1450 6950
+Wire Wire Line
+	700  5700 1050 5700
 $EndSCHEMATC
