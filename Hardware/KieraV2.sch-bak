@@ -364,7 +364,7 @@ U 1 1 61A1A252
 P 1250 1400
 F 0 "SW1" H 1250 1815 50  0000 C CNN
 F 1 "SW_Rotary2x4" H 1250 1724 50  0000 C CNN
-F 2 "" H 1300 1850 50  0001 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 1300 1850 50  0001 C CNN
 F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 1300 1850 50  0001 C CNN
 	1    1250 1400
 	1    0    0    -1  
@@ -375,7 +375,7 @@ U 1 1 61A1DF85
 P 1250 2350
 F 0 "SW2" H 1250 2765 50  0000 C CNN
 F 1 "SW_Rotary2x4" H 1250 2674 50  0000 C CNN
-F 2 "" H 1300 2800 50  0001 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 1300 2800 50  0001 C CNN
 F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 1300 2800 50  0001 C CNN
 	1    1250 2350
 	1    0    0    -1  

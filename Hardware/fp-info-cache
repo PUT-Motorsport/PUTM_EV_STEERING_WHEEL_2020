@@ -1,4 +1,4 @@
-19407918999496441
+19409558001182958
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -1539,6 +1539,13 @@ SWITCH SMD KSA SW
 0
 5
 5
+Button_Switch_THT
+MyPushbuttonSwitch
+
+
+0
+2
+2
 Button_Switch_THT
 Nidec_Copal_SH-7010C
 4-bit rotary coded switch, through-hole, https://www.nidec-copal-electronics.com/e/catalog/switch/sh-7000.pdf
