@@ -1,0 +1,181 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Switch:SW_Rotary2x4 SW?
+U 1 1 61B9B255
+P 4350 2700
+AR Path="/61B7E6EB/61B9B255" Ref="SW?"  Part="1" 
+AR Path="/61B9708B/61B9B255" Ref="SW2"  Part="1" 
+F 0 "SW2" H 4350 3115 50  0000 C CNN
+F 1 "SW_Rotary2x4" H 4350 3024 50  0000 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 4400 3150 50  0001 C CNN
+F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 4400 3150 50  0001 C CNN
+	1    4350 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61B9B25B
+P 4800 3200
+AR Path="/61B7E6EB/61B9B25B" Ref="R?"  Part="1" 
+AR Path="/61B9708B/61B9B25B" Ref="R6"  Part="1" 
+F 0 "R6" H 4870 3246 50  0000 L CNN
+F 1 "22k" H 4870 3155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4730 3200 50  0001 C CNN
+F 3 "~" H 4800 3200 50  0001 C CNN
+	1    4800 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61B9B261
+P 4900 4950
+AR Path="/61B7E6EB/61B9B261" Ref="#PWR?"  Part="1" 
+AR Path="/61B9708B/61B9B261" Ref="#PWR0103"  Part="1" 
+F 0 "#PWR0103" H 4900 4700 50  0001 C CNN
+F 1 "GND" H 4905 4777 50  0000 C CNN
+F 2 "" H 4900 4950 50  0001 C CNN
+F 3 "" H 4900 4950 50  0001 C CNN
+	1    4900 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61B9B267
+P 4800 2450
+AR Path="/61B7E6EB/61B9B267" Ref="#PWR?"  Part="1" 
+AR Path="/61B9708B/61B9B267" Ref="#PWR0104"  Part="1" 
+F 0 "#PWR0104" H 4800 2300 50  0001 C CNN
+F 1 "+3.3V" H 4815 2623 50  0000 C CNN
+F 2 "" H 4800 2450 50  0001 C CNN
+F 3 "" H 4800 2450 50  0001 C CNN
+	1    4800 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 2450 4800 2550
+Wire Wire Line
+	4800 2550 4700 2550
+$Comp
+L Device:R R?
+U 1 1 61B9B26F
+P 5050 3600
+AR Path="/61B7E6EB/61B9B26F" Ref="R?"  Part="1" 
+AR Path="/61B9708B/61B9B26F" Ref="R7"  Part="1" 
+F 0 "R7" H 5120 3646 50  0000 L CNN
+F 1 "1k97" H 5120 3555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 4980 3600 50  0001 C CNN
+F 3 "~" H 5050 3600 50  0001 C CNN
+	1    5050 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61B9B275
+P 5300 4000
+AR Path="/61B7E6EB/61B9B275" Ref="R?"  Part="1" 
+AR Path="/61B9708B/61B9B275" Ref="R8"  Part="1" 
+F 0 "R8" H 5370 4046 50  0000 L CNN
+F 1 "680" H 5370 3955 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5230 4000 50  0001 C CNN
+F 3 "~" H 5300 4000 50  0001 C CNN
+	1    5300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61B9B27B
+P 5550 4400
+AR Path="/61B7E6EB/61B9B27B" Ref="R?"  Part="1" 
+AR Path="/61B9708B/61B9B27B" Ref="R9"  Part="1" 
+F 0 "R9" H 5620 4446 50  0000 L CNN
+F 1 "150" H 5620 4355 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5480 4400 50  0001 C CNN
+F 3 "~" H 5550 4400 50  0001 C CNN
+	1    5550 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61B9B281
+P 5200 4800
+AR Path="/61B7E6EB/61B9B281" Ref="R?"  Part="1" 
+AR Path="/61B9708B/61B9B281" Ref="R10"  Part="1" 
+F 0 "R10" V 5100 4800 50  0000 C CNN
+F 1 "10k" V 5000 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5130 4800 50  0001 C CNN
+F 3 "~" H 5200 4800 50  0001 C CNN
+	1    5200 4800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4900 4950 4900 4800
+Wire Wire Line
+	4900 4800 5050 4800
+Wire Wire Line
+	5350 4800 5550 4800
+Wire Wire Line
+	5550 4800 5550 4550
+Wire Wire Line
+	5550 4250 5550 4200
+Wire Wire Line
+	5550 4200 5300 4200
+Wire Wire Line
+	5300 4200 5300 4150
+Wire Wire Line
+	5300 3850 5300 3800
+Wire Wire Line
+	5300 3800 5050 3800
+Wire Wire Line
+	5050 3800 5050 3750
+Wire Wire Line
+	5050 3450 5050 3400
+Wire Wire Line
+	5050 3400 4800 3400
+Wire Wire Line
+	4800 3400 4800 3350
+Wire Wire Line
+	4800 3050 4800 2950
+Wire Wire Line
+	4800 2950 4700 2950
+Wire Wire Line
+	5050 3400 5050 2850
+Wire Wire Line
+	5050 2850 4700 2850
+Connection ~ 5050 3400
+Wire Wire Line
+	4700 2750 5300 2750
+Wire Wire Line
+	5300 2750 5300 3800
+Connection ~ 5300 3800
+Wire Wire Line
+	5550 4200 5550 2650
+Wire Wire Line
+	5550 2650 4700 2650
+Connection ~ 5550 4200
+Connection ~ 5550 4800
+Text Label 5750 4800 0    50   ~ 0
+SW2
+Text HLabel 6050 4800 2    50   Output ~ 0
+SW2
+Wire Wire Line
+	5550 4800 6050 4800
+NoConn ~ 4000 2550
+NoConn ~ 4000 2650
+NoConn ~ 4000 2750
+NoConn ~ 4000 2850
+NoConn ~ 4000 2950
+$EndSCHEMATC

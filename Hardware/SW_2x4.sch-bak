@@ -1,0 +1,158 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Switch:SW_Rotary2x4 SW?
+U 1 1 61B7ED93
+P 4350 3250
+F 0 "SW?" H 4350 3665 50  0000 C CNN
+F 1 "SW_Rotary2x4" H 4350 3574 50  0000 C CNN
+F 2 "" H 4400 3700 50  0001 C CNN
+F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 4400 3700 50  0001 C CNN
+	1    4350 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 61B7F45F
+P 4800 3750
+F 0 "R1" H 4870 3796 50  0000 L CNN
+F 1 "R" H 4870 3705 50  0000 L CNN
+F 2 "" V 4730 3750 50  0001 C CNN
+F 3 "~" H 4800 3750 50  0001 C CNN
+	1    4800 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61B7FE38
+P 4900 5500
+F 0 "#PWR?" H 4900 5250 50  0001 C CNN
+F 1 "GND" H 4905 5327 50  0000 C CNN
+F 2 "" H 4900 5500 50  0001 C CNN
+F 3 "" H 4900 5500 50  0001 C CNN
+	1    4900 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61B80122
+P 4800 3000
+F 0 "#PWR?" H 4800 2850 50  0001 C CNN
+F 1 "+3.3V" H 4815 3173 50  0000 C CNN
+F 2 "" H 4800 3000 50  0001 C CNN
+F 3 "" H 4800 3000 50  0001 C CNN
+	1    4800 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3000 4800 3100
+Wire Wire Line
+	4800 3100 4700 3100
+$Comp
+L Device:R R2
+U 1 1 61B83EBA
+P 5050 4150
+F 0 "R2" H 5120 4196 50  0000 L CNN
+F 1 "R" H 5120 4105 50  0000 L CNN
+F 2 "" V 4980 4150 50  0001 C CNN
+F 3 "~" H 5050 4150 50  0001 C CNN
+	1    5050 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 61B852E5
+P 5300 4550
+F 0 "R3" H 5370 4596 50  0000 L CNN
+F 1 "R" H 5370 4505 50  0000 L CNN
+F 2 "" V 5230 4550 50  0001 C CNN
+F 3 "~" H 5300 4550 50  0001 C CNN
+	1    5300 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 61B85D49
+P 5550 4950
+F 0 "R4" H 5620 4996 50  0000 L CNN
+F 1 "R" H 5620 4905 50  0000 L CNN
+F 2 "" V 5480 4950 50  0001 C CNN
+F 3 "~" H 5550 4950 50  0001 C CNN
+	1    5550 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 61B8612F
+P 5200 5350
+F 0 "R5" V 5100 5350 50  0000 C CNN
+F 1 "R" V 5000 5350 50  0000 C CNN
+F 2 "" V 5130 5350 50  0001 C CNN
+F 3 "~" H 5200 5350 50  0001 C CNN
+	1    5200 5350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4900 5500 4900 5350
+Wire Wire Line
+	4900 5350 5050 5350
+Wire Wire Line
+	5350 5350 5550 5350
+Wire Wire Line
+	5550 5350 5550 5100
+Wire Wire Line
+	5550 4800 5550 4750
+Wire Wire Line
+	5550 4750 5300 4750
+Wire Wire Line
+	5300 4750 5300 4700
+Wire Wire Line
+	5300 4400 5300 4350
+Wire Wire Line
+	5300 4350 5050 4350
+Wire Wire Line
+	5050 4350 5050 4300
+Wire Wire Line
+	5050 4000 5050 3950
+Wire Wire Line
+	5050 3950 4800 3950
+Wire Wire Line
+	4800 3950 4800 3900
+Wire Wire Line
+	4800 3600 4800 3500
+Wire Wire Line
+	4800 3500 4700 3500
+Wire Wire Line
+	5050 3950 5050 3400
+Wire Wire Line
+	5050 3400 4700 3400
+Connection ~ 5050 3950
+Wire Wire Line
+	4700 3300 5300 3300
+Wire Wire Line
+	5300 3300 5300 4350
+Connection ~ 5300 4350
+Wire Wire Line
+	5550 4750 5550 3200
+Wire Wire Line
+	5550 3200 4700 3200
+Connection ~ 5550 4750
+Wire Wire Line
+	5850 5350 5550 5350
+Connection ~ 5550 5350
+Text Label 5850 5350 0    50   ~ 0
+SW1
+$EndSCHEMATC
