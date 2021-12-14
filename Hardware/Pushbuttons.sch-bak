@@ -1,0 +1,336 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 8 8
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:+3.3V #PWR01
+U 1 1 61BA16A5
+P 4550 3200
+F 0 "#PWR01" H 4550 3050 50  0001 C CNN
+F 1 "+3.3V" H 4565 3373 50  0000 C CNN
+F 2 "" H 4550 3200 50  0001 C CNN
+F 3 "" H 4550 3200 50  0001 C CNN
+	1    4550 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW3
+U 1 1 61BA16AB
+P 5100 3450
+F 0 "SW3" H 5100 3735 50  0000 C CNN
+F 1 "SW_Push" H 5100 3644 50  0000 C CNN
+F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 5100 3650 50  0001 C CNN
+F 3 "~" H 5100 3650 50  0001 C CNN
+	1    5100 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW4
+U 1 1 61BA16B1
+P 5100 4050
+F 0 "SW4" H 5100 4335 50  0000 C CNN
+F 1 "SW_Push" H 5100 4244 50  0000 C CNN
+F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 5100 4250 50  0001 C CNN
+F 3 "~" H 5100 4250 50  0001 C CNN
+	1    5100 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW5
+U 1 1 61BA16B7
+P 5100 4650
+F 0 "SW5" H 5100 4935 50  0000 C CNN
+F 1 "SW_Push" H 5100 4844 50  0000 C CNN
+F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 5100 4850 50  0001 C CNN
+F 3 "~" H 5100 4850 50  0001 C CNN
+	1    5100 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 4050 4550 4050
+Wire Wire Line
+	4900 3450 4550 3450
+$Comp
+L Device:R R16
+U 1 1 61BA16C0
+P 5900 3600
+F 0 "R16" H 5750 3550 50  0000 C CNN
+F 1 "10k" H 5750 3650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5830 3600 50  0001 C CNN
+F 3 "~" H 5900 3600 50  0001 C CNN
+	1    5900 3600
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 61BA16C6
+P 5900 3750
+F 0 "#PWR08" H 5900 3500 50  0001 C CNN
+F 1 "GND" H 5905 3577 50  0000 C CNN
+F 2 "" H 5900 3750 50  0001 C CNN
+F 3 "" H 5900 3750 50  0001 C CNN
+	1    5900 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R17
+U 1 1 61BA16CC
+P 5900 4200
+F 0 "R17" H 5750 4150 50  0000 C CNN
+F 1 "10k" H 5750 4250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5830 4200 50  0001 C CNN
+F 3 "~" H 5900 4200 50  0001 C CNN
+	1    5900 4200
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR010
+U 1 1 61BA16D2
+P 5900 4350
+F 0 "#PWR010" H 5900 4100 50  0001 C CNN
+F 1 "GND" H 5905 4177 50  0000 C CNN
+F 2 "" H 5900 4350 50  0001 C CNN
+F 3 "" H 5900 4350 50  0001 C CNN
+	1    5900 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R26
+U 1 1 61BA16D8
+P 5900 4800
+F 0 "R26" H 5750 4750 50  0000 C CNN
+F 1 "10k" H 5750 4850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5830 4800 50  0001 C CNN
+F 3 "~" H 5900 4800 50  0001 C CNN
+	1    5900 4800
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR012
+U 1 1 61BA16DE
+P 5900 4950
+F 0 "#PWR012" H 5900 4700 50  0001 C CNN
+F 1 "GND" H 5905 4777 50  0000 C CNN
+F 2 "" H 5900 4950 50  0001 C CNN
+F 3 "" H 5900 4950 50  0001 C CNN
+	1    5900 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4650 5400 4650
+Connection ~ 5900 4650
+Wire Wire Line
+	5900 4650 6250 4650
+Wire Wire Line
+	5300 4050 5400 4050
+Wire Wire Line
+	5900 4050 6250 4050
+Wire Wire Line
+	5300 3450 5400 3450
+Connection ~ 5900 3450
+Wire Wire Line
+	5900 3450 6250 3450
+Connection ~ 4550 4050
+Wire Wire Line
+	4550 4050 4550 4650
+Connection ~ 4550 3450
+Wire Wire Line
+	4550 3450 4550 4050
+Connection ~ 5900 4050
+$Comp
+L Device:C C5
+U 1 1 61BA16F1
+P 6250 4200
+F 0 "C5" H 6365 4246 50  0000 L CNN
+F 1 "100nF" H 6365 4155 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6288 4050 50  0001 C CNN
+F 3 "~" H 6250 4200 50  0001 C CNN
+	1    6250 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 4350 5900 4350
+Connection ~ 5900 4350
+Connection ~ 6250 4050
+$Comp
+L Device:R R13
+U 1 1 61BA16FA
+P 5550 4050
+F 0 "R13" V 5650 4050 50  0000 C CNN
+F 1 "1k" V 5750 4050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5480 4050 50  0001 C CNN
+F 3 "~" H 5550 4050 50  0001 C CNN
+	1    5550 4050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5700 4050 5900 4050
+$Comp
+L Device:R R12
+U 1 1 61BA1701
+P 5550 3450
+F 0 "R12" V 5650 3450 50  0000 C CNN
+F 1 "1k" V 5750 3450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5480 3450 50  0001 C CNN
+F 3 "~" H 5550 3450 50  0001 C CNN
+	1    5550 3450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R14
+U 1 1 61BA1707
+P 5550 4650
+F 0 "R14" V 5650 4650 50  0000 C CNN
+F 1 "1k" V 5750 4650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5480 4650 50  0001 C CNN
+F 3 "~" H 5550 4650 50  0001 C CNN
+	1    5550 4650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C6
+U 1 1 61BA170D
+P 6250 4800
+F 0 "C6" H 6365 4846 50  0000 L CNN
+F 1 "100nF" H 6365 4755 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6288 4650 50  0001 C CNN
+F 3 "~" H 6250 4800 50  0001 C CNN
+	1    6250 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 4950 5900 4950
+$Comp
+L Device:C C3
+U 1 1 61BA1714
+P 6250 3600
+F 0 "C3" H 6365 3646 50  0000 L CNN
+F 1 "100nF" H 6365 3555 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6288 3450 50  0001 C CNN
+F 3 "~" H 6250 3600 50  0001 C CNN
+	1    6250 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 3750 5900 3750
+Connection ~ 6250 3450
+Connection ~ 6250 4650
+Wire Wire Line
+	5700 3450 5900 3450
+Wire Wire Line
+	5700 4650 5900 4650
+Text Label 6650 3450 2    50   ~ 0
+SW3
+Text Label 6650 4050 2    50   ~ 0
+SW4
+Text Label 6650 4650 2    50   ~ 0
+SW5
+Wire Wire Line
+	6250 3450 6850 3450
+Wire Wire Line
+	6250 4050 6850 4050
+Wire Wire Line
+	6250 4650 6850 4650
+Wire Wire Line
+	4550 3200 4550 3450
+Connection ~ 5900 3750
+Connection ~ 5900 4950
+Text Notes 4700 2950 2    59   ~ 0
+Pushbuttons
+Text HLabel 6850 3450 2    50   Output ~ 0
+SW3
+Text HLabel 6850 4050 2    50   Output ~ 0
+SW4
+Text HLabel 6850 4650 2    50   Output ~ 0
+SW5
+$Comp
+L Switch:SW_Push SW6
+U 1 1 61BA647E
+P 5100 5250
+F 0 "SW6" H 5100 5535 50  0000 C CNN
+F 1 "SW_Push" H 5100 5444 50  0000 C CNN
+F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 5100 5450 50  0001 C CNN
+F 3 "~" H 5100 5450 50  0001 C CNN
+	1    5100 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 5250 4550 5250
+$Comp
+L Device:R R27
+U 1 1 61BA6485
+P 5900 5400
+F 0 "R27" H 5750 5350 50  0000 C CNN
+F 1 "10k" H 5750 5450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5830 5400 50  0001 C CNN
+F 3 "~" H 5900 5400 50  0001 C CNN
+	1    5900 5400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 61BA648B
+P 5900 5550
+F 0 "#PWR013" H 5900 5300 50  0001 C CNN
+F 1 "GND" H 5905 5377 50  0000 C CNN
+F 2 "" H 5900 5550 50  0001 C CNN
+F 3 "" H 5900 5550 50  0001 C CNN
+	1    5900 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 5250 5400 5250
+Connection ~ 5900 5250
+Wire Wire Line
+	5900 5250 6250 5250
+$Comp
+L Device:R R15
+U 1 1 61BA6494
+P 5550 5250
+F 0 "R15" V 5650 5250 50  0000 C CNN
+F 1 "1k" V 5750 5250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 5480 5250 50  0001 C CNN
+F 3 "~" H 5550 5250 50  0001 C CNN
+	1    5550 5250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C15
+U 1 1 61BA649A
+P 6250 5400
+F 0 "C15" H 6365 5446 50  0000 L CNN
+F 1 "100nF" H 6365 5355 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6288 5250 50  0001 C CNN
+F 3 "~" H 6250 5400 50  0001 C CNN
+	1    6250 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 5550 5900 5550
+Connection ~ 6250 5250
+Wire Wire Line
+	5700 5250 5900 5250
+Text Label 6650 5250 2    50   ~ 0
+SW6
+Wire Wire Line
+	6250 5250 6850 5250
+Connection ~ 5900 5550
+Text HLabel 6850 5250 2    50   Output ~ 0
+SW6
+Wire Wire Line
+	4900 4650 4550 4650
+Wire Wire Line
+	4550 4650 4550 5250
+Connection ~ 4550 4650
+$EndSCHEMATC

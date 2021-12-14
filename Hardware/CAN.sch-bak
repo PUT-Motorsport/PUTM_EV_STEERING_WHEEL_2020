@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 7
+Sheet 3 8
 Title "CAN"
 Date ""
 Rev ""
@@ -1619,4 +1619,6 @@ F 3 "~" H 4300 3850 50  0001 C CNN
 $EndComp
 Text HLabel 6700 4050 2    50   BiDi ~ 0
 CANL
+Text HLabel 6700 3850 2    50   BiDi ~ 0
+CANH
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 7
+Sheet 1 8
 Title "PUT Motorsport EV Steering Wheel "
 Date ""
 Rev ""
@@ -13,143 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L power:+3.3V #PWR01
-U 1 1 61A6C179
-P 950 2900
-F 0 "#PWR01" H 950 2750 50  0001 C CNN
-F 1 "+3.3V" H 965 3073 50  0000 C CNN
-F 2 "" H 950 2900 50  0001 C CNN
-F 3 "" H 950 2900 50  0001 C CNN
-	1    950  2900
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW3
-U 1 1 61A794CA
-P 1500 3150
-F 0 "SW3" H 1500 3435 50  0000 C CNN
-F 1 "SW_Push" H 1500 3344 50  0000 C CNN
-F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 1500 3350 50  0001 C CNN
-F 3 "~" H 1500 3350 50  0001 C CNN
-	1    1500 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW5
-U 1 1 61A7B4BA
-P 1500 3750
-F 0 "SW5" H 1500 4035 50  0000 C CNN
-F 1 "SW_Push" H 1500 3944 50  0000 C CNN
-F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 1500 3950 50  0001 C CNN
-F 3 "~" H 1500 3950 50  0001 C CNN
-	1    1500 3750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW6
-U 1 1 61A7BBA4
-P 1500 4350
-F 0 "SW6" H 1500 4635 50  0000 C CNN
-F 1 "SW_Push" H 1500 4544 50  0000 C CNN
-F 2 "Button_Switch_THT:MyPushbuttonSwitch" H 1500 4550 50  0001 C CNN
-F 3 "~" H 1500 4550 50  0001 C CNN
-	1    1500 4350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1300 4350 950  4350
-Wire Wire Line
-	1300 3750 950  3750
-Wire Wire Line
-	1300 3150 950  3150
-$Comp
-L Device:R R13
-U 1 1 61A860FB
-P 2300 3300
-F 0 "R13" H 2150 3250 50  0000 C CNN
-F 1 "10k" H 2150 3350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2230 3300 50  0001 C CNN
-F 3 "~" H 2300 3300 50  0001 C CNN
-	1    2300 3300
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:GND #PWR010
-U 1 1 61A86101
-P 2300 3450
-F 0 "#PWR010" H 2300 3200 50  0001 C CNN
-F 1 "GND" H 2305 3277 50  0000 C CNN
-F 2 "" H 2300 3450 50  0001 C CNN
-F 3 "" H 2300 3450 50  0001 C CNN
-	1    2300 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R15
-U 1 1 61A87138
-P 2300 3900
-F 0 "R15" H 2150 3850 50  0000 C CNN
-F 1 "10k" H 2150 3950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2230 3900 50  0001 C CNN
-F 3 "~" H 2300 3900 50  0001 C CNN
-	1    2300 3900
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:GND #PWR012
-U 1 1 61A8713E
-P 2300 4050
-F 0 "#PWR012" H 2300 3800 50  0001 C CNN
-F 1 "GND" H 2305 3877 50  0000 C CNN
-F 2 "" H 2300 4050 50  0001 C CNN
-F 3 "" H 2300 4050 50  0001 C CNN
-	1    2300 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R17
-U 1 1 61A880A9
-P 2300 4500
-F 0 "R17" H 2150 4450 50  0000 C CNN
-F 1 "10k" H 2150 4550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2230 4500 50  0001 C CNN
-F 3 "~" H 2300 4500 50  0001 C CNN
-	1    2300 4500
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:GND #PWR013
-U 1 1 61A880AF
-P 2300 4650
-F 0 "#PWR013" H 2300 4400 50  0001 C CNN
-F 1 "GND" H 2305 4477 50  0000 C CNN
-F 2 "" H 2300 4650 50  0001 C CNN
-F 3 "" H 2300 4650 50  0001 C CNN
-	1    2300 4650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1700 4350 1800 4350
-Connection ~ 2300 4350
-Wire Wire Line
-	2300 4350 2650 4350
-Wire Wire Line
-	1700 3750 1800 3750
-Wire Wire Line
-	2300 3750 2650 3750
-Wire Wire Line
-	1700 3150 1800 3150
-Connection ~ 2300 3150
-Wire Wire Line
-	2300 3150 2650 3150
-Connection ~ 950  3750
-Wire Wire Line
-	950  3750 950  4350
-Connection ~ 950  3150
-Wire Wire Line
-	950  3150 950  3750
-Connection ~ 2300 3750
 Text Label 7750 3700 2    50   ~ 0
 CAN_RX
 Wire Notes Line
@@ -427,10 +290,10 @@ F 3 "~" H 9600 2300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Switch:SW_MEC_5G SW4
+L Switch:SW_MEC_5G SW7
 U 1 1 61DC36EF
 P 10200 2550
-F 0 "SW4" H 10200 2835 50  0000 C CNN
+F 0 "SW7" H 10200 2835 50  0000 C CNN
 F 1 "SW_MEC_5G" H 10200 2744 50  0000 C CNN
 F 2 "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" H 10200 2750 50  0001 C CNN
 F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=488" H 10200 2750 50  0001 C CNN
@@ -486,84 +349,6 @@ F 3 "~" H 2800 5900 50  0001 C CNN
 	1    2800 5900
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:C C5
-U 1 1 61A95079
-P 2650 3900
-F 0 "C5" H 2765 3946 50  0000 L CNN
-F 1 "100nF" H 2765 3855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 2688 3750 50  0001 C CNN
-F 3 "~" H 2650 3900 50  0001 C CNN
-	1    2650 3900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2650 4050 2300 4050
-Connection ~ 2300 4050
-Connection ~ 2650 3750
-$Comp
-L Device:R R14
-U 1 1 61AB2BD3
-P 1950 3750
-F 0 "R14" V 2050 3750 50  0000 C CNN
-F 1 "1k" V 2150 3750 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1880 3750 50  0001 C CNN
-F 3 "~" H 1950 3750 50  0001 C CNN
-	1    1950 3750
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	2100 3750 2300 3750
-$Comp
-L Device:R R12
-U 1 1 61AD0520
-P 1950 3150
-F 0 "R12" V 2050 3150 50  0000 C CNN
-F 1 "1k" V 2150 3150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1880 3150 50  0001 C CNN
-F 3 "~" H 1950 3150 50  0001 C CNN
-	1    1950 3150
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R16
-U 1 1 61AD6247
-P 1950 4350
-F 0 "R16" V 2050 4350 50  0000 C CNN
-F 1 "1k" V 2150 4350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1880 4350 50  0001 C CNN
-F 3 "~" H 1950 4350 50  0001 C CNN
-	1    1950 4350
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C C6
-U 1 1 61ADBF30
-P 2650 4500
-F 0 "C6" H 2765 4546 50  0000 L CNN
-F 1 "100nF" H 2765 4455 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 2688 4350 50  0001 C CNN
-F 3 "~" H 2650 4500 50  0001 C CNN
-	1    2650 4500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2650 4650 2300 4650
-$Comp
-L Device:C C3
-U 1 1 61AE1E72
-P 2650 3300
-F 0 "C3" H 2765 3346 50  0000 L CNN
-F 1 "100nF" H 2765 3255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 2688 3150 50  0001 C CNN
-F 3 "~" H 2650 3300 50  0001 C CNN
-	1    2650 3300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2650 3450 2300 3450
-Connection ~ 2650 3150
-Connection ~ 2650 4350
 $Sheet
 S 8900 3750 1300 800 
 U 61B14672
@@ -576,10 +361,6 @@ F5 "SPI_CS" O R 10200 4100 50
 F6 "~INT1" O R 10200 4400 50 
 F7 "~INT2" O R 10200 4500 50 
 $EndSheet
-Wire Wire Line
-	2100 3150 2300 3150
-Wire Wire Line
-	2100 4350 2300 4350
 Text Label 8000 2900 2    50   ~ 0
 IMU_SPI1_CS
 Text Label 8000 3000 2    50   ~ 0
@@ -704,18 +485,6 @@ Wire Wire Line
 	7750 3700 7250 3700
 Wire Wire Line
 	7750 3600 7250 3600
-Text Label 3250 3150 2    50   ~ 0
-SW3
-Text Label 3250 3750 2    50   ~ 0
-SW4
-Text Label 3250 4350 2    50   ~ 0
-SW5
-Wire Wire Line
-	2650 3150 3250 3150
-Wire Wire Line
-	2650 3750 3250 3750
-Wire Wire Line
-	2650 4350 3250 4350
 Wire Wire Line
 	7600 4500 7250 4500
 Text Label 7600 4500 2    50   ~ 0
@@ -737,7 +506,6 @@ NoConn ~ 7250 5500
 NoConn ~ 7250 5600
 NoConn ~ 7250 5700
 NoConn ~ 5850 3250
-NoConn ~ 5850 3750
 NoConn ~ 5850 4050
 NoConn ~ 5850 4150
 NoConn ~ 5850 4700
@@ -778,8 +546,6 @@ F0 "SW2" 50
 F1 "SW2.sch" 50
 F2 "SW2" O R 2900 2150 50 
 $EndSheet
-Wire Wire Line
-	950  2900 950  3150
 Wire Notes Line
 	500  1700 3750 1700
 Text Notes 900  1850 2    59   ~ 0
@@ -798,8 +564,6 @@ U 61A6380E
 F0 "Power" 50
 F1 "Power.sch" 50
 $EndSheet
-Connection ~ 2300 3450
-Connection ~ 2300 4650
 $Comp
 L Device:Ferrite_Bead_Small FB4
 U 1 1 61B5861E
@@ -1048,7 +812,7 @@ Wire Notes Line
 	8000 500  8000 1700
 Wire Notes Line
 	8000 1500 500  1500
-Text Notes 1100 2650 2    59   ~ 0
+Text Notes 1200 2950 2    59   ~ 0
 Pushbuttons
 Text Label 7900 4600 2    50   ~ 0
 ControlLED1
@@ -1103,17 +867,6 @@ NoConn ~ 5850 4600
 NoConn ~ 5850 4500
 NoConn ~ 5850 4400
 $Comp
-L KieraV2-rescue:STM32L4P5RET6-STM32L4P5RET6 U1
-U 1 1 619BCA75
-P 6550 4000
-F 0 "U1" H 6550 3550 50  0000 C CNN
-F 1 "STM32L4P5RET6" H 6550 3450 50  0000 C CNN
-F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 6550 1800 50  0001 C CNN
-F 3 "https://www.st.com/en/microcontrollers-microprocessors/stm32l4p5re.html#documentation" H 6550 1800 50  0001 C CNN
-	1    6550 4000
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:Conn_01x04_Male J1
 U 1 1 61A93711
 P 1450 1000
@@ -1124,4 +877,57 @@ F 3 "~" H 1450 1000 50  0001 C CNN
 	1    1450 1000
 	1    0    0    -1  
 $EndComp
+$Sheet
+S 1200 3300 800  600 
+U 61B9B4C0
+F0 "Pushbuttons" 50
+F1 "Pushbuttons.sch" 50
+F2 "SW3" O R 2000 3450 50 
+F3 "SW4" O R 2000 3550 50 
+F4 "SW5" O R 2000 3650 50 
+F5 "SW6" O R 2000 3750 50 
+$EndSheet
+Wire Wire Line
+	2500 3750 2000 3750
+Wire Wire Line
+	2500 3650 2000 3650
+Wire Wire Line
+	2500 3450 2000 3450
+Wire Wire Line
+	2000 3550 2500 3550
+Text Label 2500 3450 2    50   ~ 0
+SW3
+Text Label 2500 3550 2    50   ~ 0
+SW4
+Text Label 2500 3650 2    50   ~ 0
+SW5
+Text Label 2500 3750 2    50   ~ 0
+SW6
+Wire Wire Line
+	5850 5400 5350 5400
+Wire Wire Line
+	5350 5500 5850 5500
+Wire Wire Line
+	5350 5600 5850 5600
+Wire Wire Line
+	5350 3750 5850 3750
+$Comp
+L KieraV2-rescue:STM32L4P5RET6-STM32L4P5RET6 U1
+U 1 1 619BCA75
+P 6550 4000
+F 0 "U1" H 6550 3550 50  0000 C CNN
+F 1 "STM32L4P5RET6" H 6550 3450 50  0000 C CNN
+F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 6550 1800 50  0001 C CNN
+F 3 "https://www.st.com/en/microcontrollers-microprocessors/stm32l4p5re.html#documentation" H 6550 1800 50  0001 C CNN
+	1    6550 4000
+	1    0    0    -1  
+$EndComp
+Text Label 5350 3750 0    50   ~ 0
+SW6
+Text Label 5350 5400 0    50   ~ 0
+SW3
+Text Label 5350 5500 0    50   ~ 0
+SW4
+Text Label 5350 5600 0    50   ~ 0
+SW5
 $EndSCHEMATC
