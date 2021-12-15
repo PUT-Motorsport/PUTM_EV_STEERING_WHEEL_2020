@@ -58,11 +58,11 @@ CAN-TX
 Wire Wire Line
 	7400 3950 7350 3950
 Wire Wire Line
-	7350 3950 7350 3650
+	8150 3950 8150 3650
 Wire Wire Line
 	8100 3950 8150 3950
 Wire Wire Line
-	8150 3950 8150 3650
+	7350 3950 7350 3650
 Wire Wire Line
 	7750 4250 7750 4100
 Text Label 6550 3850 2    50   ~ 0
@@ -71,9 +71,9 @@ Text Label 6550 4050 2    50   ~ 0
 CAN-
 Text Notes 6200 4400 0    50   ~ 0
 to route diff pair:\nCANH -> CAN+\nCANL -> CAN-\n
-Text Label 7350 3650 3    50   ~ 0
-CAN-
 Text Label 8150 3650 3    50   ~ 0
+CAN-
+Text Label 7350 3650 3    50   ~ 0
 CAN+
 Text Label 8650 4400 0    50   ~ 0
 CAN-

@@ -131,33 +131,6 @@ F 3 "~" H 1800 5900 50  0001 C CNN
 	1    1800 5900
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:C C7
-U 1 1 61B5E0FC
-P 1300 5900
-F 0 "C7" H 1415 5946 50  0000 L CNN
-F 1 "100nF" H 1415 5855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 1338 5750 50  0001 C CNN
-F 3 "~" H 1300 5900 50  0001 C CNN
-	1    1300 5900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1300 5650 1300 5750
-Wire Wire Line
-	1300 5650 1800 5650
-Wire Wire Line
-	1800 5650 1800 5750
-Wire Wire Line
-	1800 5650 2300 5650
-Wire Wire Line
-	2300 5650 2300 5750
-Connection ~ 1800 5650
-Wire Wire Line
-	2300 5650 2800 5650
-Connection ~ 2300 5650
-Wire Wire Line
-	1300 6050 1300 6150
 Wire Wire Line
 	1800 6050 1800 6150
 Wire Wire Line
@@ -166,23 +139,23 @@ Connection ~ 1800 6150
 $Comp
 L power:+3.3V #PWR014
 U 1 1 61B8345C
-P 1300 5400
-F 0 "#PWR014" H 1300 5250 50  0001 C CNN
-F 1 "+3.3V" H 1315 5573 50  0000 C CNN
-F 2 "" H 1300 5400 50  0001 C CNN
-F 3 "" H 1300 5400 50  0001 C CNN
-	1    1300 5400
+P 1300 5350
+F 0 "#PWR014" H 1300 5200 50  0001 C CNN
+F 1 "+3.3V" H 1315 5523 50  0000 C CNN
+F 2 "" H 1300 5350 50  0001 C CNN
+F 3 "" H 1300 5350 50  0001 C CNN
+	1    1300 5350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR017
 U 1 1 61B9E8D8
-P 2800 6200
-F 0 "#PWR017" H 2800 5950 50  0001 C CNN
-F 1 "GND" H 2805 6027 50  0000 C CNN
-F 2 "" H 2800 6200 50  0001 C CNN
-F 3 "" H 2800 6200 50  0001 C CNN
-	1    2800 6200
+P 2800 6150
+F 0 "#PWR017" H 2800 5900 50  0001 C CNN
+F 1 "GND" H 2805 5977 50  0000 C CNN
+F 2 "" H 2800 6150 50  0001 C CNN
+F 3 "" H 2800 6150 50  0001 C CNN
+	1    2800 6150
 	1    0    0    -1  
 $EndComp
 Text Notes 4150 650  0    79   ~ 0
@@ -293,9 +266,11 @@ $Comp
 L Switch:SW_MEC_5G SW7
 U 1 1 61DC36EF
 P 10200 2550
+AR Path="/61DC36EF" Ref="SW7"  Part="1" 
+AR Path="/61B9B4C0/61DC36EF" Ref="SW7"  Part="1" 
 F 0 "SW7" H 10200 2835 50  0000 C CNN
 F 1 "SW_MEC_5G" H 10200 2744 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" H 10200 2750 50  0001 C CNN
+F 2 "Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP" H 10200 2750 50  0001 C CNN
 F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=488" H 10200 2750 50  0001 C CNN
 	1    10200 2550
 	1    0    0    -1  
@@ -336,19 +311,6 @@ F 3 "~" H 9750 2800 50  0001 C CNN
 $EndComp
 Wire Notes Line
 	11200 3350 8600 3350
-Wire Wire Line
-	2800 5750 2800 5650
-$Comp
-L Device:C C10
-U 1 1 61A8C773
-P 2800 5900
-F 0 "C10" H 2915 5946 50  0000 L CNN
-F 1 "1uF" H 2915 5855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 2838 5750 50  0001 C CNN
-F 3 "~" H 2800 5900 50  0001 C CNN
-	1    2800 5900
-	1    0    0    -1  
-$EndComp
 $Sheet
 S 8900 3750 1300 800 
 U 61B14672
@@ -458,8 +420,6 @@ OSC_IN
 Text Label 5350 3550 0    50   ~ 0
 OSC_OUT
 Wire Wire Line
-	5350 3450 5850 3450
-Wire Wire Line
 	5350 3550 5850 3550
 Wire Wire Line
 	5350 3050 5850 3050
@@ -564,17 +524,6 @@ U 61A6380E
 F0 "Power" 50
 F1 "Power.sch" 50
 $EndSheet
-$Comp
-L Device:Ferrite_Bead_Small FB4
-U 1 1 61B5861E
-P 1300 5500
-F 0 "FB4" H 1400 5546 50  0000 L CNN
-F 1 "60R@100MHz" H 1400 5455 50  0000 L CNN
-F 2 "Inductor_SMD:L_0603_1608Metric" V 1230 5500 50  0001 C CNN
-F 3 "~" H 1300 5500 50  0001 C CNN
-	1    1300 5500
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1800 6150 2300 6150
 Connection ~ 2300 6150
@@ -582,14 +531,9 @@ Wire Wire Line
 	2300 6050 2300 6150
 Connection ~ 2800 6150
 Wire Wire Line
-	2800 6200 2800 6150
-Wire Wire Line
 	2300 6150 2800 6150
 Wire Wire Line
 	2800 6150 2800 6050
-Wire Wire Line
-	1300 5600 1300 5650
-Connection ~ 1300 5650
 Text Label 2400 5650 0    50   ~ 0
 +3V3_uC
 Text Label 6350 1800 3    50   ~ 0
@@ -634,10 +578,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 6150 2800 6150
 Wire Wire Line
-	2800 5650 3200 5650
-Wire Wire Line
 	3200 5650 3200 5750
-Connection ~ 2800 5650
 Wire Wire Line
 	10000 1400 10000 1350
 Connection ~ 10000 1350
@@ -740,12 +681,12 @@ $EndComp
 $Comp
 L power:GND #PWR022
 U 1 1 61BA45BC
-P 2750 7500
-F 0 "#PWR022" H 2750 7250 50  0001 C CNN
-F 1 "GND" H 2755 7327 50  0000 C CNN
-F 2 "" H 2750 7500 50  0001 C CNN
-F 3 "" H 2750 7500 50  0001 C CNN
-	1    2750 7500
+P 2750 7550
+F 0 "#PWR022" H 2750 7300 50  0001 C CNN
+F 1 "GND" H 2755 7377 50  0000 C CNN
+F 2 "" H 2750 7550 50  0001 C CNN
+F 3 "" H 2750 7550 50  0001 C CNN
+	1    2750 7550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -754,17 +695,11 @@ Connection ~ 2250 7100
 Wire Wire Line
 	2250 7100 2750 7100
 Wire Wire Line
-	1750 7100 1750 7150
-Connection ~ 1750 7100
-Wire Wire Line
 	1750 7100 2250 7100
 Wire Wire Line
 	1750 7450 1750 7500
 Wire Wire Line
 	1750 7500 2250 7500
-Wire Wire Line
-	2750 7450 2750 7500
-Connection ~ 2750 7500
 Wire Wire Line
 	2250 7450 2250 7500
 Connection ~ 2250 7500
@@ -796,8 +731,6 @@ F 3 "https://pl.mouser.com/datasheet/2/281/ENFA0003-1915778.pdf" H 1750 6900 50 
 $EndComp
 Wire Wire Line
 	1750 6700 1750 6800
-Wire Wire Line
-	1750 7000 1750 7100
 Text Label 2350 7100 0    50   ~ 0
 +3V3_uCa
 Wire Notes Line
@@ -930,4 +863,75 @@ Text Label 5350 5500 0    50   ~ 0
 SW4
 Text Label 5350 5600 0    50   ~ 0
 SW5
+Wire Wire Line
+	2750 7550 2750 7500
+Connection ~ 2750 7500
+Wire Wire Line
+	2750 7500 2750 7450
+Wire Wire Line
+	1750 7000 1750 7100
+Connection ~ 1750 7100
+Wire Wire Line
+	1750 7100 1750 7150
+Wire Wire Line
+	1300 5350 1300 5400
+Wire Wire Line
+	1300 6050 1300 6150
+$Comp
+L Device:C C7
+U 1 1 61B5E0FC
+P 1300 5900
+F 0 "C7" H 1415 5946 50  0000 L CNN
+F 1 "100nF" H 1415 5855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 1338 5750 50  0001 C CNN
+F 3 "~" H 1300 5900 50  0001 C CNN
+	1    1300 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Ferrite_Bead_Small FB4
+U 1 1 61B5861E
+P 1300 5500
+F 0 "FB4" H 1400 5546 50  0000 L CNN
+F 1 "60R@100MHz" H 1400 5455 50  0000 L CNN
+F 2 "Inductor_SMD:L_0603_1608Metric" V 1230 5500 50  0001 C CNN
+F 3 "~" H 1300 5500 50  0001 C CNN
+	1    1300 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 5750 1300 5650
+Wire Wire Line
+	1300 5650 1300 5600
+Connection ~ 1300 5650
+Wire Wire Line
+	2300 5650 2300 5750
+Connection ~ 2300 5650
+Wire Wire Line
+	2300 5650 2800 5650
+$Comp
+L Device:C C10
+U 1 1 61A8C773
+P 2800 5900
+F 0 "C10" H 2915 5946 50  0000 L CNN
+F 1 "1uF" H 2915 5855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2838 5750 50  0001 C CNN
+F 3 "~" H 2800 5900 50  0001 C CNN
+	1    2800 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 5650 2800 5750
+Connection ~ 2800 5650
+Wire Wire Line
+	2800 5650 3200 5650
+Wire Wire Line
+	1300 5650 1800 5650
+Wire Wire Line
+	1800 5650 1800 5750
+Connection ~ 1800 5650
+Wire Wire Line
+	1800 5650 2300 5650
+Wire Wire Line
+	5350 3450 5850 3450
 $EndSCHEMATC
