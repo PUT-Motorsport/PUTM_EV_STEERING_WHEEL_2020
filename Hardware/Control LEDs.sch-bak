@@ -160,7 +160,7 @@ Wire Wire Line
 	4550 3800 4300 3800
 Connection ~ 4300 3800
 Wire Wire Line
-	4300 3800 4300 4250
-Wire Wire Line
 	4550 4250 4300 4250
+Wire Wire Line
+	4300 3800 4300 4250
 $EndSCHEMATC
