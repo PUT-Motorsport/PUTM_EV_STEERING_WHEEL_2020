@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Switch:SW_Rotary2x4 SW1
-U 1 1 61B7ED93
-P 6900 3450
-F 0 "SW1" H 6900 3865 50  0000 C CNN
-F 1 "SW_Rotary2x4" H 6900 3774 50  0000 C CNN
-F 2 "Rotary_Encoder:SW_Rotary2x4" H 6950 3900 50  0001 C CNN
-F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 6950 3900 50  0001 C CNN
-	1    6900 3450
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R R1
 U 1 1 61B7F45F
 P 7350 3950
@@ -49,18 +38,14 @@ $EndComp
 $Comp
 L power:+3.3V #PWR0102
 U 1 1 61B80122
-P 7350 3200
-F 0 "#PWR0102" H 7350 3050 50  0001 C CNN
-F 1 "+3.3V" H 7365 3373 50  0000 C CNN
-F 2 "" H 7350 3200 50  0001 C CNN
-F 3 "" H 7350 3200 50  0001 C CNN
-	1    7350 3200
+P 5900 3450
+F 0 "#PWR0102" H 5900 3300 50  0001 C CNN
+F 1 "+3.3V" H 5915 3623 50  0000 C CNN
+F 2 "" H 5900 3450 50  0001 C CNN
+F 3 "" H 5900 3450 50  0001 C CNN
+	1    5900 3450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7350 3200 7350 3300
-Wire Wire Line
-	7350 3300 7250 3300
 $Comp
 L Device:R R2
 U 1 1 61B83EBA
@@ -128,27 +113,17 @@ Wire Wire Line
 Wire Wire Line
 	7600 4200 7600 4150
 Wire Wire Line
-	7600 4150 7350 4150
-Wire Wire Line
 	7350 4150 7350 4100
 Wire Wire Line
 	7350 3800 7350 3700
 Wire Wire Line
-	7350 3700 7250 3700
-Wire Wire Line
 	7600 4150 7600 3600
-Wire Wire Line
-	7600 3600 7250 3600
 Connection ~ 7600 4150
-Wire Wire Line
-	7250 3500 7850 3500
 Wire Wire Line
 	7850 3500 7850 4550
 Connection ~ 7850 4550
 Wire Wire Line
 	8100 4950 8100 3400
-Wire Wire Line
-	8100 3400 7250 3400
 Connection ~ 8100 4950
 Connection ~ 8100 5550
 Text Label 8300 5550 0    50   ~ 0
@@ -157,13 +132,8 @@ Text HLabel 8600 5550 2    50   Output ~ 0
 SW1
 Wire Wire Line
 	8100 5550 8600 5550
-NoConn ~ 6550 3300
-NoConn ~ 6550 3400
-NoConn ~ 6550 3500
-NoConn ~ 6550 3600
-NoConn ~ 6550 3700
 $Bitmap
-Pos 3950 3650
+Pos 3100 3950
 Scale 1.000000
 Data
 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 05 AA 00 00 03 17 08 02 00 00 00 54 FF F5 
@@ -12508,4 +12478,34 @@ BE 23 EE 1C FE 28 8E 45 B9 3F 73 63 B2 3D BB F9 D2 7A 44 69 26 BF 9D 4E BA 3B 71
 59 4C 14 BE D1 79 F0 F7 C7 FF 07 EA 12 9F 98 81 D3 E1 CC 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+$Comp
+L Switch:SW_Rotary2x4 SW1
+U 1 1 61CD50C9
+P 6500 3750
+F 0 "SW1" H 6550 4325 50  0000 C CNN
+F 1 "SW_Rotary2x4" H 6550 4234 50  0000 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 6550 4400 50  0001 C CNN
+F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 6550 4400 50  0001 C CNN
+	1    6500 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7350 4150 7600 4150
+Wire Wire Line
+	7000 3400 8100 3400
+Wire Wire Line
+	7000 3500 7850 3500
+Wire Wire Line
+	7000 3600 7600 3600
+Wire Wire Line
+	7000 3700 7350 3700
+Wire Wire Line
+	5900 3450 5900 3700
+Wire Wire Line
+	5900 3700 6100 3700
+NoConn ~ 6100 4200
+NoConn ~ 7000 3900
+NoConn ~ 7000 4000
+NoConn ~ 7000 4100
+NoConn ~ 7000 4200
 $EndSCHEMATC

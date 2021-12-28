@@ -805,7 +805,7 @@ U 1 1 61A93711
 P 1450 1000
 F 0 "J1" H 1400 1000 50  0000 R CNN
 F 1 "Conn_01x04_Male" H 1400 900 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 1450 1000 50  0001 C CNN
+F 2 "Connector_Molex:Molex_Micro-Fit_3.0_43650-0400_1x04_P3.00mm_Horizontal" H 1450 1000 50  0001 C CNN
 F 3 "~" H 1450 1000 50  0001 C CNN
 	1    1450 1000
 	1    0    0    -1  
