@@ -12484,7 +12484,7 @@ U 1 1 61CD50C9
 P 6500 3750
 F 0 "SW1" H 6550 4325 50  0000 C CNN
 F 1 "SW_Rotary2x4" H 6550 4234 50  0000 C CNN
-F 2 "" H 6550 4400 50  0001 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 6550 4400 50  0001 C CNN
 F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 6550 4400 50  0001 C CNN
 	1    6500 3750
 	1    0    0    -1  

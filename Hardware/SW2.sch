@@ -149,11 +149,12 @@ SW2
 Wire Wire Line
 	8400 4750 8900 4750
 $Comp
-L Switch:SW_Rotary2x4 SW?
+L KieraV2-rescue:SW_Rotary2x4-Switch SW?
 U 1 1 61CDF86F
 P 6800 2950
 AR Path="/61B7E6EB/61CDF86F" Ref="SW?"  Part="1" 
 AR Path="/61B9708B/61CDF86F" Ref="SW2"  Part="1" 
+AR Path="/61CDF86F" Ref="SW2"  Part="1" 
 F 0 "SW2" H 6850 3525 50  0000 C CNN
 F 1 "SW_Rotary2x4" H 6850 3434 50  0000 C CNN
 F 2 "Rotary_Encoder:SW_Rotary2x4" H 6850 3600 50  0001 C CNN
