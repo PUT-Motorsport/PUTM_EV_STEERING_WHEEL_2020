@@ -2804,7 +2804,7 @@
     (tags resistor)
     (path /61A6380E/61AC2812)
     (attr smd)
-    (fp_text reference R18 (at 0.01 1.51) (layer F.SilkS)
+    (fp_text reference R18 (at -2.85 -0.05) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 1k (at 0 1.43) (layer F.Fab)
