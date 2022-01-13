@@ -5619,7 +5619,7 @@ U 1 1 61AEE84D
 P 6250 4000
 F 0 "U3" H 6894 4046 50  0000 L CNN
 F 1 "IMS330DHCX" H 6894 3955 50  0000 L CNN
-F 2 "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" H 5850 3300 50  0001 L CNN
+F 2 "PUTM_Kicad_FOOTPRINTS:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" H 5850 3300 50  0001 L CNN
 F 3 "www.st.com/resource/en/datasheet/lsm6ds3.pdf" H 6350 3350 50  0001 C CNN
 	1    6250 4000
 	1    0    0    -1  

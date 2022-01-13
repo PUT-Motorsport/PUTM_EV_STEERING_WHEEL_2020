@@ -12479,7 +12479,7 @@ BE 23 EE 1C FE 28 8E 45 B9 3F 73 63 B2 3D BB F9 D2 7A 44 69 26 BF 9D 4E BA 3B 71
 EndData
 $EndBitmap
 $Comp
-L KieraV2-rescue:SW_Rotary2x4-Switch SW1
+L Switch:SW_Rotary2x4 SW1
 U 1 1 61CD50C9
 P 6500 3750
 AR Path="/61CD50C9" Ref="SW1"  Part="1" 
