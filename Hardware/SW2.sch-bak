@@ -149,7 +149,7 @@ SW2
 Wire Wire Line
 	8400 4750 8900 4750
 $Comp
-L KieraV2-rescue:SW_Rotary2x4-Switch-KieraV2-rescue SW?
+L Switch:SW_Rotary2x4 SW?
 U 1 1 61CDF86F
 P 6800 2950
 AR Path="/61B7E6EB/61CDF86F" Ref="SW?"  Part="1" 
