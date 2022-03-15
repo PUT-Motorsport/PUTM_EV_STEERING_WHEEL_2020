@@ -1,8 +1,8 @@
 # PUTM_EV_STEERING_WHEEL_2022
 
 An overview of how I see this thing working:
-[kiera_mock_v1.drawio.pdf](https://github.com/PUT-Motorsport/PUTM_EV_STEERING_WHEEL_2022/files/8193537/kiera_mock_v1.drawio.pdf)
+![kiera-schemat-blokowy-v2-1.png](https://postlmg.cc/ns6YXnjM)
 
-* IMU should be broadcasting continuously
-* Interrupt will be triggered if a button is released. Then program will check if there is another button pressed. If not, it will determine which button was pressed and send corresponding data. If there is another button pressed, then it will wait for it to be released, determie what combinations was submitted and send adequate data.
+* Data gathered from IMU will be calculated into degrees and stored in buffers. These will be send out when the buffer is filled up. 
+* Interrupt will be triggered if a button is released. Then it will determine which button was pressed and send corresponding data. If, within specified, short time, there will occur another interrupt, then the programm will treat it as different action (two buttons pressed simultaneously). There will be 10 combinations: 4 single- and 6 simultaneous-presses.
 * For the scroll-like switches there are going to be 4 voltage thresholds. Interrupts will be triggered if voltage value will cross min or max range of given level.
