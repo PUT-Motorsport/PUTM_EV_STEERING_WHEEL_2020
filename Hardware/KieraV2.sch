@@ -13,7 +13,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 7750 3700 2    50   ~ 0
+Text Label 7750 3600 2    50   ~ 0
 CAN_RX
 Wire Notes Line
 	3750 4900 500  4900
@@ -245,7 +245,7 @@ F 3 "" H 7450 800 50  0001 C CNN
 	1    7450 800 
 	1    0    0    -1  
 $EndComp
-Text Label 7750 3600 2    50   ~ 0
+Text Label 7750 3700 2    50   ~ 0
 CAN_TX
 Wire Wire Line
 	7450 850  7450 800 
