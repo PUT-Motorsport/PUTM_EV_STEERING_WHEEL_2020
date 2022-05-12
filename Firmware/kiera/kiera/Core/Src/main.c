@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +52,10 @@ uint16_t adc_reading[10];
 float average_adc;
 int current_diode;
 
+uint32_t timer;
 int left_scroll_state = 0;
+
+bool sw5_pressed, sw6_pressed = 0;
 
 /* USER CODE END PV */
 
@@ -117,7 +121,8 @@ int main(void)
 	  /* USER CODE BEGIN 3 */
 //	  toggle diode
 	  toggle_led();
-
+	  wait_for_second_button();
+	  reset_flags();
   }
   /* USER CODE END 3 */
 }
@@ -358,22 +363,39 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-
-	uint32_t timer;
-
 	if (GPIO_Pin == SW5_Pin)
 	{
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
-		timer = HAL_GetTick();
+		sw5_pressed = 1;
 
 	}
 	else if (GPIO_Pin == SW6_Pin)
 	{
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-
+		sw6_pressed = 1;
 	}
-	timer = 0;
+}
+
+
+void wait_for_second_button()
+{
+	HAL_Delay(50);
+
+	if (sw6_pressed && sw5_pressed)
+	{
+		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+	} else if (sw5_pressed) {
+		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+	} else if (sw6_pressed) {
+		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+	}
+}
+
+
+void reset_flags()
+{
+	sw5_pressed = 0;
+	sw6_pressed = 0;
 }
 
 

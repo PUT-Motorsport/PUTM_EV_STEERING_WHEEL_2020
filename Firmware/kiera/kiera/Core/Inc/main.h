@@ -33,9 +33,11 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-static int choose_left_scroll_state();
-static float calculate_average_adc();
-static void toggle_led();
+int choose_left_scroll_state();
+float calculate_average_adc();
+void toggle_led();
+void reset_flags();
+void wait_for_second_button();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
