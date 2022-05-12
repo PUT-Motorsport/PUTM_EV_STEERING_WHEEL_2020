@@ -365,13 +365,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if (GPIO_Pin == SW5_Pin)
 	{
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 		sw5_pressed = 1;
 
 	}
 	else if (GPIO_Pin == SW6_Pin)
 	{
-		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+//		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
 		sw6_pressed = 1;
 	}
 }
@@ -384,10 +384,13 @@ void wait_for_second_button()
 	if (sw6_pressed && sw5_pressed)
 	{
 		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+//		reset_flags();
 	} else if (sw5_pressed) {
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+//		reset_flags();
 	} else if (sw6_pressed) {
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+//		reset_flags();
 	}
 }
 
