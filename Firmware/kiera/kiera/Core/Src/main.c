@@ -115,9 +115,11 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-//  HAL_ADC_Start_IT(&hadc1);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_reading, 10);
+  //  HAL_ADC_Start_IT(&hadc1);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)left_adc_reading, 10);
 
+  //  HAL_ADC_Start_IT(&hadc2);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)right_adc_reading, 10);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,7 +130,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 //	  toggle diode
-	  toggle_led();
+	  left_scroll();
 	  wait_for_second_button();
 	  reset_flags();
   }
@@ -509,9 +511,9 @@ void reset_flags()
 }
 
 
-float calculate_average_adc()
+float calculate_average_adc(uint16_t adc_reading)
 {
-	average_adc = 0;
+	float average_adc = 0;
 
 	//	  calculate average adc
 	for (int i = 0; i < 10; i++) {
@@ -524,31 +526,31 @@ float calculate_average_adc()
 }
 
 
-int choose_left_scroll_state()
+int choose_scroll_state(uint16_t adc_reading)
 {
-	float current_average_adc = calculate_average_adc();
-	int lss; //Left Scroll State
+	float current_average_adc = calculate_average_adc(adc_reading);
+	int ss; //Scroll State
 
 	if (1110 < current_average_adc && current_average_adc < 1115)
 	{
-		lss = 1;
+		ss = 1;
 	} else if (3129 < current_average_adc && current_average_adc < 3133)
 	{
-		lss = 2;
+		ss = 2;
 	} else if (3715 < current_average_adc && current_average_adc < 3721)
 	{
-		lss = 3;
+		ss = 3;
 	} else if (3970 < current_average_adc && current_average_adc < 3975)
 	{
-		lss = 4;
+		ss = 4;
 	}
 
-	return lss;
+	return ss;
 }
 
-void toggle_led()
+void left_scroll()
 {
-	switch (choose_left_scroll_state())
+	switch (choose_scroll_state(left_adc_reading))
 	{
 	case 1:
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
@@ -567,6 +569,25 @@ void toggle_led()
 		HAL_Delay(200);
 		break;
 	}
+}
+
+void right_scroll()
+{
+	switch (choose_scroll_state(right_adc_reading))
+		{
+		case 1:
+//			can
+			break;
+		case 2:
+//			can
+			break;
+		case 3:
+//			can
+			break;
+		case 4:
+//			can
+			break;
+		}
 }
 
 /* USER CODE END 4 */
