@@ -450,15 +450,17 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if (GPIO_Pin == SW5_Pin)
+	if (GPIO_Pin == SW3_Pin)
 	{
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+		sw3_pressed = 1;
+	} else if (GPIO_Pin == SW4_Pin)
+	{
+		sw4_pressed = 1;
+	} else if (GPIO_Pin == SW5_Pin)
+	{
 		sw5_pressed = 1;
-
-	}
-	else if (GPIO_Pin == SW6_Pin)
+	} else if (GPIO_Pin == SW6_Pin)
 	{
-//		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
 		sw6_pressed = 1;
 	}
 }
@@ -466,24 +468,42 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void wait_for_second_button()
 {
-	HAL_Delay(50);
+	HAL_Delay(25);
 
-	if (sw6_pressed && sw5_pressed)
+	if (sw3_pressed && sw4_pressed)
 	{
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-//		reset_flags();
+		//		can
+	} else if (sw3_pressed && sw5_pressed)
+	{
+		//		can
+	} else if (sw3_pressed && sw6_pressed)
+	{
+		//		can
+	} else if (sw4_pressed && sw5_pressed)
+	{
+		//		can
+	} else if (sw4_pressed && sw6_pressed)
+	{
+		//		can
+	} else if (sw5_pressed && sw6_pressed)
+	{
+		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed4_Pin);
+	} else if (sw3_pressed) {
+		//		can
+	} else if (sw4_pressed) {
+		//		can
 	} else if (sw5_pressed) {
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-//		reset_flags();
 	} else if (sw6_pressed) {
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-//		reset_flags();
 	}
 }
 
 
 void reset_flags()
 {
+	sw3_pressed = 0;
+	sw4_pressed = 0;
 	sw5_pressed = 0;
 	sw6_pressed = 0;
 }
