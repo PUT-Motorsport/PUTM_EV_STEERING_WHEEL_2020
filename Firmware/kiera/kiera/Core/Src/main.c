@@ -57,6 +57,8 @@ float right_average_adc;
 
 int left_scroll_state = 0;
 int right_scroll_state = 0;
+int left_last_state = 0;
+int right_last_state = 0;
 
 bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed = 0;
 
@@ -130,7 +132,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 //	  toggle diode
-	  left_scroll();
+	  choose_left_scroll_state();
 	  wait_for_second_button();
 	  reset_flags();
   }
@@ -470,7 +472,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void wait_for_second_button()
 {
-	HAL_Delay(25);
+	//	reaction time
+	HAL_Delay(50);
 
 	if (sw3_pressed && sw4_pressed)
 	{
@@ -489,7 +492,7 @@ void wait_for_second_button()
 		//		can
 	} else if (sw5_pressed && sw6_pressed)
 	{
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed4_Pin);
+		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
 	} else if (sw3_pressed) {
 		//		can
 	} else if (sw4_pressed) {
@@ -511,84 +514,151 @@ void reset_flags()
 }
 
 
-float calculate_average_adc(uint16_t adc_reading)
+//float calculate_average_adc(uint16_t adc_reading[10])
+//{
+//	float average_adc = 0;
+//
+//	//	  calculate average adc
+//	for (int i = 0; i < 10; i++) {
+//		average_adc = average_adc + adc_reading[i];
+//	}
+//
+//	average_adc = average_adc / 10;
+//
+//	return average_adc;
+//}
+
+
+void choose_left_scroll_state()
 {
 	float average_adc = 0;
 
 	//	  calculate average adc
 	for (int i = 0; i < 10; i++) {
-		average_adc = average_adc + adc_reading[i];
+		average_adc = average_adc + left_adc_reading[i];
 	}
 
 	average_adc = average_adc / 10;
 
-	return average_adc;
-}
+	int lss = 0; // Left Scroll State
 
-
-int choose_scroll_state(uint16_t adc_reading)
-{
-	float current_average_adc = calculate_average_adc(adc_reading);
-	int ss; //Scroll State
-
-	if (1110 < current_average_adc && current_average_adc < 1115)
+	if (1110 < average_adc && average_adc < 1115)
 	{
-		ss = 1;
-	} else if (3129 < current_average_adc && current_average_adc < 3133)
+		lss = 1;
+	} else if (3129 < average_adc && average_adc < 3133)
 	{
-		ss = 2;
-	} else if (3715 < current_average_adc && current_average_adc < 3721)
+		lss = 2;
+	} else if (3715 < average_adc && average_adc < 3721)
 	{
-		ss = 3;
-	} else if (3970 < current_average_adc && current_average_adc < 3975)
+		lss = 3;
+	} else if (3970 < average_adc && average_adc < 3975)
 	{
-		ss = 4;
+		lss = 4;
 	}
 
-	return ss;
-}
 
-void left_scroll()
-{
-	switch (choose_scroll_state(left_adc_reading))
+	if (lss != left_last_state)
 	{
-	case 1:
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-		HAL_Delay(200);
-		break;
-	case 2:
-		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-		HAL_Delay(200);
-		break;
-	case 3:
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-		HAL_Delay(200);
-		break;
-	case 4:
-		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-		HAL_Delay(200);
-		break;
-	}
-}
-
-void right_scroll()
-{
-	switch (choose_scroll_state(right_adc_reading))
+		switch (lss)
 		{
 		case 1:
-//			can
+			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+//			HAL_Delay(200);
+			left_last_state = lss;
 			break;
 		case 2:
-//			can
+			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+//			HAL_Delay(200);
+			left_last_state = lss;
 			break;
 		case 3:
-//			can
+			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+//			HAL_Delay(200);
+			left_last_state = lss;
 			break;
 		case 4:
-//			can
+			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+//			HAL_Delay(200);
+			left_last_state = lss;
 			break;
 		}
+	}
 }
+
+void choose_right_scroll_state()
+{
+	float average_adc = 0;
+
+	//	  calculate average adc
+	for (int i = 0; i < 10; i++) {
+		average_adc = average_adc + right_adc_reading[i];
+	}
+
+	average_adc = average_adc / 10;
+
+	int rss = 0; // Right Scroll State
+
+	if (1110 < average_adc && average_adc < 1115)
+	{
+		rss = 1;
+	} else if (3129 < average_adc && average_adc < 3133)
+	{
+		rss = 2;
+	} else if (3715 < average_adc && average_adc < 3721)
+	{
+		rss = 3;
+	} else if (3970 < average_adc && average_adc < 3975)
+	{
+		rss = 4;
+	}
+
+
+	if (rss != right_last_state)
+	{
+		switch (rss)
+		{
+		case 1:
+//			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+//			HAL_Delay(200);
+			right_last_state = rss;
+			break;
+		case 2:
+//			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+//			HAL_Delay(200);
+			right_last_state = rss;
+			break;
+		case 3:
+//			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+//			HAL_Delay(200);
+			right_last_state = rss;
+			break;
+		case 4:
+//			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+//			HAL_Delay(200);
+			right_last_state = rss;
+			break;
+		}
+	}
+}
+
+//void right_scroll()
+//{
+//	switch (choose_scroll_state(right_adc_reading))
+//		{
+//		case 1:
+////			can
+//			break;
+//		case 2:
+////			can
+//			break;
+//		case 3:
+////			can
+//			break;
+//		case 4:
+////			can
+//			break;
+//		}
+//}
 
 /* USER CODE END 4 */
 

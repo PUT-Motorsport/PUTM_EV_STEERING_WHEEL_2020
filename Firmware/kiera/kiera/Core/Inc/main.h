@@ -33,12 +33,11 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-int choose_scroll_state();
+void choose_left_scroll_state();
 float calculate_average_adc();
 void reset_flags();
 void wait_for_second_button();
-void left_scroll();
-void right_scroll();
+void choose_right_scroll_state();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
