@@ -20,7 +20,7 @@ P 5300 3600
 F 0 "U2" H 5300 3842 50  0000 C CNN
 F 1 "LM1117-3.3" H 5300 3751 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5300 3600 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 5300 3600 50  0001 C CNN
+F 3 "https://www.mouser.pl/ProductDetail/Microchip-Technology/MCP1799T-3302H-TT?qs=BJlw7L4Cy78EAGTR6Iuibw%3D%3D" H 5300 3600 50  0001 C CNN
 	1    5300 3600
 	1    0    0    -1  
 $EndComp
