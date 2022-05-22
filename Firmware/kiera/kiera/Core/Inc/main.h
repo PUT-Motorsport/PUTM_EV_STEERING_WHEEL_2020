@@ -38,6 +38,7 @@ float calculate_average_adc();
 void reset_flags();
 void wait_for_second_button();
 void choose_right_scroll_state();
+void send_example();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -96,5 +97,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

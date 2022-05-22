@@ -25,6 +25,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "lib/can_interface.hpp"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +44,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
+ ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 DMA_HandleTypeDef hdma_adc1;
 DMA_HandleTypeDef hdma_adc2;
@@ -52,6 +54,7 @@ CAN_HandleTypeDef hcan1;
 /* USER CODE BEGIN PV */
 uint16_t left_adc_reading[10];
 uint16_t right_adc_reading[10];
+uint32_t timer;
 float left_average_adc;
 float right_average_adc;
 
@@ -94,7 +97,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+   HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -118,8 +121,36 @@ int main(void)
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
   //  HAL_ADC_Start_IT(&hadc1);
+
+  CAN_FilterTypeDef sFilterConfig;
+  sFilterConfig.FilterBank = 0;
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  sFilterConfig.FilterIdHigh = 0x0000;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0x0000;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
+  sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  sFilterConfig.FilterActivation = ENABLE;
+
+
+	if (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK) {
+		Error_Handler();
+	}
+
+	if (HAL_CAN_Start(&hcan1) != HAL_OK) {
+		Error_Handler();
+	}
+
+	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK) {
+		Error_Handler();
+	}
+
+
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)left_adc_reading, 10);
 
+
+  HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
   //  HAL_ADC_Start_IT(&hadc2);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)right_adc_reading, 10);
   /* USER CODE END 2 */
@@ -135,6 +166,7 @@ int main(void)
 	  choose_left_scroll_state();
 	  wait_for_second_button();
 	  reset_flags();
+	  send_example();
   }
   /* USER CODE END 3 */
 }
@@ -154,18 +186,20 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_8;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -194,8 +228,8 @@ void PeriphCommonClock_Config(void)
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
   PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
   PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 2;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
   PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV2;
   PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
   PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
@@ -224,6 +258,7 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 1 */
 
   /* USER CODE END ADC1_Init 1 */
+
   /** Common config
   */
   hadc1.Instance = ADC1;
@@ -245,6 +280,7 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure the ADC multi-mode
   */
   multimode.Mode = ADC_MODE_INDEPENDENT;
@@ -252,6 +288,7 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure Regular Channel
   */
   sConfig.Channel = ADC_CHANNEL_6;
@@ -287,6 +324,7 @@ static void MX_ADC2_Init(void)
   /* USER CODE BEGIN ADC2_Init 1 */
 
   /* USER CODE END ADC2_Init 1 */
+
   /** Common config
   */
   hadc2.Instance = ADC2;
@@ -308,6 +346,7 @@ static void MX_ADC2_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure Regular Channel
   */
   sConfig.Channel = ADC_CHANNEL_7;
@@ -342,15 +381,15 @@ static void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 16;
-  hcan1.Init.Mode = CAN_MODE_NORMAL;
+  hcan1.Init.Prescaler = 1;
+  hcan1.Init.Mode = CAN_MODE_LOOPBACK;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan1.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_13TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
   hcan1.Init.TimeTriggeredMode = DISABLE;
   hcan1.Init.AutoBusOff = DISABLE;
   hcan1.Init.AutoWakeUp = DISABLE;
-  hcan1.Init.AutoRetransmission = DISABLE;
+  hcan1.Init.AutoRetransmission = ENABLE;
   hcan1.Init.ReceiveFifoLocked = DISABLE;
   hcan1.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan1) != HAL_OK)
@@ -454,6 +493,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	timer = HAL_GetTick();
+
 	if (GPIO_Pin == SW3_Pin)
 	{
 		sw3_pressed = 1;
@@ -469,10 +510,31 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
+void send_example()
+{
+  //  Always initialize an object
+  // https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-always
+  constexpr Apps_main apps_test{
+    .pedal_position = 1200,
+    .counter = 0,
+    .position_diff = 0,
+    .device_state = Apps_states::Normal_operation,
+  };
+
+  auto apps_main_frame = PUTM_CAN::Can_tx_message(apps_test, can_tx_header_APPS_MAIN);
+
+  auto status = apps_main_frame.send(hcan1);
+  if (HAL_StatusTypeDef::HAL_OK != status)
+  {
+    Error_Handler();
+  };
+
+  HAL_Delay(100);
+
+}
 
 void wait_for_second_button()
 {
-	//	reaction time
 	HAL_Delay(50);
 
 	if (sw3_pressed && sw4_pressed)
@@ -502,32 +564,9 @@ void wait_for_second_button()
 	} else if (sw6_pressed) {
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
 	}
+
+
 }
-
-
-void reset_flags()
-{
-	sw3_pressed = 0;
-	sw4_pressed = 0;
-	sw5_pressed = 0;
-	sw6_pressed = 0;
-}
-
-
-//float calculate_average_adc(uint16_t adc_reading[10])
-//{
-//	float average_adc = 0;
-//
-//	//	  calculate average adc
-//	for (int i = 0; i < 10; i++) {
-//		average_adc = average_adc + adc_reading[i];
-//	}
-//
-//	average_adc = average_adc / 10;
-//
-//	return average_adc;
-//}
-
 
 void choose_left_scroll_state()
 {
@@ -641,24 +680,13 @@ void choose_right_scroll_state()
 	}
 }
 
-//void right_scroll()
-//{
-//	switch (choose_scroll_state(right_adc_reading))
-//		{
-//		case 1:
-////			can
-//			break;
-//		case 2:
-////			can
-//			break;
-//		case 3:
-////			can
-//			break;
-//		case 4:
-////			can
-//			break;
-//		}
-//}
+void reset_flags()
+{
+	sw3_pressed = 0;
+	sw4_pressed = 0;
+	sw5_pressed = 0;
+	sw6_pressed = 0;
+}
 
 /* USER CODE END 4 */
 
@@ -714,5 +742,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
