@@ -65,6 +65,7 @@ int right_last_state = 0;
 
 bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed = 0;
 
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,7 +92,6 @@ static void MX_ADC2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -153,6 +153,7 @@ int main(void)
   HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
   //  HAL_ADC_Start_IT(&hadc2);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)right_adc_reading, 10);
+  uint32_t timer = HAL_GetTick();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -166,7 +167,13 @@ int main(void)
 	  choose_left_scroll_state();
 	  wait_for_second_button();
 	  reset_flags();
-	  send_example();
+
+	  if (timer + 500 < HAL_GetTick())
+	  {
+		  heartbeat();
+		  timer = HAL_GetTick();
+	  }
+
   }
   /* USER CODE END 3 */
 }
@@ -510,61 +517,55 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
-void send_example()
+void heartbeat()
 {
-  //  Always initialize an object
-  // https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-always
-  constexpr Apps_main apps_test{
-    .pedal_position = 1200,
-    .counter = 0,
-    .position_diff = 0,
-    .device_state = Apps_states::Normal_operation,
-  };
 
-  auto apps_main_frame = PUTM_CAN::Can_tx_message(apps_test, can_tx_header_APPS_MAIN);
+	Steering_Wheel_main pcb_alive{0, Steering_Wheel_states::OK};
 
-  auto status = apps_main_frame.send(hcan1);
-  if (HAL_StatusTypeDef::HAL_OK != status)
-  {
-    Error_Handler();
-  };
+	auto steering_wheel_heartbeat = PUTM_CAN::Can_tx_message<Steering_Wheel_main>
+	(pcb_alive, can_tx_header_STEERING_WHEEL_MAIN);
 
-  HAL_Delay(100);
-
+ 	steering_wheel_heartbeat.send(hcan1);
 }
 
 void wait_for_second_button()
 {
 	HAL_Delay(50);
+	Steering_Wheel_event button_pressed{};
 
 	if (sw3_pressed && sw4_pressed)
 	{
-		//		can
+		button_pressed.button = buttonStates::button1_2;
 	} else if (sw3_pressed && sw5_pressed)
 	{
-		//		can
+		button_pressed.button = buttonStates::button1_3;
 	} else if (sw3_pressed && sw6_pressed)
 	{
-		//		can
+		button_pressed.button = buttonStates::button1_4;
 	} else if (sw4_pressed && sw5_pressed)
 	{
-		//		can
+		button_pressed.button = buttonStates::button2_3;
 	} else if (sw4_pressed && sw6_pressed)
 	{
-		//		can
+		button_pressed.button = buttonStates::button2_4;
 	} else if (sw5_pressed && sw6_pressed)
 	{
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+		button_pressed.button = buttonStates::button3_4;
 	} else if (sw3_pressed) {
-		//		can
-	} else if (sw4_pressed) {
-		//		can
-	} else if (sw5_pressed) {
+		button_pressed.button = buttonStates::button1;
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+	} else if (sw4_pressed) {
+		button_pressed.button = buttonStates::button2;
+	} else if (sw5_pressed) {
+		button_pressed.button = buttonStates::button3;
 	} else if (sw6_pressed) {
-		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+		button_pressed.button = buttonStates::button4;
 	}
 
+	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<Steering_Wheel_event>
+	(button_pressed, can_tx_header_STEERING_WHEEL_EVENT);
+
+	if (steering_wheel_frame.send(hcan1));
 
 }
 

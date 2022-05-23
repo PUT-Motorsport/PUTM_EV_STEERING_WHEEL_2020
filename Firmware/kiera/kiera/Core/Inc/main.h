@@ -39,6 +39,7 @@ void reset_flags();
 void wait_for_second_button();
 void choose_right_scroll_state();
 void send_example();
+void heartbeat();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
