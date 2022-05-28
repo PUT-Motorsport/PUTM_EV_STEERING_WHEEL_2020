@@ -2,3 +2,4 @@ left_adc_reading
 average_adc
 choose_scroll_state(left_adc_reading[10])
 timer
+i

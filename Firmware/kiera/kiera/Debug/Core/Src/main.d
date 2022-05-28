@@ -32,19 +32,20 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-APPS.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-AQ_CARD.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp \
- C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-APPS.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-AQ_CARD.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-WHEELTEMP.hpp \
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-YAWPROBE.hpp
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -79,16 +80,17 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-APPS.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-AQ_CARD.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp:
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-APPS.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-AQ_CARD.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-WHEELTEMP.hpp:
+../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-YAWPROBE.hpp:
