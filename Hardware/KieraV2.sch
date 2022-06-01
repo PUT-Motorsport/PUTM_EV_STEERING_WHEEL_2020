@@ -425,18 +425,10 @@ Wire Wire Line
 	5350 3050 5850 3050
 Text Label 5350 3050 0    50   ~ 0
 NRST
-Text Label 7600 2600 2    50   ~ 0
-SW1
-Text Label 7600 2700 2    50   ~ 0
-SW2
 Text Label 7700 3800 2    50   ~ 0
 SWDIO
 Text Label 7700 3900 2    50   ~ 0
 SWCLK
-Wire Wire Line
-	7600 2600 7250 2600
-Wire Wire Line
-	7600 2700 7250 2700
 Wire Wire Line
 	7700 3900 7250 3900
 Wire Wire Line
@@ -461,18 +453,10 @@ NoConn ~ 7250 5000
 NoConn ~ 7250 5100
 NoConn ~ 7250 5200
 NoConn ~ 7250 5300
-NoConn ~ 7250 5400
-NoConn ~ 7250 5500
-NoConn ~ 7250 5600
-NoConn ~ 7250 5700
 NoConn ~ 5850 3250
 NoConn ~ 5850 4050
 NoConn ~ 5850 4150
 NoConn ~ 5850 4700
-NoConn ~ 5850 5000
-NoConn ~ 5850 5100
-NoConn ~ 5850 5200
-NoConn ~ 5850 5300
 NoConn ~ 5850 5700
 $Sheet
 S 4500 850  800  400 
@@ -493,18 +477,24 @@ Wire Wire Line
 Wire Wire Line
 	4250 1100 4500 1100
 $Sheet
-S 900  2000 600  300 
+S 900  2000 600  650 
 U 61B7E6EB
 F0 "SW1" 50
 F1 "SW1.sch" 50
-F2 "SW1" O R 1500 2150 50 
+F2 "SW1_1" O R 1500 2150 50 
+F3 "SW1_2" O R 1500 2250 50 
+F4 "SW1_3" O R 1500 2350 50 
+F5 "SW1_4" O R 1500 2450 50 
 $EndSheet
 $Sheet
-S 2300 2000 600  300 
+S 2300 2000 600  650 
 U 61B9708B
 F0 "SW2" 50
 F1 "SW2.sch" 50
-F2 "SW2" O R 2900 2150 50 
+F2 "SW2_1" O R 2900 2150 50 
+F3 "SW2_2" O R 2900 2250 50 
+F4 "SW2_3" O R 2900 2350 50 
+F5 "SW2_4" O R 2900 2450 50 
 $EndSheet
 Wire Notes Line
 	500  1700 3750 1700
@@ -515,9 +505,9 @@ Wire Wire Line
 Wire Wire Line
 	3200 2150 2900 2150
 Text Label 3200 2150 2    50   ~ 0
-SW2
+SW2_1
 Text Label 1800 2150 2    50   ~ 0
-SW1
+SW1_1
 $Sheet
 S 3050 850  800  400 
 U 61A6380E
@@ -938,4 +928,62 @@ Wire Wire Line
 	7300 1350 6900 1350
 Text Label 7300 1350 2    50   ~ 0
 SWO
+Wire Wire Line
+	3200 2250 2900 2250
+Text Label 3200 2250 2    50   ~ 0
+SW2_2
+Wire Wire Line
+	3200 2350 2900 2350
+Text Label 3200 2350 2    50   ~ 0
+SW2_3
+Wire Wire Line
+	3200 2450 2900 2450
+Text Label 3200 2450 2    50   ~ 0
+SW2_4
+Wire Wire Line
+	1800 2250 1500 2250
+Text Label 1800 2250 2    50   ~ 0
+SW1_2
+Wire Wire Line
+	1800 2350 1500 2350
+Text Label 1800 2350 2    50   ~ 0
+SW1_3
+Wire Wire Line
+	1800 2450 1500 2450
+Text Label 1800 2450 2    50   ~ 0
+SW1_4
+Text Label 5350 5000 0    50   ~ 0
+SW2_1
+Text Label 5350 5100 0    50   ~ 0
+SW2_2
+Text Label 5350 5200 0    50   ~ 0
+SW2_3
+Text Label 5350 5300 0    50   ~ 0
+SW2_4
+Wire Wire Line
+	5350 5300 5850 5300
+Wire Wire Line
+	5350 5200 5850 5200
+Wire Wire Line
+	5350 5100 5850 5100
+Wire Wire Line
+	5350 5000 5850 5000
+Wire Wire Line
+	7550 5400 7250 5400
+Text Label 7550 5400 2    50   ~ 0
+SW1_1
+Wire Wire Line
+	7550 5500 7250 5500
+Text Label 7550 5500 2    50   ~ 0
+SW1_2
+Wire Wire Line
+	7550 5600 7250 5600
+Text Label 7550 5600 2    50   ~ 0
+SW1_3
+Wire Wire Line
+	7550 5700 7250 5700
+Text Label 7550 5700 2    50   ~ 0
+SW1_4
+NoConn ~ 7250 2600
+NoConn ~ 7250 2700
 $EndSCHEMATC
