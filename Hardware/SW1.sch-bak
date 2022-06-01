@@ -13,26 +13,26 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+NoConn ~ 7000 4200
+NoConn ~ 7000 4100
+NoConn ~ 7000 4000
+NoConn ~ 7000 3900
+NoConn ~ 6100 4200
+Wire Wire Line
+	5900 3700 6100 3700
+Wire Wire Line
+	5900 3450 5900 3700
 $Comp
-L Device:R R1
-U 1 1 61B7F45F
-P 7350 3950
-F 0 "R1" H 7420 3996 50  0000 L CNN
-F 1 "22k" H 7420 3905 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7280 3950 50  0001 C CNN
-F 3 "~" H 7350 3950 50  0001 C CNN
-	1    7350 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0101
-U 1 1 61B7FE38
-P 7450 5700
-F 0 "#PWR0101" H 7450 5450 50  0001 C CNN
-F 1 "GND" H 7455 5527 50  0000 C CNN
-F 2 "" H 7450 5700 50  0001 C CNN
-F 3 "" H 7450 5700 50  0001 C CNN
-	1    7450 5700
+L Switch:SW_Rotary2x4 SW1
+U 1 1 61CD50C9
+P 6500 3750
+AR Path="/61CD50C9" Ref="SW1"  Part="1" 
+AR Path="/61B7E6EB/61CD50C9" Ref="SW1"  Part="1" 
+F 0 "SW1" H 6550 4325 50  0000 C CNN
+F 1 "SW_Rotary2x4" H 6550 4234 50  0000 C CNN
+F 2 "Rotary_Encoder:SW_Rotary2x4" H 6550 4400 50  0001 C CNN
+F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 6550 4400 50  0001 C CNN
+	1    6500 3750
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -46,92 +46,6 @@ F 3 "" H 5900 3450 50  0001 C CNN
 	1    5900 3450
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R R2
-U 1 1 61B83EBA
-P 7600 4350
-F 0 "R2" H 7670 4396 50  0000 L CNN
-F 1 "1k97" H 7670 4305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7530 4350 50  0001 C CNN
-F 3 "~" H 7600 4350 50  0001 C CNN
-	1    7600 4350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 61B852E5
-P 7850 4750
-F 0 "R3" H 7920 4796 50  0000 L CNN
-F 1 "680" H 7920 4705 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7780 4750 50  0001 C CNN
-F 3 "~" H 7850 4750 50  0001 C CNN
-	1    7850 4750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R4
-U 1 1 61B85D49
-P 8100 5150
-F 0 "R4" H 8170 5196 50  0000 L CNN
-F 1 "150" H 8170 5105 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 8030 5150 50  0001 C CNN
-F 3 "~" H 8100 5150 50  0001 C CNN
-	1    8100 5150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R5
-U 1 1 61B8612F
-P 7750 5550
-F 0 "R5" V 7650 5550 50  0000 C CNN
-F 1 "10k" V 7550 5550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7680 5550 50  0001 C CNN
-F 3 "~" H 7750 5550 50  0001 C CNN
-	1    7750 5550
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	7450 5700 7450 5550
-Wire Wire Line
-	7450 5550 7600 5550
-Wire Wire Line
-	7900 5550 8100 5550
-Wire Wire Line
-	8100 5550 8100 5300
-Wire Wire Line
-	8100 5000 8100 4950
-Wire Wire Line
-	8100 4950 7850 4950
-Wire Wire Line
-	7850 4950 7850 4900
-Wire Wire Line
-	7850 4600 7850 4550
-Wire Wire Line
-	7850 4550 7600 4550
-Wire Wire Line
-	7600 4550 7600 4500
-Wire Wire Line
-	7600 4200 7600 4150
-Wire Wire Line
-	7350 4150 7350 4100
-Wire Wire Line
-	7350 3800 7350 3700
-Wire Wire Line
-	7600 4150 7600 3600
-Connection ~ 7600 4150
-Wire Wire Line
-	7850 3500 7850 4550
-Connection ~ 7850 4550
-Wire Wire Line
-	8100 4950 8100 3400
-Connection ~ 8100 4950
-Connection ~ 8100 5550
-Text Label 8300 5550 0    50   ~ 0
-SW1
-Text HLabel 8600 5550 2    50   Output ~ 0
-SW1
-Wire Wire Line
-	8100 5550 8600 5550
 $Bitmap
 Pos 3100 3950
 Scale 1.000000
@@ -12479,35 +12393,263 @@ BE 23 EE 1C FE 28 8E 45 B9 3F 73 63 B2 3D BB F9 D2 7A 44 69 26 BF 9D 4E BA 3B 71
 EndData
 $EndBitmap
 $Comp
-L Switch:SW_Rotary2x4 SW1
-U 1 1 61CD50C9
-P 6500 3750
-AR Path="/61CD50C9" Ref="SW1"  Part="1" 
-AR Path="/61B7E6EB/61CD50C9" Ref="SW1"  Part="1" 
-F 0 "SW1" H 6550 4325 50  0000 C CNN
-F 1 "SW_Rotary2x4" H 6550 4234 50  0000 C CNN
-F 2 "Rotary_Encoder:SW_Rotary2x4" H 6550 4400 50  0001 C CNN
-F 3 "https://www.piekarz.pl/21583-przelacznik-kh10-obrotowy-bistabilny-4xon-4-pozycje/" H 6550 4400 50  0001 C CNN
-	1    6500 3750
+L Device:R R?
+U 1 1 6297EAAE
+P 7600 4050
+F 0 "R?" V 7700 4050 50  0000 C CNN
+F 1 "10k" V 7500 4050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7530 4050 50  0001 C CNN
+F 3 "~" H 7600 4050 50  0001 C CNN
+	1    7600 4050
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6297EAB4
+P 7350 4400
+AR Path="/61B9B4C0/6297EAB4" Ref="#PWR?"  Part="1" 
+AR Path="/61B7E6EB/6297EAB4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7350 4150 50  0001 C CNN
+F 1 "GND" H 7355 4227 50  0000 C CNN
+F 2 "" H 7350 4400 50  0001 C CNN
+F 3 "" H 7350 4400 50  0001 C CNN
+	1    7350 4400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7350 4150 7600 4150
+	7000 3700 7100 3700
+Connection ~ 7750 4050
 Wire Wire Line
-	7000 3400 8100 3400
+	7750 4050 7750 4400
+$Comp
+L Device:R R?
+U 1 1 6297EABD
+P 7250 3700
+F 0 "R?" V 7350 3700 50  0000 C CNN
+F 1 "1k" V 7450 3700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7180 3700 50  0001 C CNN
+F 3 "~" H 7250 3700 50  0001 C CNN
+	1    7250 3700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6297EAC3
+P 7600 4400
+F 0 "C?" V 7450 4350 50  0000 L CNN
+F 1 "100nF" V 7750 4300 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7638 4250 50  0001 C CNN
+F 3 "~" H 7600 4400 50  0001 C CNN
+	1    7600 4400
+	0    1    1    0   
+$EndComp
 Wire Wire Line
-	7000 3500 7850 3500
+	7450 4400 7450 4050
+Connection ~ 7750 4400
 Wire Wire Line
-	7000 3600 7600 3600
+	7750 4400 7750 5000
 Wire Wire Line
-	7000 3700 7350 3700
+	7350 4400 7450 4400
+Connection ~ 7450 4400
 Wire Wire Line
-	5900 3450 5900 3700
+	7750 3700 7400 3700
 Wire Wire Line
-	5900 3700 6100 3700
-NoConn ~ 6100 4200
-NoConn ~ 7000 3900
-NoConn ~ 7000 4000
-NoConn ~ 7000 4100
-NoConn ~ 7000 4200
+	7750 3700 7750 4050
+Text HLabel 7750 5000 3    50   Output ~ 0
+SW1_4
+$Comp
+L Device:R R?
+U 1 1 62992590
+P 8300 3950
+F 0 "R?" V 8400 3950 50  0000 C CNN
+F 1 "10k" V 8200 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8230 3950 50  0001 C CNN
+F 3 "~" H 8300 3950 50  0001 C CNN
+	1    8300 3950
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62992596
+P 8050 4300
+AR Path="/61B9B4C0/62992596" Ref="#PWR?"  Part="1" 
+AR Path="/61B7E6EB/62992596" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8050 4050 50  0001 C CNN
+F 1 "GND" H 8055 4127 50  0000 C CNN
+F 2 "" H 8050 4300 50  0001 C CNN
+F 3 "" H 8050 4300 50  0001 C CNN
+	1    8050 4300
+	1    0    0    -1  
+$EndComp
+Connection ~ 8450 3950
+Wire Wire Line
+	8450 3950 8450 4300
+$Comp
+L Device:R R?
+U 1 1 6299259F
+P 7950 3600
+F 0 "R?" V 8050 3600 50  0000 C CNN
+F 1 "1k" V 8150 3600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7880 3600 50  0001 C CNN
+F 3 "~" H 7950 3600 50  0001 C CNN
+	1    7950 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 629925A5
+P 8300 4300
+F 0 "C?" V 8150 4250 50  0000 L CNN
+F 1 "100nF" V 8450 4200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8338 4150 50  0001 C CNN
+F 3 "~" H 8300 4300 50  0001 C CNN
+	1    8300 4300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8150 4300 8150 3950
+Connection ~ 8450 4300
+Wire Wire Line
+	8450 4300 8450 4900
+Wire Wire Line
+	8050 4300 8150 4300
+Connection ~ 8150 4300
+Wire Wire Line
+	8450 3600 8100 3600
+Wire Wire Line
+	8450 3600 8450 3950
+Text HLabel 8450 4900 3    50   Output ~ 0
+SW1_3
+$Comp
+L Device:R R?
+U 1 1 62993CC6
+P 9000 3850
+F 0 "R?" V 9100 3850 50  0000 C CNN
+F 1 "10k" V 8900 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8930 3850 50  0001 C CNN
+F 3 "~" H 9000 3850 50  0001 C CNN
+	1    9000 3850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62993CCC
+P 8750 4200
+AR Path="/61B9B4C0/62993CCC" Ref="#PWR?"  Part="1" 
+AR Path="/61B7E6EB/62993CCC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8750 3950 50  0001 C CNN
+F 1 "GND" H 8755 4027 50  0000 C CNN
+F 2 "" H 8750 4200 50  0001 C CNN
+F 3 "" H 8750 4200 50  0001 C CNN
+	1    8750 4200
+	1    0    0    -1  
+$EndComp
+Connection ~ 9150 3850
+Wire Wire Line
+	9150 3850 9150 4200
+$Comp
+L Device:R R?
+U 1 1 62993CD5
+P 8650 3500
+F 0 "R?" V 8750 3500 50  0000 C CNN
+F 1 "1k" V 8850 3500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 8580 3500 50  0001 C CNN
+F 3 "~" H 8650 3500 50  0001 C CNN
+	1    8650 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 62993CDB
+P 9000 4200
+F 0 "C?" V 8850 4150 50  0000 L CNN
+F 1 "100nF" V 9150 4100 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9038 4050 50  0001 C CNN
+F 3 "~" H 9000 4200 50  0001 C CNN
+	1    9000 4200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8850 4200 8850 3850
+Connection ~ 9150 4200
+Wire Wire Line
+	9150 4200 9150 4800
+Wire Wire Line
+	8750 4200 8850 4200
+Connection ~ 8850 4200
+Wire Wire Line
+	9150 3500 8800 3500
+Wire Wire Line
+	9150 3500 9150 3850
+Text HLabel 9150 4800 3    50   Output ~ 0
+SW1_2
+$Comp
+L Device:R R?
+U 1 1 62994DF1
+P 9700 3750
+F 0 "R?" V 9800 3750 50  0000 C CNN
+F 1 "10k" V 9600 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9630 3750 50  0001 C CNN
+F 3 "~" H 9700 3750 50  0001 C CNN
+	1    9700 3750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62994DF7
+P 9450 4100
+AR Path="/61B9B4C0/62994DF7" Ref="#PWR?"  Part="1" 
+AR Path="/61B7E6EB/62994DF7" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 3850 50  0001 C CNN
+F 1 "GND" H 9455 3927 50  0000 C CNN
+F 2 "" H 9450 4100 50  0001 C CNN
+F 3 "" H 9450 4100 50  0001 C CNN
+	1    9450 4100
+	1    0    0    -1  
+$EndComp
+Connection ~ 9850 3750
+Wire Wire Line
+	9850 3750 9850 4100
+$Comp
+L Device:R R?
+U 1 1 62994E00
+P 9350 3400
+F 0 "R?" V 9450 3400 50  0000 C CNN
+F 1 "1k" V 9550 3400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 9280 3400 50  0001 C CNN
+F 3 "~" H 9350 3400 50  0001 C CNN
+	1    9350 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 62994E06
+P 9700 4100
+F 0 "C?" V 9550 4050 50  0000 L CNN
+F 1 "100nF" V 9850 4000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9738 3950 50  0001 C CNN
+F 3 "~" H 9700 4100 50  0001 C CNN
+	1    9700 4100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9550 4100 9550 3750
+Connection ~ 9850 4100
+Wire Wire Line
+	9850 4100 9850 4700
+Wire Wire Line
+	9450 4100 9550 4100
+Connection ~ 9550 4100
+Wire Wire Line
+	9850 3400 9500 3400
+Wire Wire Line
+	9850 3400 9850 3750
+Text HLabel 9850 4700 3    50   Output ~ 0
+SW1_1
+Wire Wire Line
+	7000 3600 7800 3600
+Wire Wire Line
+	7000 3500 8500 3500
+Wire Wire Line
+	7000 3400 9200 3400
 $EndSCHEMATC
