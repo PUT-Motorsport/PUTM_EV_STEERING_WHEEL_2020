@@ -442,8 +442,6 @@ Wire Wire Line
 Text Label 7600 4500 2    50   ~ 0
 SWO
 NoConn ~ 7250 2800
-NoConn ~ 7250 3300
-NoConn ~ 7250 3400
 NoConn ~ 7250 3500
 NoConn ~ 7250 4000
 NoConn ~ 7250 4200
@@ -799,16 +797,6 @@ F 3 "~" H 1450 1000 50  0001 C CNN
 	1    1450 1000
 	1    0    0    -1  
 $EndComp
-$Sheet
-S 1200 3300 800  600 
-U 61B9B4C0
-F0 "Pushbuttons" 50
-F1 "Pushbuttons.sch" 50
-F2 "SW3" O R 2000 3450 50 
-F3 "SW4" O R 2000 3550 50 
-F4 "SW5" O R 2000 3650 50 
-F5 "SW6" O R 2000 3750 50 
-$EndSheet
 Wire Wire Line
 	2500 3750 2000 3750
 Wire Wire Line
@@ -983,13 +971,11 @@ Wire Wire Line
 	7550 5700 7250 5700
 Text Label 7550 5700 2    50   ~ 0
 SW1_4
-NoConn ~ 7250 2600
-NoConn ~ 7250 2700
 $Comp
-L power:GND #PWR?
+L power:GND #PWR06
 U 1 1 62A24A7C
 P 5150 3250
-F 0 "#PWR?" H 5150 3000 50  0001 C CNN
+F 0 "#PWR06" H 5150 3000 50  0001 C CNN
 F 1 "GND" H 5155 3077 50  0000 C CNN
 F 2 "" H 5150 3250 50  0001 C CNN
 F 3 "" H 5150 3250 50  0001 C CNN
@@ -998,4 +984,50 @@ F 3 "" H 5150 3250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5150 3250 5850 3250
+$Sheet
+S 1200 3300 800  1000
+U 61B9B4C0
+F0 "Pushbuttons" 50
+F1 "Pushbuttons.sch" 50
+F2 "SW3" O R 2000 3450 50 
+F3 "SW4" O R 2000 3550 50 
+F4 "SW5" O R 2000 3650 50 
+F5 "SW6" O R 2000 3750 50 
+F6 "SW7" O R 2000 3850 50 
+F7 "SW8" O R 2000 3950 50 
+F8 "SW10" O R 2000 4150 50 
+F9 "SW9" O R 2000 4050 50 
+$EndSheet
+Wire Wire Line
+	2500 3950 2000 3950
+Wire Wire Line
+	2500 3850 2000 3850
+Text Label 2500 3850 2    50   ~ 0
+SW7
+Text Label 2500 3950 2    50   ~ 0
+SW8
+Wire Wire Line
+	2500 4150 2000 4150
+Wire Wire Line
+	2500 4050 2000 4050
+Text Label 2500 4050 2    50   ~ 0
+SW9
+Text Label 2500 4150 2    50   ~ 0
+SW10
+Wire Wire Line
+	7750 2700 7250 2700
+Wire Wire Line
+	7750 2600 7250 2600
+Text Label 7750 2600 2    50   ~ 0
+SW7
+Text Label 7750 2700 2    50   ~ 0
+SW8
+Wire Wire Line
+	7750 3400 7250 3400
+Wire Wire Line
+	7750 3300 7250 3300
+Text Label 7750 3300 2    50   ~ 0
+SW9
+Text Label 7750 3400 2    50   ~ 0
+SW10
 $EndSCHEMATC
