@@ -263,12 +263,12 @@ F 3 "~" H 9600 2300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Switch:SW_MEC_5G SW7
+L Switch:SW_MEC_5G SW11
 U 1 1 61DC36EF
 P 10200 2550
-AR Path="/61DC36EF" Ref="SW7"  Part="1" 
+AR Path="/61DC36EF" Ref="SW11"  Part="1" 
 AR Path="/61B9B4C0/61DC36EF" Ref="SW7"  Part="1" 
-F 0 "SW7" H 10200 2835 50  0000 C CNN
+F 0 "SW11" H 10200 2835 50  0000 C CNN
 F 1 "SW_MEC_5G" H 10200 2744 50  0000 C CNN
 F 2 "Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP" H 10200 2750 50  0001 C CNN
 F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=488" H 10200 2750 50  0001 C CNN
