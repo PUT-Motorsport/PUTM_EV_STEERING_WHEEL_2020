@@ -166,8 +166,9 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  choose_left_scroll_state();
-	  wait_for_second_button();
-	  reset_flags();
+	  if (sw3_pressed or sw4_pressed or sw5_pressed or sw6_pressed) {
+		  wait_for_second_button();
+	  }
 
 	  if (timer + 500 < HAL_GetTick())
 	  {
@@ -541,7 +542,7 @@ void heartbeat()
 
 void wait_for_second_button()
 {
-	HAL_Delay(100);
+	HAL_Delay(500);
 	PUTM_CAN::Steering_Wheel_event button_pressed{};
 
 	if (sw3_pressed && sw4_pressed)
@@ -574,17 +575,26 @@ void wait_for_second_button()
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 
 	} else if (sw5_pressed) {
+		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 		button_pressed.button = PUTM_CAN::buttonStates::button3;
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 
 	} else if (sw6_pressed) {
+		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 		button_pressed.button = PUTM_CAN::buttonStates::button4;
 	}
 
 	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
 	(button_pressed, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
-	if (steering_wheel_frame.send(hcan1));
+
+	auto status = steering_wheel_frame.send(hcan1);
+
+	if (status not_eq HAL_OK) {
+		//todo
+	}
+
+	reset_flags();
 
 }
 

@@ -27,20 +27,20 @@
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::BMS_HV_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::AQ_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::Apps_main]	0	static
-../Core/Src/main.cpp:445:13:void MX_GPIO_Init()	64	static
-../Core/Src/main.cpp:422:13:void MX_DMA_Init()	24	static
-../Core/Src/main.cpp:508:6:void HAL_GPIO_EXTI_Callback(uint16_t)	8	static
-../Core/Src/main.cpp:531:6:void heartbeat()	48	static
-../Core/Src/main.cpp:542:6:void wait_for_second_button()	48	static
-../Core/Src/main.cpp:591:6:void choose_left_scroll_state()	8	static
-../Core/Src/main.cpp:647:6:void choose_right_scroll_state()	0	static
-../Core/Src/main.cpp:703:6:void reset_flags()	0	static
-../Core/Src/main.cpp:721:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
-../Core/Src/main.cpp:738:6:void Error_Handler()	0	static,ignoring_inline_asm
-../Core/Src/main.cpp:387:13:void MX_CAN1_Init()	8	static
-../Core/Src/main.cpp:262:13:void MX_ADC1_Init()	48	static
-../Core/Src/main.cpp:329:13:void MX_ADC2_Init()	32	static
-../Core/Src/main.cpp:186:6:void SystemClock_Config()	104	static
-../Core/Src/main.cpp:236:6:void PeriphCommonClock_Config()	160	static
+../Core/Src/main.cpp:446:13:void MX_GPIO_Init()	64	static
+../Core/Src/main.cpp:423:13:void MX_DMA_Init()	24	static
+../Core/Src/main.cpp:509:6:void HAL_GPIO_EXTI_Callback(uint16_t)	8	static
+../Core/Src/main.cpp:532:6:void heartbeat()	48	static
+../Core/Src/main.cpp:601:6:void choose_left_scroll_state()	8	static
+../Core/Src/main.cpp:657:6:void choose_right_scroll_state()	0	static
+../Core/Src/main.cpp:713:6:void reset_flags()	0	static
+../Core/Src/main.cpp:543:6:void wait_for_second_button()	48	static
+../Core/Src/main.cpp:731:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
+../Core/Src/main.cpp:748:6:void Error_Handler()	0	static,ignoring_inline_asm
+../Core/Src/main.cpp:388:13:void MX_CAN1_Init()	8	static
+../Core/Src/main.cpp:263:13:void MX_ADC1_Init()	48	static
+../Core/Src/main.cpp:330:13:void MX_ADC2_Init()	32	static
+../Core/Src/main.cpp:187:6:void SystemClock_Config()	104	static
+../Core/Src/main.cpp:237:6:void PeriphCommonClock_Config()	160	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp:198:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	48	static
 ../Core/Src/main.cpp:92:5:int main()	56	static
