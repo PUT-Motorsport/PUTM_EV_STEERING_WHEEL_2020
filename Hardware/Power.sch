@@ -136,7 +136,7 @@ U 1 1 62AAC622
 P 3550 3600
 F 0 "F1" H 3550 3785 50  0000 C CNN
 F 1 "Fuse_Small" H 3550 3694 50  0000 C CNN
-F 2 "" H 3550 3600 50  0001 C CNN
+F 2 "Fuse:Fuse_1206_3216Metric" H 3550 3600 50  0001 C CNN
 F 3 "~" H 3550 3600 50  0001 C CNN
 	1    3550 3600
 	1    0    0    -1  
@@ -189,10 +189,6 @@ F 3 "~" H 4350 4050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4050 3600 4050 3650
-Connection ~ 4050 3600
-Wire Wire Line
-	4050 3600 4350 3600
-Connection ~ 4350 3600
 Wire Wire Line
 	4350 3600 4700 3600
 Connection ~ 4350 4200
@@ -227,4 +223,14 @@ Wire Wire Line
 Wire Wire Line
 	5000 3600 4700 3600
 Connection ~ 4700 3600
+Text GLabel 4400 3400 2    50   Input ~ 0
+safe5V
+Wire Wire Line
+	4350 3400 4400 3400
+Wire Wire Line
+	4050 3600 4350 3600
+Connection ~ 4050 3600
+Connection ~ 4350 3600
+Wire Wire Line
+	4350 3400 4350 3600
 $EndSCHEMATC

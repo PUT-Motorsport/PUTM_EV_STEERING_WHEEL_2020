@@ -1444,21 +1444,6 @@ F 3 "" H 4300 4400 50  0001 C CNN
 	1    4300 4400
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+5V #PWR?
-U 1 1 61A24688
-P 2350 3650
-AR Path="/61A14ADD/61A24688" Ref="#PWR?"  Part="1" 
-AR Path="/61A9D384/61A24688" Ref="#PWR?"  Part="1" 
-AR Path="/61B3EE71/61A24688" Ref="#PWR?"  Part="1" 
-AR Path="/620E9BA8/61A24688" Ref="#PWR031"  Part="1" 
-F 0 "#PWR031" H 2350 3500 50  0001 C CNN
-F 1 "+5V" H 2365 3823 50  0000 C CNN
-F 2 "" H 2350 3650 50  0001 C CNN
-F 3 "" H 2350 3650 50  0001 C CNN
-	1    2350 3650
-	1    0    0    -1  
-$EndComp
 Connection ~ 4300 4050
 Wire Wire Line
 	4300 4050 4300 4150
@@ -1621,4 +1606,6 @@ Text HLabel 6700 4050 2    50   BiDi ~ 0
 CANL
 Text HLabel 6700 3850 2    50   BiDi ~ 0
 CANH
+Text Label 2350 3650 0    50   ~ 0
+safe5V
 $EndSCHEMATC
