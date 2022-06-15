@@ -573,25 +573,8 @@ Text Label 6450 1800 3    50   ~ 0
 +3V3_uCa
 Wire Wire Line
 	6450 1800 6450 2250
-$Comp
-L Device:D_TVS D4
-U 1 1 61C51AF8
-P 2200 1050
-F 0 "D4" V 2246 970 50  0000 R CNN
-F 1 "D_TVS" V 2155 970 50  0000 R CNN
-F 2 "Diode_SMD:D_1210_3225Metric" H 2200 1050 50  0001 C CNN
-F 3 "https://www.tme.eu/Document/480040166f76761f76124a50403ca5aa/esd3b5v0ws.pdf" H 2200 1050 50  0001 C CNN
-	1    2200 1050
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2200 900  1750 900 
-Connection ~ 1750 900 
 Wire Wire Line
 	1650 1200 1750 1200
-Connection ~ 1750 1200
-Wire Wire Line
-	1750 1200 2200 1200
 Wire Notes Line
 	4100 500  4100 1500
 Wire Wire Line
