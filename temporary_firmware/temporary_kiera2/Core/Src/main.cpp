@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.cpp
+  * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -21,8 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdbool.h>
-#include "PUTM_CAN_LIBRARY/lib/can_interface.hpp"
 
 /* USER CODE END Includes */
 
@@ -44,8 +42,7 @@
  CAN_HandleTypeDef hcan;
 
 /* USER CODE BEGIN PV */
- uint32_t timer;
- bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,38 +89,6 @@ int main(void)
   MX_CAN_Init();
   /* USER CODE BEGIN 2 */
 
-   CAN_FilterTypeDef sFilterConfig;
-   sFilterConfig.FilterBank = 0;
-   sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-   sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-   sFilterConfig.FilterIdHigh = 0x0000;
-   sFilterConfig.FilterIdLow = 0x0000;
-   sFilterConfig.FilterMaskIdHigh = 0x0000;
-   sFilterConfig.FilterMaskIdLow = 0x0000;
-   sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
-   sFilterConfig.FilterActivation = ENABLE;
-
-
- 	if (HAL_CAN_ConfigFilter(&hcan, &sFilterConfig) != HAL_OK) {
- 		Error_Handler();
- 	}
-
- 	if (HAL_CAN_Start(&hcan) != HAL_OK) {
- 		Error_Handler();
- 	}
-
- 	if (HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK) {
- 		Error_Handler();
- 	}
-
-
-//   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)left_adc_reading, 10);
-
-
-   HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
-   //  HAL_ADC_Start_IT(&hadc2);
-//   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)right_adc_reading, 10);
-   uint32_t timer = HAL_GetTick();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -133,15 +98,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (sw3_pressed or sw4_pressed or sw5_pressed or sw6_pressed) {
-	  		  wait_for_second_button();
-	  	  }
-
-	  	  if (timer + 500 < HAL_GetTick())
-	  	  {
-	  		  heartbeat();
-	  		  timer = HAL_GetTick();
-	  	  }
   }
   /* USER CODE END 3 */
 }
@@ -243,14 +199,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW4_Pin SW3_Pin */
-  GPIO_InitStruct.Pin = SW4_Pin|SW3_Pin;
+  /*Configure GPIO pins : SW2_Pin SW1_Pin */
+  GPIO_InitStruct.Pin = SW2_Pin|SW1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW6_Pin SW5_Pin */
-  GPIO_InitStruct.Pin = SW6_Pin|SW5_Pin;
+  /*Configure GPIO pins : SW4_Pin SW3_Pin */
+  GPIO_InitStruct.Pin = SW4_Pin|SW3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -262,105 +218,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	timer = HAL_GetTick();
 
-	if (GPIO_Pin == SW3_Pin)
-	{
-		sw3_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-	} else if (GPIO_Pin == SW4_Pin)
-	{
-		sw4_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-	} else if (GPIO_Pin == SW5_Pin)
-	{
-		sw5_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-	} else if (GPIO_Pin == SW6_Pin)
-	{
-		sw6_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	}
-}
-
-void heartbeat()
-{
-
-	PUTM_CAN::Steering_Wheel_main pcb_alive{0, PUTM_CAN::Steering_Wheel_states::OK};
-
-	auto steering_wheel_heartbeat = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_main>
-	(pcb_alive, PUTM_CAN::can_tx_header_STEERING_WHEEL_MAIN);
-
- 	steering_wheel_heartbeat.send(hcan);
-}
-
-void wait_for_second_button()
-{
-	HAL_Delay(500);
-	PUTM_CAN::Steering_Wheel_event button_pressed{};
-
-	if (sw3_pressed && sw4_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_2;
-	} else if (sw3_pressed && sw5_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_3;
-
-	} else if (sw3_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_4;
-//		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-	} else if (sw4_pressed && sw5_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button2_3;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
-	} else if (sw4_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button2_4;
-	} else if (sw5_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button3_4;
-	} else if (sw3_pressed) {
-		button_pressed.button = PUTM_CAN::buttonStates::button1;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	} else if (sw4_pressed) {
-		button_pressed.button = PUTM_CAN::buttonStates::button2;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
-	} else if (sw5_pressed) {
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-		button_pressed.button = PUTM_CAN::buttonStates::button3;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
-	} else if (sw6_pressed) {
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-		button_pressed.button = PUTM_CAN::buttonStates::button4;
-	}
-
-	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
-	(button_pressed, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
-
-
-	auto status = steering_wheel_frame.send(hcan);
-
-	if (status not_eq HAL_OK) {
-		//todo
-	}
-
-	reset_flags();
-
-}
-
-void reset_flags()
-{
-	sw3_pressed = 0;
-	sw4_pressed = 0;
-	sw5_pressed = 0;
-	sw6_pressed = 0;
-}
 /* USER CODE END 4 */
 
 /**

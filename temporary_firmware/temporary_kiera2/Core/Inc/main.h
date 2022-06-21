@@ -32,12 +32,6 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-
-void reset_flags();
-void wait_for_second_button();
-
-
-void heartbeat();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -63,15 +57,15 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define SW4_Pin GPIO_PIN_0
-#define SW4_GPIO_Port GPIOA
-#define SW4_EXTI_IRQn EXTI0_IRQn
-#define SW6_Pin GPIO_PIN_1
-#define SW6_GPIO_Port GPIOB
-#define SW5_Pin GPIO_PIN_11
-#define SW5_GPIO_Port GPIOB
-#define SW3_Pin GPIO_PIN_8
-#define SW3_GPIO_Port GPIOA
+#define SW2_Pin GPIO_PIN_0
+#define SW2_GPIO_Port GPIOA
+#define SW2_EXTI_IRQn EXTI0_IRQn
+#define SW4_Pin GPIO_PIN_1
+#define SW4_GPIO_Port GPIOB
+#define SW3_Pin GPIO_PIN_11
+#define SW3_GPIO_Port GPIOB
+#define SW1_Pin GPIO_PIN_8
+#define SW1_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

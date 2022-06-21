@@ -1,3 +1,9 @@
 [submodule "Firmware/kiera/kiera/Core/Inc/PUTM_EV_CAN_LIBRARY"]
 	path = Firmware/kiera/kiera/Core/Inc/PUTM_EV_CAN_LIBRARY
 	url = https://github.com/PUT-Motorsport/PUTM_EV_CAN_LIBRARY
+[submodule "temporary_firmware/temporary_kiera/Core/Inc/PUTM_CAN_LIBRARY"]
+	path = temporary_firmware/temporary_kiera/Core/Inc/PUTM_CAN_LIBRARY
+	url = https://github.com/PUT-Motorsport/PUTM_EV_CAN_LIBRARY.git
+[submodule "temporary_firmware/temporary_kiera2/Core/Inc/PUTM_CAN_LIBRARY"]
+	path = temporary_firmware/temporary_kiera2/Core/Inc/PUTM_CAN_LIBRARY
+	url = https://github.com/PUT-Motorsport/PUTM_EV_CAN_LIBRARY.git
