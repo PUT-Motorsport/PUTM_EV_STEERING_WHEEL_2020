@@ -9939,3 +9939,7 @@
 2022-05-27 23:24:27,754 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
 2022-05-27 23:24:27,769 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
 2022-05-28 00:43:49,421 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2022-06-21 18:52:36,066 [INFO] Activator:177 - 
+
+
+2022-06-21 18:52:36,066 [INFO] Activator:178 - !SESSION log4j initialized
