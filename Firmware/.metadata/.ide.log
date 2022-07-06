@@ -10998,3 +10998,301 @@
 2022-07-06 20:13:01,580 [INFO] IPUIPlugin:75 - create IPUIPlugin
 2022-07-06 20:13:01,608 [INFO] Can:66 - Can Add PropertyChangeListener com.st.microxplorer.plugins.ip.can.Can@524090d1
 2022-07-06 20:13:01,899 [INFO] OpenFileManager:323 - Restore cursor
+2022-07-06 20:26:47,025 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 514707880 Bytes (644874240)
+2022-07-06 20:26:49,025 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 542497192 Bytes (644874240)
+2022-07-06 20:26:59,055 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 503880152 Bytes (644874240)
+2022-07-06 20:26:59,895 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: CAN
+2022-07-06 20:26:59,895 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:26:59,896 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2022-07-06 20:26:59,896 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:26:59,896 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2022-07-06 20:26:59,896 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2022-07-06 20:26:59,896 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: DMA
+2022-07-06 20:26:59,897 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2022-07-06 20:26:59,900 [INFO] CodeGenerator:681 - code generatio: config db path: D:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\
+2022-07-06 20:27:00,917 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp_save
+2022-07-06 20:27:01,695 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp
+2022-07-06 20:27:01,926 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp_save
+2022-07-06 20:27:02,185 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp
+2022-07-06 20:27:03,518 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp_save
+2022-07-06 20:27:03,775 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp
+2022-07-06 20:27:03,786 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp_save
+2022-07-06 20:27:04,033 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp
+2022-07-06 20:27:04,071 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c_save
+2022-07-06 20:27:04,573 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c
+2022-07-06 20:27:04,595 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h_save
+2022-07-06 20:27:04,758 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h
+2022-07-06 20:27:04,797 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c_save
+2022-07-06 20:27:05,291 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c
+2022-07-06 20:27:05,306 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp_save
+2022-07-06 20:27:05,475 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp
+2022-07-06 20:27:05,487 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c_save
+2022-07-06 20:27:05,661 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c
+2022-07-06 20:27:05,690 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h_save
+2022-07-06 20:27:05,934 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h
+2022-07-06 20:27:06,111 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h_save
+2022-07-06 20:27:06,390 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h
+2022-07-06 20:27:06,413 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c_save
+2022-07-06 20:27:07,064 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c
+2022-07-06 20:27:10,370 [INFO] ProjectBuilder:2913 - Time for Copy HAL[1] : 1524mS.
+2022-07-06 20:27:10,447 [INFO] ProjectBuilder:4015 - Project Generator version: 3.16.0
+2022-07-06 20:27:11,478 [INFO] ConfigFileManager:1287 - The Die is : DIE471
+2022-07-06 20:27:11,533 [INFO] ApiDbMcu:488 - Load IP Config File for FATFS
+2022-07-06 20:27:11,631 [INFO] ApiDbMcu:488 - Load IP Config File for FREERTOS
+2022-07-06 20:27:12,026 [INFO] ApiDbMcu:488 - Load IP Config File for TOUCHSENSING
+2022-07-06 20:27:12,093 [INFO] ApiDbMcu:488 - Load IP Config File for USB_DEVICE
+2022-07-06 20:27:12,124 [INFO] ApiDbMcu:488 - Load IP Config File for USB_HOST
+2022-07-06 20:27:18,120 [INFO] ProjectBuilder:4183 - Time for Generating toolchain IDE Files: 7669mS.
+2022-07-06 20:27:18,123 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 2mS.
+2022-07-06 20:27:18,138 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
+2022-07-06 20:29:36,482 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 632038280 Bytes (840957952)
+2022-07-06 20:29:39,391 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 553771224 Bytes (840957952)
+2022-07-06 20:29:51,162 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 592568536 Bytes (840957952)
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: CAN
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2022-07-06 20:29:51,553 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2022-07-06 20:29:51,554 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: DMA
+2022-07-06 20:29:51,554 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2022-07-06 20:29:51,556 [INFO] CodeGenerator:681 - code generatio: config db path: D:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\
+2022-07-06 20:29:51,567 [INFO] Argument:296 - Argument : hdmavalue: null
+2022-07-06 20:29:51,568 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:29:51,568 [INFO] Argument:296 - Argument : Instancevalue: DMA1_Channel6
+2022-07-06 20:29:51,568 [INFO] Argument:306 - Argument : Instancevalue: DMA1_Channel6
+2022-07-06 20:29:51,568 [INFO] Argument:296 - Argument : Initvalue: null
+2022-07-06 20:29:51,568 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:29:51,568 [INFO] Argument:296 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2022-07-06 20:29:51,568 [INFO] Argument:306 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2022-07-06 20:29:51,569 [INFO] Argument:296 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:29:51,569 [INFO] Argument:306 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:29:51,569 [INFO] Argument:296 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:29:51,569 [INFO] Argument:306 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:29:51,569 [INFO] Argument:296 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:29:51,569 [INFO] Argument:306 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:29:51,569 [INFO] Argument:296 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:29:51,569 [INFO] Argument:306 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:29:51,569 [INFO] Argument:296 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:29:51,570 [INFO] Argument:306 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:29:51,570 [INFO] Argument:296 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:29:51,570 [INFO] Argument:306 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:29:51,570 [INFO] Argument:296 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:29:51,570 [INFO] Argument:306 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:29:51,570 [INFO] Argument:296 - Argument : Lockvalue: null
+2022-07-06 20:29:51,570 [INFO] Argument:306 - Argument : Lockvalue: null
+2022-07-06 20:29:51,570 [INFO] Argument:296 - Argument : Statevalue: null
+2022-07-06 20:29:51,570 [INFO] Argument:306 - Argument : Statevalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : Parentvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:306 - Argument : Parentvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:306 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:306 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:306 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:306 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:29:51,571 [INFO] Argument:296 - Argument : ErrorCodevalue: null
+2022-07-06 20:29:51,572 [INFO] Argument:306 - Argument : ErrorCodevalue: null
+2022-07-06 20:29:51,572 [INFO] Argument:296 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:29:51,572 [INFO] Argument:306 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:29:51,572 [INFO] Argument:296 - Argument : ChannelIndexvalue: null
+2022-07-06 20:29:51,572 [INFO] Argument:306 - Argument : ChannelIndexvalue: null
+2022-07-06 20:29:51,579 [INFO] Argument:296 - Argument : hdmavalue: null
+2022-07-06 20:29:51,579 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:29:51,579 [INFO] Argument:296 - Argument : Instancevalue: DMA2_Channel7
+2022-07-06 20:29:51,579 [INFO] Argument:306 - Argument : Instancevalue: DMA2_Channel7
+2022-07-06 20:29:51,579 [INFO] Argument:296 - Argument : Initvalue: null
+2022-07-06 20:29:51,579 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:29:51,580 [INFO] Argument:296 - Argument : Requestvalue: DMA_REQUEST_ADC2
+2022-07-06 20:29:51,580 [INFO] Argument:306 - Argument : Requestvalue: DMA_REQUEST_ADC2
+2022-07-06 20:29:51,580 [INFO] Argument:296 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:29:51,580 [INFO] Argument:306 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:29:51,580 [INFO] Argument:296 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:29:51,580 [INFO] Argument:306 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:29:51,580 [INFO] Argument:296 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:29:51,580 [INFO] Argument:306 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:29:51,580 [INFO] Argument:296 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:29:51,580 [INFO] Argument:306 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:29:51,581 [INFO] Argument:296 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:29:51,581 [INFO] Argument:306 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:29:51,581 [INFO] Argument:296 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:29:51,581 [INFO] Argument:306 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:29:51,581 [INFO] Argument:296 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:29:51,581 [INFO] Argument:306 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:29:51,581 [INFO] Argument:296 - Argument : Lockvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : Lockvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : Statevalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : Statevalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : Parentvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : Parentvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:296 - Argument : ErrorCodevalue: null
+2022-07-06 20:29:51,582 [INFO] Argument:306 - Argument : ErrorCodevalue: null
+2022-07-06 20:29:51,583 [INFO] Argument:296 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:29:51,583 [INFO] Argument:306 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:29:51,583 [INFO] Argument:296 - Argument : ChannelIndexvalue: null
+2022-07-06 20:29:51,583 [INFO] Argument:306 - Argument : ChannelIndexvalue: null
+2022-07-06 20:29:51,901 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp_save
+2022-07-06 20:29:52,045 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp
+2022-07-06 20:29:52,214 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp_save
+2022-07-06 20:29:52,380 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp
+2022-07-06 20:29:53,207 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp_save
+2022-07-06 20:29:53,341 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp
+2022-07-06 20:29:53,349 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp_save
+2022-07-06 20:29:53,444 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp
+2022-07-06 20:29:53,462 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c_save
+2022-07-06 20:29:53,597 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c
+2022-07-06 20:29:53,608 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h_save
+2022-07-06 20:29:53,704 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h
+2022-07-06 20:29:53,721 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c_save
+2022-07-06 20:29:53,896 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c
+2022-07-06 20:29:53,906 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp_save
+2022-07-06 20:29:53,998 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp
+2022-07-06 20:29:54,005 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c_save
+2022-07-06 20:29:54,110 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c
+2022-07-06 20:29:54,128 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h_save
+2022-07-06 20:29:54,277 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h
+2022-07-06 20:29:54,351 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h_save
+2022-07-06 20:29:54,477 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h
+2022-07-06 20:29:54,488 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c_save
+2022-07-06 20:29:54,692 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c
+2022-07-06 20:29:55,983 [INFO] ProjectBuilder:2913 - Time for Copy HAL[1] : 532mS.
+2022-07-06 20:29:55,990 [INFO] ProjectBuilder:4015 - Project Generator version: 3.16.0
+2022-07-06 20:29:56,443 [INFO] ConfigFileManager:1287 - The Die is : DIE471
+2022-07-06 20:29:58,763 [INFO] ProjectBuilder:4183 - Time for Generating toolchain IDE Files: 2773mS.
+2022-07-06 20:29:58,764 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
+2022-07-06 20:29:58,798 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
+2022-07-06 20:30:29,279 [INFO] Gpio:254 - dependency for GPIO [ADC1, ADC2, CAN1, RCC, SYS]
+2022-07-06 20:31:44,538 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 616562688 Bytes (969932800)
+2022-07-06 20:31:45,131 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: CAN
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: ADC
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2022-07-06 20:31:45,132 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: DMA
+2022-07-06 20:31:45,133 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2022-07-06 20:31:45,135 [INFO] CodeGenerator:681 - code generatio: config db path: D:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\
+2022-07-06 20:31:45,147 [INFO] Argument:296 - Argument : hdmavalue: null
+2022-07-06 20:31:45,147 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:31:45,147 [INFO] Argument:296 - Argument : Instancevalue: DMA1_Channel6
+2022-07-06 20:31:45,147 [INFO] Argument:306 - Argument : Instancevalue: DMA1_Channel6
+2022-07-06 20:31:45,148 [INFO] Argument:296 - Argument : Initvalue: null
+2022-07-06 20:31:45,148 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:31:45,148 [INFO] Argument:296 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2022-07-06 20:31:45,148 [INFO] Argument:306 - Argument : Requestvalue: DMA_REQUEST_ADC1
+2022-07-06 20:31:45,148 [INFO] Argument:296 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:31:45,148 [INFO] Argument:306 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:31:45,149 [INFO] Argument:296 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:31:45,149 [INFO] Argument:306 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:31:45,149 [INFO] Argument:296 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:31:45,149 [INFO] Argument:306 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:31:45,149 [INFO] Argument:296 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:31:45,150 [INFO] Argument:306 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:31:45,150 [INFO] Argument:296 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:31:45,150 [INFO] Argument:306 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:31:45,150 [INFO] Argument:296 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:31:45,150 [INFO] Argument:306 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:31:45,150 [INFO] Argument:296 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:31:45,150 [INFO] Argument:306 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:31:45,151 [INFO] Argument:296 - Argument : Lockvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:306 - Argument : Lockvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:296 - Argument : Statevalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:306 - Argument : Statevalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:296 - Argument : Parentvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:306 - Argument : Parentvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:296 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:306 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:296 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:31:45,151 [INFO] Argument:306 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:31:45,152 [INFO] Argument:296 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:31:45,152 [INFO] Argument:306 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:31:45,152 [INFO] Argument:296 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:31:45,153 [INFO] Argument:306 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:31:45,153 [INFO] Argument:296 - Argument : ErrorCodevalue: null
+2022-07-06 20:31:45,153 [INFO] Argument:306 - Argument : ErrorCodevalue: null
+2022-07-06 20:31:45,153 [INFO] Argument:296 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:31:45,153 [INFO] Argument:306 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:31:45,154 [INFO] Argument:296 - Argument : ChannelIndexvalue: null
+2022-07-06 20:31:45,154 [INFO] Argument:306 - Argument : ChannelIndexvalue: null
+2022-07-06 20:31:45,166 [INFO] Argument:296 - Argument : hdmavalue: null
+2022-07-06 20:31:45,166 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:31:45,166 [INFO] Argument:296 - Argument : Instancevalue: DMA2_Channel7
+2022-07-06 20:31:45,167 [INFO] Argument:306 - Argument : Instancevalue: DMA2_Channel7
+2022-07-06 20:31:45,167 [INFO] Argument:296 - Argument : Initvalue: null
+2022-07-06 20:31:45,167 [INFO] Argument:298 - 	 sub Args: 
+2022-07-06 20:31:45,167 [INFO] Argument:296 - Argument : Requestvalue: DMA_REQUEST_ADC2
+2022-07-06 20:31:45,167 [INFO] Argument:306 - Argument : Requestvalue: DMA_REQUEST_ADC2
+2022-07-06 20:31:45,167 [INFO] Argument:296 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:31:45,167 [INFO] Argument:306 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2022-07-06 20:31:45,167 [INFO] Argument:296 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:31:45,168 [INFO] Argument:306 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2022-07-06 20:31:45,168 [INFO] Argument:296 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:31:45,168 [INFO] Argument:306 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : Modevalue: DMA_CIRCULAR
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : Lockvalue: null
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : Lockvalue: null
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : Statevalue: null
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : Statevalue: null
+2022-07-06 20:31:45,169 [INFO] Argument:296 - Argument : Parentvalue: null
+2022-07-06 20:31:45,169 [INFO] Argument:306 - Argument : Parentvalue: null
+2022-07-06 20:31:45,170 [INFO] Argument:296 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:31:45,170 [INFO] Argument:306 - Argument : XferCpltCallbackvalue: null
+2022-07-06 20:31:45,170 [INFO] Argument:296 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:31:45,170 [INFO] Argument:306 - Argument : XferHalfCpltCallbackvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:296 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:306 - Argument : XferErrorCallbackvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:296 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:306 - Argument : XferAbortCallbackvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:296 - Argument : ErrorCodevalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:306 - Argument : ErrorCodevalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:296 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:31:45,171 [INFO] Argument:306 - Argument : DmaBaseAddressvalue: null
+2022-07-06 20:31:45,172 [INFO] Argument:296 - Argument : ChannelIndexvalue: null
+2022-07-06 20:31:45,172 [INFO] Argument:306 - Argument : ChannelIndexvalue: null
+2022-07-06 20:31:45,676 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp_save
+2022-07-06 20:31:45,757 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\license.tmp
+2022-07-06 20:31:45,842 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp_save
+2022-07-06 20:31:45,935 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\gpio.tmp
+2022-07-06 20:31:46,606 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp_save
+2022-07-06 20:31:46,678 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma.tmp
+2022-07-06 20:31:46,682 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp_save
+2022-07-06 20:31:46,744 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\dma_GV.tmp
+2022-07-06 20:31:46,760 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c_save
+2022-07-06 20:31:46,996 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_it.c
+2022-07-06 20:31:47,011 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h_save
+2022-07-06 20:31:47,087 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_it.h
+2022-07-06 20:31:47,120 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c_save
+2022-07-06 20:31:47,273 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_msp.c
+2022-07-06 20:31:47,282 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp_save
+2022-07-06 20:31:47,383 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\MXTmpFiles\system.tmp
+2022-07-06 20:31:47,393 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c_save
+2022-07-06 20:31:47,507 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\stm32l4xx_hal_timebase_tim.c
+2022-07-06 20:31:47,522 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h_save
+2022-07-06 20:31:47,625 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\stm32l4xx_hal_conf.h
+2022-07-06 20:31:47,686 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h_save
+2022-07-06 20:31:47,834 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Inc\main.h
+2022-07-06 20:31:47,848 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c_save
+2022-07-06 20:31:48,087 [INFO] CodeEngine:261 - Generated code: C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\Core\Src\main.c
+2022-07-06 20:31:49,238 [INFO] ProjectBuilder:2913 - Time for Copy HAL[1] : 590mS.
+2022-07-06 20:31:49,253 [INFO] ProjectBuilder:4015 - Project Generator version: 3.16.0
+2022-07-06 20:31:49,858 [INFO] ConfigFileManager:1287 - The Die is : DIE471
+2022-07-06 20:31:52,019 [INFO] ProjectBuilder:4183 - Time for Generating toolchain IDE Files: 2766mS.
+2022-07-06 20:31:52,021 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 1mS.
+2022-07-06 20:31:52,031 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.

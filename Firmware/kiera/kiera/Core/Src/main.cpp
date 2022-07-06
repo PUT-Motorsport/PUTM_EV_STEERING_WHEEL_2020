@@ -501,7 +501,9 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	timer = HAL_GetTick();
+//	timer = HAL_GetTick();
+	PUTM_CAN::Steering_Wheel_event left_scroll_state{};
+	PUTM_CAN::Steering_Wheel_event right_scroll_state{};
 
 	if (GPIO_Pin == SW3_Pin)
 	{
@@ -519,7 +521,36 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		sw6_pressed = 1;
 //		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+	} else if (GPIO_Pin == SW1_1_Pin)
+	{
+		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
+	} else if (GPIO_Pin == SW1_2_Pin)
+	{
+		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
+	} else if (GPIO_Pin == SW1_3_Pin)
+	{
+		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_3;
+	} else if (GPIO_Pin == SW1_4_Pin)
+	{
+		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_4;
+	} else if (GPIO_Pin == SW2_1_Pin)
+	{
+		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_1;
+	} else if (GPIO_Pin == SW2_2_Pin)
+	{
+		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_2;
+	} else if (GPIO_Pin == SW2_3_Pin)
+	{
+		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_3;
+	} else if (GPIO_Pin == SW2_4_Pin)
+	{
+		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_4;
 	}
+
+	auto Steering_Wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
+	(scrollStates, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
+
+	auto status = steering_wheel_frame.send(hcan1);
 }
 
 void heartbeat()
@@ -591,117 +622,117 @@ void wait_for_second_button()
 
 }
 
-void choose_left_scroll_state()
-{
-	float average_adc = 0;
-
-	//	  calculate average adc
-	for (int i = 0; i < 10; i++) {
-		average_adc = average_adc + left_adc_reading[i];
-	}
-
-	average_adc = average_adc / 10;
-
-	int lss = 0; // Left Scroll State
-
-	if (1110 < average_adc && average_adc < 1115)
-	{
-		lss = 1;
-	} else if (3129 < average_adc && average_adc < 3133)
-	{
-		lss = 2;
-	} else if (3715 < average_adc && average_adc < 3721)
-	{
-		lss = 3;
-	} else if (3970 < average_adc && average_adc < 3975)
-	{
-		lss = 4;
-	}
-
-
-	if (lss != left_last_state)
-	{
-		switch (lss)
-		{
-		case 1:
-			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-//			HAL_Delay(200);
-			left_last_state = lss;
-			break;
-		case 2:
-			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-//			HAL_Delay(200);
-			left_last_state = lss;
-			break;
-		case 3:
-			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-//			HAL_Delay(200);
-			left_last_state = lss;
-			break;
-		case 4:
-			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-//			HAL_Delay(200);
-			left_last_state = lss;
-			break;
-		}
-	}
-}
-
-void choose_right_scroll_state()
-{
-	float average_adc = 0;
-
-	//	  calculate average adc
-	for (int i = 0; i < 10; i++) {
-		average_adc = average_adc + right_adc_reading[i];
-	}
-
-	average_adc = average_adc / 10;
-
-	int rss = 0; // Right Scroll State
-
-	if (1110 < average_adc && average_adc < 1115)
-	{
-		rss = 1;
-	} else if (3129 < average_adc && average_adc < 3133)
-	{
-		rss = 2;
-	} else if (3715 < average_adc && average_adc < 3721)
-	{
-		rss = 3;
-	} else if (3970 < average_adc && average_adc < 3975)
-	{
-		rss = 4;
-	}
-
-
-	if (rss != right_last_state)
-	{
-		switch (rss)
-		{
-		case 1:
+//void choose_left_scroll_state()
+//{
+//	float average_adc = 0;
+//
+//	//	  calculate average adc
+//	for (int i = 0; i < 10; i++) {
+//		average_adc = average_adc + left_adc_reading[i];
+//	}
+//
+//	average_adc = average_adc / 10;
+//
+//	int lss = 0; // Left Scroll State
+//
+//	if (1110 < average_adc && average_adc < 1115)
+//	{
+//		lss = 1;
+//	} else if (3129 < average_adc && average_adc < 3133)
+//	{
+//		lss = 2;
+//	} else if (3715 < average_adc && average_adc < 3721)
+//	{
+//		lss = 3;
+//	} else if (3970 < average_adc && average_adc < 3975)
+//	{
+//		lss = 4;
+//	}
+//
+//
+//	if (lss != left_last_state)
+//	{
+//		switch (lss)
+//		{
+//		case 1:
 //			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-//			HAL_Delay(200);
-			right_last_state = rss;
-			break;
-		case 2:
+////			HAL_Delay(200);
+//			left_last_state = lss;
+//			break;
+//		case 2:
 //			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-//			HAL_Delay(200);
-			right_last_state = rss;
-			break;
-		case 3:
+////			HAL_Delay(200);
+//			left_last_state = lss;
+//			break;
+//		case 3:
 //			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-//			HAL_Delay(200);
-			right_last_state = rss;
-			break;
-		case 4:
+////			HAL_Delay(200);
+//			left_last_state = lss;
+//			break;
+//		case 4:
 //			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-//			HAL_Delay(200);
-			right_last_state = rss;
-			break;
-		}
-	}
-}
+////			HAL_Delay(200);
+//			left_last_state = lss;
+//			break;
+//		}
+//	}
+//}
+//
+//void choose_right_scroll_state()
+//{
+//	float average_adc = 0;
+//
+//	//	  calculate average adc
+//	for (int i = 0; i < 10; i++) {
+//		average_adc = average_adc + right_adc_reading[i];
+//	}
+//
+//	average_adc = average_adc / 10;
+//
+//	int rss = 0; // Right Scroll State
+//
+//	if (1110 < average_adc && average_adc < 1115)
+//	{
+//		rss = 1;
+//	} else if (3129 < average_adc && average_adc < 3133)
+//	{
+//		rss = 2;
+//	} else if (3715 < average_adc && average_adc < 3721)
+//	{
+//		rss = 3;
+//	} else if (3970 < average_adc && average_adc < 3975)
+//	{
+//		rss = 4;
+//	}
+//
+//
+//	if (rss != right_last_state)
+//	{
+//		switch (rss)
+//		{
+//		case 1:
+////			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+////			HAL_Delay(200);
+//			right_last_state = rss;
+//			break;
+//		case 2:
+////			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+////			HAL_Delay(200);
+//			right_last_state = rss;
+//			break;
+//		case 3:
+////			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+////			HAL_Delay(200);
+//			right_last_state = rss;
+//			break;
+//		case 4:
+////			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+////			HAL_Delay(200);
+//			right_last_state = rss;
+//			break;
+//		}
+//	}
+//}
 
 void reset_flags()
 {
