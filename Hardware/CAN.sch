@@ -1407,8 +1407,6 @@ F 3 "" H 2350 4400 50  0001 C CNN
 	1    2350 4400
 	1    0    0    -1  
 $EndComp
-Text Label 3300 4050 2    50   ~ 0
-+5V_CAN_VDD
 Wire Wire Line
 	4300 3650 4300 3750
 $Comp
@@ -1457,8 +1455,6 @@ Wire Wire Line
 	5700 3350 5700 3550
 Wire Wire Line
 	5400 3350 5700 3350
-Text Label 5400 3350 0    50   ~ 0
-+5V_CAN_VDD
 $Comp
 L Device:D_TVS_x2_AAC D?
 U 1 1 61A7E65E
@@ -1564,20 +1560,6 @@ F 3 "~" H 2750 4250 50  0001 C CNN
 	1    2750 4250
 	1    0    0    -1  
 $EndComp
-$Comp
-L Interface_CAN_LIN:MCP2558FD-xSN U?
-U 1 1 61CAF1CC
-P 5700 3950
-AR Path="/61A14ADD/61CAF1CC" Ref="U?"  Part="1" 
-AR Path="/61B3EE71/61CAF1CC" Ref="U?"  Part="1" 
-AR Path="/620E9BA8/61CAF1CC" Ref="U4"  Part="1" 
-F 0 "U4" H 6050 4400 50  0000 C CNN
-F 1 "ATA6561-GAQW-N" H 6150 4300 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5700 3350 50  0001 C CNN
-F 3 "https://pl.mouser.com/datasheet/2/268/ATA6560_ATA6561_High_Speed_CAN_Transceiver_DS20005-1384933.pdf" H 5700 3950 50  0001 C CNN
-	1    5700 3950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5700 4350 5700 4450
 $Comp
@@ -1606,6 +1588,24 @@ Text HLabel 6700 4050 2    50   BiDi ~ 0
 CANL
 Text HLabel 6700 3850 2    50   BiDi ~ 0
 CANH
+$Comp
+L Interface_CAN_LIN:MCP2558FD-xSN U?
+U 1 1 61CAF1CC
+P 5700 3950
+AR Path="/61A14ADD/61CAF1CC" Ref="U?"  Part="1" 
+AR Path="/61B3EE71/61CAF1CC" Ref="U?"  Part="1" 
+AR Path="/620E9BA8/61CAF1CC" Ref="U4"  Part="1" 
+F 0 "U4" H 6050 4400 50  0000 C CNN
+F 1 "ATA6561-GAQW-N" H 6150 4300 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5700 3350 50  0001 C CNN
+F 3 "https://pl.mouser.com/datasheet/2/268/ATA6560_ATA6561_High_Speed_CAN_Transceiver_DS20005-1384933.pdf" H 5700 3950 50  0001 C CNN
+	1    5700 3950
+	1    0    0    -1  
+$EndComp
+Text Label 5400 3350 0    50   ~ 0
++5V_CAN_VDD
+Text Label 3300 4050 2    50   ~ 0
++5V_CAN_VDD
 Text GLabel 2350 3650 0    50   Input ~ 0
 safe5V
 $EndSCHEMATC

@@ -1408,7 +1408,7 @@ F 3 "" H 2350 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 3300 4050 2    50   ~ 0
-+5V_CAN_VDD
++3V3_CAN_VDD
 Wire Wire Line
 	4300 3650 4300 3750
 $Comp
@@ -1458,7 +1458,7 @@ Wire Wire Line
 Wire Wire Line
 	5400 3350 5700 3350
 Text Label 5400 3350 0    50   ~ 0
-+5V_CAN_VDD
++3V3_CAN_VDD
 $Comp
 L Device:D_TVS_x2_AAC D?
 U 1 1 61A7E65E
@@ -1606,6 +1606,20 @@ Text HLabel 6700 4050 2    50   BiDi ~ 0
 CANL
 Text HLabel 6700 3850 2    50   BiDi ~ 0
 CANH
-Text Label 2350 3650 0    50   ~ 0
-safe5V
+$Comp
+L power:+3V3 #PWR?
+U 1 1 62B54677
+P 2350 3650
+AR Path="/61A064B3/62B54677" Ref="#PWR?"  Part="1" 
+AR Path="/61A14ADD/62B54677" Ref="#PWR?"  Part="1" 
+AR Path="/61A9D384/62B54677" Ref="#PWR?"  Part="1" 
+AR Path="/61B3EE71/62B54677" Ref="#PWR?"  Part="1" 
+AR Path="/620E9BA8/62B54677" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2350 3500 50  0001 C CNN
+F 1 "+3V3" H 2365 3823 50  0000 C CNN
+F 2 "" H 2350 3650 50  0001 C CNN
+F 3 "" H 2350 3650 50  0001 C CNN
+	1    2350 3650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
