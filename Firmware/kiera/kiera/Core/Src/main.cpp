@@ -44,8 +44,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
-CAN_HandleTypeDef hcan1;
+ CAN_HandleTypeDef hcan1;
 
 /* USER CODE BEGIN PV */
 uint32_t timer;
@@ -57,12 +56,8 @@ int i = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN1_Init(void);
-static void MX_DMA_Init(void);
-static void MX_ADC1_Init(void);
-static void MX_ADC2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -93,9 +88,6 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
-/* Configure the peripherals common clocks */
-  PeriphCommonClock_Config();
-
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -103,11 +95,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN1_Init();
-  MX_DMA_Init();
-  MX_ADC1_Init();
-  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-    HAL_ADC_Start_IT(&hadc1);
 
   CAN_FilterTypeDef sFilterConfig;
   sFilterConfig.FilterBank = 0;
@@ -133,13 +121,7 @@ int main(void)
 		Error_Handler();
 	}
 
-
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)left_adc_reading, 10);
-
-
   HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
-  //  HAL_ADC_Start_IT(&hadc2);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)right_adc_reading, 10);
   uint32_t timer = HAL_GetTick();
   /* USER CODE END 2 */
 
@@ -218,156 +200,6 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief Peripherals Common Clock Configuration
-  * @retval None
-  */
-void PeriphCommonClock_Config(void)
-{
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-
-  /** Initializes the peripherals clock
-  */
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
-  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
-  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-/**
-  * @brief ADC1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_ADC1_Init(void)
-{
-
-  /* USER CODE BEGIN ADC1_Init 0 */
-
-  /* USER CODE END ADC1_Init 0 */
-
-  ADC_MultiModeTypeDef multimode = {0};
-  ADC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN ADC1_Init 1 */
-
-  /* USER CODE END ADC1_Init 1 */
-
-  /** Common config
-  */
-  hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV10;
-  hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-  hadc1.Init.LowPowerAutoWait = DISABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
-  hadc1.Init.NbrOfConversion = 1;
-  hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc1.Init.DMAContinuousRequests = ENABLE;
-  hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-  hadc1.Init.OversamplingMode = DISABLE;
-  if (HAL_ADC_Init(&hadc1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure the ADC multi-mode
-  */
-  multimode.Mode = ADC_MODE_INDEPENDENT;
-  if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_6;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_640CYCLES_5;
-  sConfig.SingleDiff = ADC_SINGLE_ENDED;
-  sConfig.OffsetNumber = ADC_OFFSET_NONE;
-  sConfig.Offset = 0;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN ADC1_Init 2 */
-
-  /* USER CODE END ADC1_Init 2 */
-
-}
-
-/**
-  * @brief ADC2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_ADC2_Init(void)
-{
-
-  /* USER CODE BEGIN ADC2_Init 0 */
-
-  /* USER CODE END ADC2_Init 0 */
-
-  ADC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN ADC2_Init 1 */
-
-  /* USER CODE END ADC2_Init 1 */
-
-  /** Common config
-  */
-  hadc2.Instance = ADC2;
-  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV10;
-  hadc2.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc2.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc2.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-  hadc2.Init.LowPowerAutoWait = DISABLE;
-  hadc2.Init.ContinuousConvMode = ENABLE;
-  hadc2.Init.NbrOfConversion = 1;
-  hadc2.Init.DiscontinuousConvMode = DISABLE;
-  hadc2.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc2.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc2.Init.DMAContinuousRequests = ENABLE;
-  hadc2.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-  hadc2.Init.OversamplingMode = DISABLE;
-  if (HAL_ADC_Init(&hadc2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_7;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
-  sConfig.SingleDiff = ADC_DIFFERENTIAL_ENDED;
-  sConfig.OffsetNumber = ADC_OFFSET_NONE;
-  sConfig.Offset = 0;
-  if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN ADC2_Init 2 */
-
-  /* USER CODE END ADC2_Init 2 */
-
-}
-
-/**
   * @brief CAN1 Initialization Function
   * @param None
   * @retval None
@@ -405,27 +237,6 @@ static void MX_CAN1_Init(void)
 }
 
 /**
-  * Enable DMA controller clock
-  */
-static void MX_DMA_Init(void)
-{
-
-  /* DMA controller clock enable */
-  __HAL_RCC_DMAMUX1_CLK_ENABLE();
-  __HAL_RCC_DMA1_CLK_ENABLE();
-  __HAL_RCC_DMA2_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA1_Channel6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
-  /* DMA2_Channel7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Channel7_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Channel7_IRQn);
-
-}
-
-/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -452,14 +263,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PC4 PC5 SW2_1_Pin SW2_2_Pin */
-  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|SW2_1_Pin|SW2_2_Pin;
+  /*Configure GPIO pins : PC4 PC5 SW2_1_Pin SW2_2_Pin
+                           SW2_3_Pin SW2_4_Pin SW5_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|SW2_1_Pin|SW2_2_Pin
+                          |SW2_3_Pin|SW2_4_Pin|SW5_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW1_1_Pin SW1_2_Pin SW1_3_Pin SW1_4_Pin */
-  GPIO_InitStruct.Pin = SW1_1_Pin|SW1_2_Pin|SW1_3_Pin|SW1_4_Pin;
+  /*Configure GPIO pins : SW1_2_Pin SW1_3_Pin SW1_4_Pin */
+  GPIO_InitStruct.Pin = SW1_2_Pin|SW1_3_Pin|SW1_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -472,7 +285,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : SW6_Pin */
   GPIO_InitStruct.Pin = SW6_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(SW6_GPIO_Port, &GPIO_InitStruct);
 
@@ -484,9 +297,6 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
-
   HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
@@ -502,8 +312,7 @@ static void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 //	timer = HAL_GetTick();
-	PUTM_CAN::Steering_Wheel_event left_scroll_state{};
-	PUTM_CAN::Steering_Wheel_event right_scroll_state{};
+	PUTM_CAN::Steering_Wheel_event scroll_state{};
 
 	if (GPIO_Pin == SW3_Pin)
 	{
@@ -521,36 +330,36 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		sw6_pressed = 1;
 //		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	} else if (GPIO_Pin == SW1_1_Pin)
+	}/* else if (GPIO_Pin == SW1_1_Pin)
 	{
-		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
-	} else if (GPIO_Pin == SW1_2_Pin)
+		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
+	}*/ else if (GPIO_Pin == SW1_2_Pin)
 	{
-		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
+		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
 	} else if (GPIO_Pin == SW1_3_Pin)
 	{
-		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_3;
+		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_3;
 	} else if (GPIO_Pin == SW1_4_Pin)
 	{
-		left_scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_4;
+		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_4;
 	} else if (GPIO_Pin == SW2_1_Pin)
 	{
-		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_1;
+		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_1;
 	} else if (GPIO_Pin == SW2_2_Pin)
 	{
-		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_2;
+		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_2;
 	} else if (GPIO_Pin == SW2_3_Pin)
 	{
-		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_3;
+		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_3;
 	} else if (GPIO_Pin == SW2_4_Pin)
 	{
-		right_scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_4;
+		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_4;
 	}
 
-	auto Steering_Wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
-	(scrollStates, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
+	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
+	(scroll_state, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
-	auto status = steering_wheel_frame.send(hcan1);
+	steering_wheel_frame.send(hcan1);
 }
 
 void heartbeat()
@@ -612,9 +421,9 @@ void wait_for_second_button()
 	(button_pressed, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
 
-	auto status = steering_wheel_frame.send(hcan1);
+	auto button_status = steering_wheel_frame.send(hcan1);
 
-	if (status not_eq HAL_OK) {
+	if (button_status not_eq HAL_OK) {
 		//todo
 	}
 

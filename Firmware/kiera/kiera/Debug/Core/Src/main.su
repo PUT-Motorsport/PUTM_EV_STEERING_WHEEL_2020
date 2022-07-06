@@ -27,20 +27,14 @@
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::BMS_HV_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::AQ_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::Apps_main]	0	static
-../Core/Src/main.cpp:446:13:void MX_GPIO_Init()	64	static
-../Core/Src/main.cpp:423:13:void MX_DMA_Init()	24	static
-../Core/Src/main.cpp:509:6:void HAL_GPIO_EXTI_Callback(uint16_t)	8	static
-../Core/Src/main.cpp:532:6:void heartbeat()	48	static
-../Core/Src/main.cpp:601:6:void choose_left_scroll_state()	8	static
-../Core/Src/main.cpp:657:6:void choose_right_scroll_state()	0	static
-../Core/Src/main.cpp:713:6:void reset_flags()	0	static
-../Core/Src/main.cpp:543:6:void wait_for_second_button()	48	static
-../Core/Src/main.cpp:731:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
-../Core/Src/main.cpp:748:6:void Error_Handler()	0	static,ignoring_inline_asm
-../Core/Src/main.cpp:388:13:void MX_CAN1_Init()	8	static
-../Core/Src/main.cpp:263:13:void MX_ADC1_Init()	48	static
-../Core/Src/main.cpp:330:13:void MX_ADC2_Init()	32	static
-../Core/Src/main.cpp:187:6:void SystemClock_Config()	104	static
-../Core/Src/main.cpp:237:6:void PeriphCommonClock_Config()	160	static
+../Core/Src/main.cpp:244:13:void MX_GPIO_Init()	64	static
+../Core/Src/main.cpp:312:6:void HAL_GPIO_EXTI_Callback(uint16_t)	48	static
+../Core/Src/main.cpp:365:6:void heartbeat()	48	static
+../Core/Src/main.cpp:546:6:void reset_flags()	0	static
+../Core/Src/main.cpp:376:6:void wait_for_second_button()	48	static
+../Core/Src/main.cpp:564:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
+../Core/Src/main.cpp:581:6:void Error_Handler()	0	static,ignoring_inline_asm
+../Core/Src/main.cpp:207:13:void MX_CAN1_Init()	8	static
+../Core/Src/main.cpp:156:6:void SystemClock_Config()	104	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp:198:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	48	static
-../Core/Src/main.cpp:92:5:int main()	56	static
+../Core/Src/main.cpp:74:5:int main()	56	static
