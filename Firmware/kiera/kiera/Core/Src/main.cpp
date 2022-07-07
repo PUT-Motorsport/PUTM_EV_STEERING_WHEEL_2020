@@ -133,8 +133,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	  choose_left_scroll_state();
 	  if (sw3_pressed or sw4_pressed or sw5_pressed or sw6_pressed) {
 		  wait_for_second_button();
 	  }
@@ -255,6 +253,12 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, ControlLed4_Pin|ControlLed3_Pin|ControlLed2_Pin|ControlLed1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin : SW5_Pin */
+  GPIO_InitStruct.Pin = SW5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(SW5_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : PA4 PA5 PA6 PA7 */
   GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -264,15 +268,15 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC4 PC5 SW2_1_Pin SW2_2_Pin
-                           SW2_3_Pin SW2_4_Pin SW5_Pin */
+                           SW2_3_Pin SW2_4_Pin */
   GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|SW2_1_Pin|SW2_2_Pin
-                          |SW2_3_Pin|SW2_4_Pin|SW5_Pin;
+                          |SW2_3_Pin|SW2_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW1_2_Pin SW1_3_Pin SW1_4_Pin */
-  GPIO_InitStruct.Pin = SW1_2_Pin|SW1_3_Pin|SW1_4_Pin;
+  /*Configure GPIO pins : SW1_1_Pin SW1_2_Pin SW1_3_Pin SW1_4_Pin */
+  GPIO_InitStruct.Pin = SW1_1_Pin|SW1_2_Pin|SW1_3_Pin|SW1_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -330,10 +334,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		sw6_pressed = 1;
 //		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	}/* else if (GPIO_Pin == SW1_1_Pin)
+	} else if (GPIO_Pin == SW1_1_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
-	}*/ else if (GPIO_Pin == SW1_2_Pin)
+	} else if (GPIO_Pin == SW1_2_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
 	} else if (GPIO_Pin == SW1_3_Pin)

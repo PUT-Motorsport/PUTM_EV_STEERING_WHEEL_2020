@@ -256,7 +256,7 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE END EXTI15_10_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(SW3_Pin);
   HAL_GPIO_EXTI_IRQHandler(SW4_Pin);
-  HAL_GPIO_EXTI_IRQHandler(SW5_Pin);
+  HAL_GPIO_EXTI_IRQHandler(SW1_1_Pin);
   HAL_GPIO_EXTI_IRQHandler(SW1_2_Pin);
   HAL_GPIO_EXTI_IRQHandler(SW1_3_Pin);
   HAL_GPIO_EXTI_IRQHandler(SW1_4_Pin);

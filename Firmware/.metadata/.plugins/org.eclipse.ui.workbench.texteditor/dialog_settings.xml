@@ -8,6 +8,7 @@
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="pcb"/>
 			<item value="timer"/>
 			<item value="hear"/>
 			<item value="sw3"/>
@@ -15,7 +16,6 @@
 			<item value="CAN_Interrupts"/>
 			<item value="error"/>
 			<item value="can"/>
-			<item value="left_scroll_state"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,4 +1,4 @@
-21:20:28 **** Incremental Build of configuration Debug for project kiera ****
+10:28:23 **** Incremental Build of configuration Debug for project kiera ****
 make -j8 all 
 arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++20 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4P5xx -c -I../Core/Inc -I"C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY" -IC:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/PUTM_EV_CAN_LIBRARY/lib -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -Og -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 In file included from ../Drivers/CMSIS/Include/core_cm4.h:1955,
@@ -31,8 +31,8 @@ In file included from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:29
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:808:50: note: in expansion of macro 'SET_BIT'
   808 |                                                  SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_GPIOHEN); \
       |                                                  ^~~~~~~
-../Core/Src/main.cpp:249:3: note: in expansion of macro '__HAL_RCC_GPIOH_CLK_ENABLE'
-  249 |   __HAL_RCC_GPIOH_CLK_ENABLE();
+../Core/Src/main.cpp:247:3: note: in expansion of macro '__HAL_RCC_GPIOH_CLK_ENABLE'
+  247 |   __HAL_RCC_GPIOH_CLK_ENABLE();
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:212:38: warning: compound assignment with 'volatile'-qualified left operand is deprecated [-Wvolatile]
   212 | #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
@@ -40,8 +40,8 @@ In file included from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:29
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:744:50: note: in expansion of macro 'SET_BIT'
   744 |                                                  SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_GPIOAEN); \
       |                                                  ^~~~~~~
-../Core/Src/main.cpp:250:3: note: in expansion of macro '__HAL_RCC_GPIOA_CLK_ENABLE'
-  250 |   __HAL_RCC_GPIOA_CLK_ENABLE();
+../Core/Src/main.cpp:248:3: note: in expansion of macro '__HAL_RCC_GPIOA_CLK_ENABLE'
+  248 |   __HAL_RCC_GPIOA_CLK_ENABLE();
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:212:38: warning: compound assignment with 'volatile'-qualified left operand is deprecated [-Wvolatile]
   212 | #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
@@ -49,8 +49,8 @@ In file included from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:29
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:760:50: note: in expansion of macro 'SET_BIT'
   760 |                                                  SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_GPIOCEN); \
       |                                                  ^~~~~~~
-../Core/Src/main.cpp:251:3: note: in expansion of macro '__HAL_RCC_GPIOC_CLK_ENABLE'
-  251 |   __HAL_RCC_GPIOC_CLK_ENABLE();
+../Core/Src/main.cpp:249:3: note: in expansion of macro '__HAL_RCC_GPIOC_CLK_ENABLE'
+  249 |   __HAL_RCC_GPIOC_CLK_ENABLE();
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:212:38: warning: compound assignment with 'volatile'-qualified left operand is deprecated [-Wvolatile]
   212 | #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
@@ -58,8 +58,8 @@ In file included from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:29
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:752:50: note: in expansion of macro 'SET_BIT'
   752 |                                                  SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_GPIOBEN); \
       |                                                  ^~~~~~~
-../Core/Src/main.cpp:252:3: note: in expansion of macro '__HAL_RCC_GPIOB_CLK_ENABLE'
-  252 |   __HAL_RCC_GPIOB_CLK_ENABLE();
+../Core/Src/main.cpp:250:3: note: in expansion of macro '__HAL_RCC_GPIOB_CLK_ENABLE'
+  250 |   __HAL_RCC_GPIOB_CLK_ENABLE();
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:212:38: warning: compound assignment with 'volatile'-qualified left operand is deprecated [-Wvolatile]
   212 | #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
@@ -67,15 +67,20 @@ In file included from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:29
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:769:50: note: in expansion of macro 'SET_BIT'
   769 |                                                  SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_GPIODEN); \
       |                                                  ^~~~~~~
-../Core/Src/main.cpp:253:3: note: in expansion of macro '__HAL_RCC_GPIOD_CLK_ENABLE'
-  253 |   __HAL_RCC_GPIOD_CLK_ENABLE();
+../Core/Src/main.cpp:251:3: note: in expansion of macro '__HAL_RCC_GPIOD_CLK_ENABLE'
+  251 |   __HAL_RCC_GPIOD_CLK_ENABLE();
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-g++ -o "kiera.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\konra\Desktop\przeprowadzka\PUTMotorsport\KieraV2\Firmware\kiera\kiera\STM32L4P5RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="kiera.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-d:\st\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/main.o: in function `main':
-C:/Users/konra/Desktop/przeprowadzka/PUTMotorsport/KieraV2/Firmware/kiera/kiera/Debug/../Core/Src/main.cpp:137: undefined reference to `choose_left_scroll_state'
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:79: kiera.elf] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
+Finished building target: kiera.elf
+ 
+arm-none-eabi-size   kiera.elf 
+arm-none-eabi-objdump -h -S  kiera.elf  > "kiera.list"
+   text	   data	    bss	    dec	    hex	filename
+  11636	     20	   1700	  13356	   342c	kiera.elf
+Finished building: default.size.stdout
+ 
+Finished building: kiera.list
+ 
 
-21:20:31 Build Failed. 3 errors, 8 warnings. (took 2s.497ms)
+10:28:25 Build Finished. 0 errors, 8 warnings. (took 2s.389ms)
 
