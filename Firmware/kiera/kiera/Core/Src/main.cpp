@@ -50,7 +50,9 @@
 uint32_t timer;
 
 bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed = 0;
-
+PUTM_CAN::Steering_Wheel_event last_left_scroll_state{};
+PUTM_CAN::Steering_Wheel_event last_right_scroll_state{};
+PUTM_CAN::Steering_Wheel_event last_button_pressed{};
 int i = 0;
 /* USER CODE END PV */
 
@@ -214,7 +216,7 @@ static void MX_CAN1_Init(void)
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 8;
-  hcan1.Init.Mode = CAN_MODE_LOOPBACK;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
   hcan1.Init.TimeSeg1 = CAN_BS1_12TQ;
   hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
@@ -332,38 +334,56 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+		last_left_scroll_state = scroll_state.l_s_1;
 	} else if (GPIO_Pin == SW1_2_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+		last_left_scroll_state = scroll_state.l_s_1;
 	} else if (GPIO_Pin == SW1_3_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_3;
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+		last_left_scroll_state = scroll_state.l_s_1;
 	} else if (GPIO_Pin == SW1_4_Pin)
 	{
 		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_4;
 		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+		last_left_scroll_state = scroll_state.l_s_1;
 	} else if (GPIO_Pin == SW2_1_Pin)
 	{
 		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_1;
 		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+		last_right_scroll_state = scroll_state.r_s_1;
 	} else if (GPIO_Pin == SW2_2_Pin)
 	{
 		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_2;
 		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+		last_right_scroll_state = scroll_state.r_s_1;
 	} else if (GPIO_Pin == SW2_3_Pin)
 	{
 		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_3;
 		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
+		last_right_scroll_state = scroll_state.r_s_1;
 	} else if (GPIO_Pin == SW2_4_Pin)
 	{
 		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_4;
 		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+		last_right_scroll_state = scroll_state.r_s_1;
 	}
 
+	last_left_scroll_state = scroll_state.l_s_1;
+	last_right_scroll_state = scroll_state.r_s_1;
+
+
+}
+
+void send_scroll_state()
+{
+	PUTM_CAN::Steering_Wheel_event scroll_state{} = last_left_scroll_state;
+
 	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
-	(scroll_state, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
+		(scroll_state, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
 	steering_wheel_frame.send(hcan1);
 }

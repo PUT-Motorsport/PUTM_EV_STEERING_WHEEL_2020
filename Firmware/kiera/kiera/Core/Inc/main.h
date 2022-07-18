@@ -40,6 +40,7 @@ void wait_for_second_button();
 void choose_right_scroll_state();
 void send_example();
 void heartbeat();
+void send_scroll_state();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

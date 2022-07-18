@@ -27,14 +27,14 @@
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::BMS_HV_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::AQ_main]	0	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/message_abstraction.hpp:82:8:void PUTM_CAN::Device<Device_data_type>::set_data(const PUTM_CAN::Can_rx_message&) [with Device_data_type = PUTM_CAN::Apps_main]	0	static
-../Core/Src/main.cpp:242:13:void MX_GPIO_Init()	64	static
-../Core/Src/main.cpp:310:6:void HAL_GPIO_EXTI_Callback(uint16_t)	48	static
-../Core/Src/main.cpp:371:6:void heartbeat()	48	static
-../Core/Src/main.cpp:552:6:void reset_flags()	0	static
-../Core/Src/main.cpp:382:6:void wait_for_second_button()	48	static
-../Core/Src/main.cpp:570:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
-../Core/Src/main.cpp:587:6:void Error_Handler()	0	static,ignoring_inline_asm
-../Core/Src/main.cpp:205:13:void MX_CAN1_Init()	8	static
-../Core/Src/main.cpp:154:6:void SystemClock_Config()	104	static
+../Core/Src/main.cpp:244:13:void MX_GPIO_Init()	64	static
+../Core/Src/main.cpp:312:6:void HAL_GPIO_EXTI_Callback(uint16_t)	48	static
+../Core/Src/main.cpp:393:6:void heartbeat()	48	static
+../Core/Src/main.cpp:574:6:void reset_flags()	0	static
+../Core/Src/main.cpp:404:6:void wait_for_second_button()	48	static
+../Core/Src/main.cpp:592:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static
+../Core/Src/main.cpp:609:6:void Error_Handler()	0	static,ignoring_inline_asm
+../Core/Src/main.cpp:207:13:void MX_CAN1_Init()	8	static
+../Core/Src/main.cpp:156:6:void SystemClock_Config()	104	static
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp:198:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	48	static
-../Core/Src/main.cpp:74:5:int main()	56	static
+../Core/Src/main.cpp:76:5:int main()	56	static

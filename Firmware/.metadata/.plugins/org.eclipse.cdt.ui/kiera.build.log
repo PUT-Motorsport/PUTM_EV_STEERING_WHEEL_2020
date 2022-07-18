@@ -1,10 +1,10 @@
-21:54:35 **** Incremental Build of configuration Debug for project kiera ****
+21:06:19 **** Incremental Build of configuration Debug for project kiera ****
 make -j8 all 
 arm-none-eabi-size   kiera.elf 
    text	   data	    bss	    dec	    hex	filename
-  11688	     20	   1700	  13408	   3460	kiera.elf
+  11684	     20	   1700	  13404	   345c	kiera.elf
 Finished building: default.size.stdout
  
 
-21:54:35 Build Finished. 0 errors, 0 warnings. (took 562ms)
+21:06:19 Build Finished. 0 errors, 0 warnings. (took 490ms)
 
