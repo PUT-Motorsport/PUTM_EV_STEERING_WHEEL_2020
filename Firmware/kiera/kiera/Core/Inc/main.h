@@ -40,7 +40,6 @@ void wait_for_second_button();
 void choose_right_scroll_state();
 void send_example();
 void heartbeat();
-void send_scroll_state();
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -68,6 +67,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define SW5_Pin GPIO_PIN_1
 #define SW5_GPIO_Port GPIOA
+#define SW5_EXTI_IRQn EXTI1_IRQn
 #define SW1_1_Pin GPIO_PIN_12
 #define SW1_1_GPIO_Port GPIOB
 #define SW1_1_EXTI_IRQn EXTI15_10_IRQn
@@ -100,6 +100,7 @@ void Error_Handler(void);
 #define SW4_EXTI_IRQn EXTI15_10_IRQn
 #define SW6_Pin GPIO_PIN_2
 #define SW6_GPIO_Port GPIOD
+#define SW6_EXTI_IRQn EXTI2_IRQn
 #define ControlLed4_Pin GPIO_PIN_4
 #define ControlLed4_GPIO_Port GPIOB
 #define ControlLed3_Pin GPIO_PIN_5
