@@ -49,9 +49,13 @@
 /* USER CODE BEGIN PV */
 uint32_t timer;
 
-bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed = 0;
-
+bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed;
+PUTM_CAN::scrollStates last_left_scroll_state;
+PUTM_CAN::scrollStates last_right_scroll_state;
+PUTM_CAN::buttonStates last_button_pressed;
+bool scroll_activated = 0;
 int i = 0;
+void send_frame(PUTM_CAN::buttonStates);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -137,6 +141,10 @@ int main(void)
 		  wait_for_second_button();
 	  }
 
+	  if (scroll_activated) {
+		  send_frame(PUTM_CAN::buttonStates::not_pressed);
+	  }
+
 	  if (timer + 500 < HAL_GetTick())
 	  {
 		  heartbeat();
@@ -214,7 +222,7 @@ static void MX_CAN1_Init(void)
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 8;
-  hcan1.Init.Mode = CAN_MODE_LOOPBACK;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
   hcan1.Init.TimeSeg1 = CAN_BS1_12TQ;
   hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
@@ -295,6 +303,12 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
   HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
@@ -315,57 +329,63 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if (GPIO_Pin == SW3_Pin)
 	{
 		sw3_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
 	} else if (GPIO_Pin == SW4_Pin)
 	{
 		sw4_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
 	} else if (GPIO_Pin == SW5_Pin)
 	{
 		sw5_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
 	} else if (GPIO_Pin == SW6_Pin)
 	{
 		sw6_pressed = 1;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	} else if (GPIO_Pin == SW1_1_Pin)
-	{
-		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_1;
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	} else if (GPIO_Pin == SW1_2_Pin)
-	{
-		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_2;
-		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-	} else if (GPIO_Pin == SW1_3_Pin)
-	{
-		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_3;
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-	} else if (GPIO_Pin == SW1_4_Pin)
-	{
-		scroll_state.l_s_1 = PUTM_CAN::scrollStates::scroll_4;
-		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-	} else if (GPIO_Pin == SW2_1_Pin)
-	{
-		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_1;
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-	} else if (GPIO_Pin == SW2_2_Pin)
-	{
-		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_2;
-		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-	} else if (GPIO_Pin == SW2_3_Pin)
-	{
-		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_3;
-		HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-	} else if (GPIO_Pin == SW2_4_Pin)
-	{
-		scroll_state.r_s_1 = PUTM_CAN::scrollStates::scroll_4;
-		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
+	} else {
+		if (GPIO_Pin == SW1_1_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_1;
+		} else if (GPIO_Pin == SW1_2_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_2;
+		} else if (GPIO_Pin == SW1_3_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_3;
+		} else if (GPIO_Pin == SW1_4_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_4;
+		} else if (GPIO_Pin == SW2_1_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_1;
+		} else if (GPIO_Pin == SW2_2_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_2;
+		} else if (GPIO_Pin == SW2_3_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_3;
+		} else if (GPIO_Pin == SW2_4_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_4;
+		}
+
+		scroll_activated = 1;
 	}
 
-	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
-	(scroll_state, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
-	steering_wheel_frame.send(hcan1);
+}
+
+void send_frame(PUTM_CAN::buttonStates button)
+{
+	PUTM_CAN::Steering_Wheel_event payload{};
+
+	payload.l_s_1 = last_left_scroll_state;
+	payload.r_s_1 = last_right_scroll_state;
+	payload.button = button;
+	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
+		(payload, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
+
+	if (HAL_OK not_eq steering_wheel_frame.send(hcan1)) {
+		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+	}
+
+	reset_flags();
 }
 
 void heartbeat()
@@ -377,177 +397,41 @@ void heartbeat()
 	(pcb_alive, PUTM_CAN::can_tx_header_STEERING_WHEEL_MAIN);
 
  	steering_wheel_heartbeat.send(hcan1);
+
 }
 
 void wait_for_second_button()
 {
 	HAL_Delay(500);
-	PUTM_CAN::Steering_Wheel_event button_pressed{};
+	PUTM_CAN::buttonStates button = PUTM_CAN::buttonStates::not_pressed;
 
-	if (sw3_pressed && sw4_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_2;
-	} else if (sw3_pressed && sw5_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_3;
-
-	} else if (sw3_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button1_4;
-		HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-	} else if (sw4_pressed && sw5_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button2_3;
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
-	} else if (sw4_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button2_4;
-	} else if (sw5_pressed && sw6_pressed)
-	{
-		button_pressed.button = PUTM_CAN::buttonStates::button3_4;
+	if (sw3_pressed && sw4_pressed)	{
+		button = PUTM_CAN::buttonStates::button3_4;
+	} else if (sw3_pressed && sw5_pressed) {
+		button = PUTM_CAN::buttonStates::button2_4;
+	} else if (sw3_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_4;
+	} else if (sw4_pressed && sw5_pressed) {
+		button = PUTM_CAN::buttonStates::button2_3;
+		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+	} else if (sw4_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_3;
+	} else if (sw5_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_2;
 	} else if (sw3_pressed) {
-		button_pressed.button = PUTM_CAN::buttonStates::button1;
-//		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+		button = PUTM_CAN::buttonStates::button4;
 	} else if (sw4_pressed) {
-		button_pressed.button = PUTM_CAN::buttonStates::button2;
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
+		button = PUTM_CAN::buttonStates::button3;
 	} else if (sw5_pressed) {
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-		button_pressed.button = PUTM_CAN::buttonStates::button3;
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-
+		button = PUTM_CAN::buttonStates::button2;
 	} else if (sw6_pressed) {
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-		button_pressed.button = PUTM_CAN::buttonStates::button4;
+		button = PUTM_CAN::buttonStates::button1;
 	}
 
-	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
-	(button_pressed, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
-
-
-	auto button_status = steering_wheel_frame.send(hcan1);
-
-	if (button_status not_eq HAL_OK) {
-		//todo
-	}
+	send_frame(button);
 
 	reset_flags();
-
 }
-
-//void choose_left_scroll_state()
-//{
-//	float average_adc = 0;
-//
-//	//	  calculate average adc
-//	for (int i = 0; i < 10; i++) {
-//		average_adc = average_adc + left_adc_reading[i];
-//	}
-//
-//	average_adc = average_adc / 10;
-//
-//	int lss = 0; // Left Scroll State
-//
-//	if (1110 < average_adc && average_adc < 1115)
-//	{
-//		lss = 1;
-//	} else if (3129 < average_adc && average_adc < 3133)
-//	{
-//		lss = 2;
-//	} else if (3715 < average_adc && average_adc < 3721)
-//	{
-//		lss = 3;
-//	} else if (3970 < average_adc && average_adc < 3975)
-//	{
-//		lss = 4;
-//	}
-//
-//
-//	if (lss != left_last_state)
-//	{
-//		switch (lss)
-//		{
-//		case 1:
-//			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-////			HAL_Delay(200);
-//			left_last_state = lss;
-//			break;
-//		case 2:
-//			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-////			HAL_Delay(200);
-//			left_last_state = lss;
-//			break;
-//		case 3:
-//			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-////			HAL_Delay(200);
-//			left_last_state = lss;
-//			break;
-//		case 4:
-//			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-////			HAL_Delay(200);
-//			left_last_state = lss;
-//			break;
-//		}
-//	}
-//}
-//
-//void choose_right_scroll_state()
-//{
-//	float average_adc = 0;
-//
-//	//	  calculate average adc
-//	for (int i = 0; i < 10; i++) {
-//		average_adc = average_adc + right_adc_reading[i];
-//	}
-//
-//	average_adc = average_adc / 10;
-//
-//	int rss = 0; // Right Scroll State
-//
-//	if (1110 < average_adc && average_adc < 1115)
-//	{
-//		rss = 1;
-//	} else if (3129 < average_adc && average_adc < 3133)
-//	{
-//		rss = 2;
-//	} else if (3715 < average_adc && average_adc < 3721)
-//	{
-//		rss = 3;
-//	} else if (3970 < average_adc && average_adc < 3975)
-//	{
-//		rss = 4;
-//	}
-//
-//
-//	if (rss != right_last_state)
-//	{
-//		switch (rss)
-//		{
-//		case 1:
-////			HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
-////			HAL_Delay(200);
-//			right_last_state = rss;
-//			break;
-//		case 2:
-////			HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
-////			HAL_Delay(200);
-//			right_last_state = rss;
-//			break;
-//		case 3:
-////			HAL_GPIO_TogglePin(ControlLed3_GPIO_Port, ControlLed3_Pin);
-////			HAL_Delay(200);
-//			right_last_state = rss;
-//			break;
-//		case 4:
-////			HAL_GPIO_TogglePin(ControlLed4_GPIO_Port, ControlLed4_Pin);
-////			HAL_Delay(200);
-//			right_last_state = rss;
-//			break;
-//		}
-//	}
-//}
 
 void reset_flags()
 {
@@ -555,6 +439,7 @@ void reset_flags()
 	sw4_pressed = 0;
 	sw5_pressed = 0;
 	sw6_pressed = 0;
+	scroll_activated = 0;
 }
 
 /* USER CODE END 4 */
