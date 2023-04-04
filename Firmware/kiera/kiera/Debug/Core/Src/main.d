@@ -36,42 +36,13 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp \
- ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DV.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp \
- ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SW_SENSOR.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp \
  ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-WHEELTEMP.hpp \
- ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-YAWPROBE.hpp \
- ../Core/Inc/etl/list.h ../Core/Inc/etl/platform.h \
- ../Core/Inc/etl/file_error_numbers.h \
- ../Core/Inc/etl/profiles/determine_compiler_version.h \
- ../Core/Inc/etl/profiles/determine_compiler.h \
- ../Core/Inc/etl/profiles/determine_compiler_language_support.h \
- ../Core/Inc/etl/profiles/determine_development_os.h \
- ../Core/Inc/etl/profiles/determine_builtin_support.h \
- ../Core/Inc/etl/private/choose_namespace.h ../Core/Inc/etl/algorithm.h \
- ../Core/Inc/etl/type_traits.h ../Core/Inc/etl/nullptr.h \
- ../Core/Inc/etl/static_assert.h ../Core/Inc/etl/iterator.h \
- ../Core/Inc/etl/utility.h ../Core/Inc/etl/functional.h \
- ../Core/Inc/etl/private/minmax_push.h \
- ../Core/Inc/etl/private/minmax_pop.h ../Core/Inc/etl/pool.h \
- ../Core/Inc/etl/ipool.h ../Core/Inc/etl/error_handler.h \
- ../Core/Inc/etl/exception.h ../Core/Inc/etl/function.h \
- ../Core/Inc/etl/memory.h ../Core/Inc/etl/alignment.h \
- ../Core/Inc/etl/placement_new.h ../Core/Inc/etl/generic_pool.h \
- ../Core/Inc/etl/debug_count.h ../Core/Inc/etl/atomic.h \
- ../Core/Inc/etl/atomic/atomic_std.h ../Core/Inc/etl/atomic/../platform.h \
- ../Core/Inc/etl/atomic/../nullptr.h \
- ../Core/Inc/etl/atomic/../char_traits.h \
- ../Core/Inc/etl/atomic/../platform.h \
- ../Core/Inc/etl/atomic/../algorithm.h \
- ../Core/Inc/etl/atomic/../iterator.h ../Core/Inc/etl/parameter_type.h \
- ../Core/Inc/etl/initializer_list.h ../Core/Inc/rotary.hpp \
- ../Core/Inc/gpioElements.hpp ../Core/Inc/etl/array.h \
- ../Core/Inc/etl/nth_type.h
+ ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-YAWPROBE.hpp
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -110,54 +81,10 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_HV.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-BMS_LV.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DASH.hpp:
-../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-DV.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-LAP_TIMER.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SF.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-STEERING_WHEEL.hpp:
-../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-SW_SENSOR.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TC.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-TELEMETRY.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-WHEELTEMP.hpp:
 ../Core/Inc/PUTM_EV_CAN_LIBRARY/lib/CanHeaders/PM08-CANBUS-YAWPROBE.hpp:
-../Core/Inc/etl/list.h:
-../Core/Inc/etl/platform.h:
-../Core/Inc/etl/file_error_numbers.h:
-../Core/Inc/etl/profiles/determine_compiler_version.h:
-../Core/Inc/etl/profiles/determine_compiler.h:
-../Core/Inc/etl/profiles/determine_compiler_language_support.h:
-../Core/Inc/etl/profiles/determine_development_os.h:
-../Core/Inc/etl/profiles/determine_builtin_support.h:
-../Core/Inc/etl/private/choose_namespace.h:
-../Core/Inc/etl/algorithm.h:
-../Core/Inc/etl/type_traits.h:
-../Core/Inc/etl/nullptr.h:
-../Core/Inc/etl/static_assert.h:
-../Core/Inc/etl/iterator.h:
-../Core/Inc/etl/utility.h:
-../Core/Inc/etl/functional.h:
-../Core/Inc/etl/private/minmax_push.h:
-../Core/Inc/etl/private/minmax_pop.h:
-../Core/Inc/etl/pool.h:
-../Core/Inc/etl/ipool.h:
-../Core/Inc/etl/error_handler.h:
-../Core/Inc/etl/exception.h:
-../Core/Inc/etl/function.h:
-../Core/Inc/etl/memory.h:
-../Core/Inc/etl/alignment.h:
-../Core/Inc/etl/placement_new.h:
-../Core/Inc/etl/generic_pool.h:
-../Core/Inc/etl/debug_count.h:
-../Core/Inc/etl/atomic.h:
-../Core/Inc/etl/atomic/atomic_std.h:
-../Core/Inc/etl/atomic/../platform.h:
-../Core/Inc/etl/atomic/../nullptr.h:
-../Core/Inc/etl/atomic/../char_traits.h:
-../Core/Inc/etl/atomic/../platform.h:
-../Core/Inc/etl/atomic/../algorithm.h:
-../Core/Inc/etl/atomic/../iterator.h:
-../Core/Inc/etl/parameter_type.h:
-../Core/Inc/etl/initializer_list.h:
-../Core/Inc/rotary.hpp:
-../Core/Inc/gpioElements.hpp:
-../Core/Inc/etl/array.h:
-../Core/Inc/etl/nth_type.h:
