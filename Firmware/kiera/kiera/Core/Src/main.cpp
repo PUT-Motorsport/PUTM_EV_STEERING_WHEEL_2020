@@ -26,13 +26,12 @@
 #include <string.h>
 #include <stdbool.h>
 #include "PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp"
-#include "etl/list.h"
-#include "rotary.hpp"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -45,80 +44,18 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-CAN_HandleTypeDef hcan1;
+ CAN_HandleTypeDef hcan1;
 
 /* USER CODE BEGIN PV */
+uint32_t timer;
 
-struct Config
-{
-	static constexpr size_t basic_delay = 10;
-
-	static constexpr bool rotary_inverted = false;
-	static constexpr bool buttons_inverted = false;
-	static constexpr bool leds_inverted = true;
-} config;
-
-const GpioInElement sw1_1(SW1_1_GPIO_Port, SW1_1_Pin, config.rotary_inverted);
-const GpioInElement sw1_2(SW1_2_GPIO_Port, SW1_2_Pin, config.rotary_inverted);
-const GpioInElement sw1_3(SW1_3_GPIO_Port, SW1_3_Pin, config.rotary_inverted);
-const GpioInElement sw1_4(SW1_4_GPIO_Port, SW1_4_Pin, config.rotary_inverted);
-
-const GpioInElement sw2_1(SW2_1_GPIO_Port, SW2_1_Pin, config.rotary_inverted);
-const GpioInElement sw2_2(SW2_2_GPIO_Port, SW2_2_Pin, config.rotary_inverted);
-const GpioInElement sw2_3(SW2_3_GPIO_Port, SW2_3_Pin, config.rotary_inverted);
-const GpioInElement sw2_4(SW2_4_GPIO_Port, SW2_4_Pin, config.rotary_inverted);
-
-const std::array< GpioInElement const*, rotary_pin_count > rot1_arr = { &sw1_1, &sw1_2, &sw1_3, &sw1_4 };
-const std::array< GpioInElement const*, rotary_pin_count > rot2_arr = { &sw2_1, &sw2_2, &sw2_3, &sw2_4 };
-
-const GpioInElement sw3(SW3_GPIO_Port, SW3_Pin, config.buttons_inverted);
-const GpioInElement sw4(SW4_GPIO_Port, SW4_Pin, config.buttons_inverted);
-//const GpioInElement sw5(SW5_GPIO_Port, SW5_Pin, config.buttons_inverted);
-const GpioInElement sw6(SW6_GPIO_Port, SW6_Pin, config.buttons_inverted);
-const GpioInElement sw7(SW7_GPIO_Port, SW7_Pin, config.buttons_inverted);
-const GpioInElement sw8(SW8_GPIO_Port, SW8_Pin, config.buttons_inverted);
-const GpioInElement sw9(SW9_GPIO_Port, SW9_Pin, config.buttons_inverted);
-const GpioInElement sw10(SW10_GPIO_Port, SW10_Pin, config.buttons_inverted);
-
-const GpioOutElement debug_led_1(ControlLed1_GPIO_Port, ControlLed1_Pin, config.leds_inverted);
-const GpioOutElement debug_led_2(ControlLed2_GPIO_Port, ControlLed2_Pin, config.leds_inverted);
-const GpioOutElement debug_led_3(ControlLed3_GPIO_Port, ControlLed3_Pin, config.leds_inverted);
-const GpioOutElement debug_led_4(ControlLed4_GPIO_Port, ControlLed4_Pin, config.leds_inverted);
-
-GpioInElement const &r_button = sw3;
-GpioInElement const &g_button = sw4;
-GpioInElement const &b_button = sw6;
-GpioInElement const &y_button = sw7;
-
-//TODO: organise later
-const std::array< GpioInElement const*, 4 > buttons = { &r_button, &g_button, &b_button, &y_button };
-
-etl::list < size_t, 2 > pressed_buttons_i;
-
-Rotary left_rotary(rot1_arr);
-Rotary right_rotary(rot2_arr);
-
-struct
-{
-	bool const& r_btn = r_button.getStateConstRefForDebug();
-	bool const& g_btn = g_button.getStateConstRefForDebug();
-	bool const& b_btn = b_button.getStateConstRefForDebug();
-	bool const& y_btn = y_button.getStateConstRefForDebug();
-	RotationDirection const& rot_left = left_rotary.getRotationConstRefForDebug();
-	RotationDirection const& rot_right = right_rotary.getRotationConstRefForDebug();
-
-	//PUTM_CAN::buttonStates button_states = PUTM_CAN::buttonStates::not_pressed;
-	//PUTM_CAN::scrollStates right_scroll_state;
-	//PUTM_CAN::scrollStates left_scroll_state;
-} controls_states;
-
-enum struct Mission : uint8_t
-{
-	Waiting, // waits for triggers
-	FirstPressDetected, // waits for release or until second btn pressed
-	SecondPressDetected // waits for all buttons to be released
-} mission;
-
+bool sw3_pressed, sw4_pressed, sw5_pressed, sw6_pressed;
+PUTM_CAN::scrollStates last_left_scroll_state;
+PUTM_CAN::scrollStates last_right_scroll_state;
+PUTM_CAN::buttonStates last_button_pressed;
+bool scroll_activated = 0;
+int i = 0;
+void send_frame(PUTM_CAN::buttonStates);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -126,9 +63,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN1_Init(void);
 /* USER CODE BEGIN PFP */
-void setUpCan();
 
-void sendStates(PUTM_CAN::scrollStates rotary_left, PUTM_CAN::scrollStates rotary_right, PUTM_CAN::buttonStates button);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -166,99 +101,56 @@ int main(void)
   MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
 
-   setUpCan();
+  CAN_FilterTypeDef sFilterConfig;
+  sFilterConfig.FilterBank = 0;
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  sFilterConfig.FilterIdHigh = 0x0000;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0x0000;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
+  sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  sFilterConfig.FilterActivation = ENABLE;
+
+
+	if (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK) {
+		Error_Handler();
+	}
+
+	if (HAL_CAN_Start(&hcan1) != HAL_OK) {
+		Error_Handler();
+	}
+
+	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK) {
+		Error_Handler();
+	}
+
+  HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+  uint32_t timer = HAL_GetTick();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (true)
+  while (1)
   {
+	  i++;
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-	  //----------------------------------------------------------------------------------------------------
-	  //handle
-	  HAL_Delay(config.basic_delay);
-
-	  for(const auto btn_ptr : buttons) btn_ptr->handle();
-	  right_rotary.handle();
-	  left_rotary.handle();
-	  //----------------------------------------------------------------------------------------------------
-	  // Rotary outside of main logic
-	  auto left_rot = left_rotary.getRotation();
-	  if(left_rot != RotationDirection::None)
-	  {
-
+	  if (sw3_pressed or sw4_pressed or sw5_pressed or sw6_pressed) {
+		  wait_for_second_button();
 	  }
-	  auto right_rot = right_rotary.getRotation();
-	  if(right_rot != RotationDirection::None)
-	  {
 
+	  if (scroll_activated) {
+		  send_frame(PUTM_CAN::buttonStates::not_pressed);
 	  }
-	  //----------------------------------------------------------------------------------------------------
 
-	  if(pressed_buttons_i.size() == 0) mission = Mission::Waiting;
-
-	  switch (mission)
+	  if (timer + 500 < HAL_GetTick())
 	  {
-	  	  case Mission::Waiting:
-	  	  {
-	  		  for (size_t i = 0; i < buttons.size(); i++)
-	  		  {
-	  			  if(buttons[i]->risingEdge())
-	  			  {
-	  				  mission = Mission::FirstPressDetected;
-	  				  pressed_buttons_i.emplace_back(i);
-	  				  break;
-	  			  }
-	  		  }
-	  	  }break;
-	  	  case Mission::FirstPressDetected:
-	  	  {
-	  		  if(buttons[pressed_buttons_i.front()]->fallingEdge())
-	  		  {
-	  			  PUTM_CAN::buttonStates state;
-	  			  sendStates(PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::buttonStates(state));
-	  			  pressed_buttons_i.clear();
-	  			  mission = Mission::Waiting;
-	  			  break;
-	  		  }
-	  		  for (size_t i = 0; i < buttons.size(); i++)
-			  {
-	  			  if(i == pressed_buttons_i.front()) continue;
-				  if(buttons[i]->risingEdge())
-				  {
-					  mission = Mission::SecondPressDetected;
-					  pressed_buttons_i.emplace_back(i);
-
-		  			  size_t state_1 = pressed_buttons_i.front();
-		  			  size_t state_2 = pressed_buttons_i.back();
-		  			  /*
-		  			   * calc button states based on the indentifier:
-		  			   * first = 0, second = 1 and so on.
-		  			   * 1_2 = 4 + first + second = 5
-		  			   * 1_3 = 4 + first + third = 6
-		  			   * 1_4 = 4 + first + fourth = 7
-		  			   * 2_3 = 4 + second + third + (1) = 7 + 1 = 8
-		  			   * 2_4 = 4 + second + third + (1) = 8 + 1 = 9;
-		  			   * 3_4 = 4 + third + fourth + (1) = 9 + 1 = 10;
-		  			   */
-		  			  size_t state = state_1 + state_2 + 4;
-		  			  if(state >= 7 && state_1 != 0 && state_2 != 0) state += 1;
-
-		  			  sendStates(PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::buttonStates(state));
-					  break;
-				  }
-			  }
-	  	  }break;
-	  	  case Mission::SecondPressDetected:
-		  {
-			  if(!buttons[pressed_buttons_i.front()]->isActive() && !buttons[pressed_buttons_i.back()]->isActive())
-			  {
-	  			  pressed_buttons_i.clear();
-	  			  mission = Mission::Waiting;
-			  }
-		  }break;
+		  heartbeat();
+		  timer = HAL_GetTick();
 	  }
+
   }
   /* USER CODE END 3 */
 }
@@ -369,11 +261,11 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, ControlLed4_Pin|ControlLed3_Pin|ControlLed2_Pin|ControlLed1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : SW7_Pin SW8_Pin SW9_Pin SW10_Pin */
-  GPIO_InitStruct.Pin = SW7_Pin|SW8_Pin|SW9_Pin|SW10_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  /*Configure GPIO pin : SW5_Pin */
+  GPIO_InitStruct.Pin = SW5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(SW5_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA4 PA5 PA6 PA7 */
   GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
@@ -383,29 +275,23 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : IMU_INIT1_Pin IMU_INIT2_Pin */
-  GPIO_InitStruct.Pin = IMU_INIT1_Pin|IMU_INIT2_Pin;
+  /*Configure GPIO pins : PC4 PC5 SW2_1_Pin SW2_2_Pin
+                           SW2_3_Pin SW2_4_Pin SW3_Pin SW4_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|SW2_1_Pin|SW2_2_Pin
+                          |SW2_3_Pin|SW2_4_Pin|SW3_Pin|SW4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SW1_1_Pin SW1_2_Pin SW1_3_Pin SW1_4_Pin */
   GPIO_InitStruct.Pin = SW1_1_Pin|SW1_2_Pin|SW1_3_Pin|SW1_4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SW2_1_Pin SW2_2_Pin SW2_3_Pin SW2_4_Pin
-                           SW3_Pin SW4_Pin */
-  GPIO_InitStruct.Pin = SW2_1_Pin|SW2_2_Pin|SW2_3_Pin|SW2_4_Pin
-                          |SW3_Pin|SW4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
   /*Configure GPIO pin : SW6_Pin */
   GPIO_InitStruct.Pin = SW6_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(SW6_GPIO_Port, &GPIO_InitStruct);
 
@@ -417,72 +303,145 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	//do nothing
+//	timer = HAL_GetTick();
+	PUTM_CAN::Steering_Wheel_event scroll_state{};
+
+	if (GPIO_Pin == SW3_Pin)
+	{
+		sw3_pressed = 1;
+	} else if (GPIO_Pin == SW4_Pin)
+	{
+		sw4_pressed = 1;
+	} else if (GPIO_Pin == SW5_Pin)
+	{
+		sw5_pressed = 1;
+	} else if (GPIO_Pin == SW6_Pin)
+	{
+		sw6_pressed = 1;
+	} else {
+		if (GPIO_Pin == SW1_1_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_1;
+		} else if (GPIO_Pin == SW1_2_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_2;
+		} else if (GPIO_Pin == SW1_3_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_3;
+		} else if (GPIO_Pin == SW1_4_Pin)
+		{
+			last_left_scroll_state = PUTM_CAN::scrollStates::scroll_4;
+		} else if (GPIO_Pin == SW2_1_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_1;
+		} else if (GPIO_Pin == SW2_2_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_2;
+		} else if (GPIO_Pin == SW2_3_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_3;
+		} else if (GPIO_Pin == SW2_4_Pin)
+		{
+			last_right_scroll_state = PUTM_CAN::scrollStates::scroll_4;
+		}
+
+		scroll_activated = 1;
+	}
+
+
 }
 
-void sendStates(PUTM_CAN::scrollStates rotary_left, PUTM_CAN::scrollStates rotary_right, PUTM_CAN::buttonStates button)
+void send_frame(PUTM_CAN::buttonStates button)
 {
-	PUTM_CAN::Steering_Wheel_event payload
-	{
-		.button = button,
-		.l_s_1 = rotary_left,
-		.r_s_1 = rotary_right
-	};
+	PUTM_CAN::Steering_Wheel_event payload{};
 
-	auto steering_wheel_frame = PUTM_CAN::Can_tx_message< PUTM_CAN::Steering_Wheel_event >
+	payload.l_s_1 = last_left_scroll_state;
+	payload.r_s_1 = last_right_scroll_state;
+	payload.button = button;
+	auto steering_wheel_frame = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_event>
 		(payload, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
 
-	if(steering_wheel_frame.send(hcan1) != HAL_OK)
-	{
+	if (HAL_OK not_eq steering_wheel_frame.send(hcan1)) {
 		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
 	}
+
+	reset_flags();
 }
 
-/*void heartbeat()
+void heartbeat()
 {
+
 	PUTM_CAN::Steering_Wheel_main pcb_alive{0, PUTM_CAN::Steering_Wheel_states::OK};
 
 	auto steering_wheel_heartbeat = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_main>
 	(pcb_alive, PUTM_CAN::can_tx_header_STEERING_WHEEL_MAIN);
 
  	steering_wheel_heartbeat.send(hcan1);
-}*/
 
-void setUpCan()
-{
-	CAN_FilterTypeDef sFilterConfig;
-	sFilterConfig.FilterBank = 0;
-	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-	sFilterConfig.FilterIdHigh = 0x0000;
-	sFilterConfig.FilterIdLow = 0x0000;
-	sFilterConfig.FilterMaskIdHigh = 0x0000;
-	sFilterConfig.FilterMaskIdLow = 0x0000;
-	sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
-	sFilterConfig.FilterActivation = ENABLE;
-
-	if (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK) {
-		Error_Handler();
-	}
-
-	if (HAL_CAN_Start(&hcan1) != HAL_OK) {
-		Error_Handler();
-	}
-
-	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK) {
-		Error_Handler();
-	}
-
-	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
+
+void wait_for_second_button()
+{
+	HAL_Delay(500);
+	PUTM_CAN::buttonStates button = PUTM_CAN::buttonStates::not_pressed;
+
+	if (sw3_pressed && sw4_pressed)	{
+		button = PUTM_CAN::buttonStates::button3_4;
+	} else if (sw3_pressed && sw5_pressed) {
+		button = PUTM_CAN::buttonStates::button2_4;
+	} else if (sw3_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_4;
+	} else if (sw4_pressed && sw5_pressed) {
+		button = PUTM_CAN::buttonStates::button2_3;
+		HAL_GPIO_TogglePin(ControlLed2_GPIO_Port, ControlLed2_Pin);
+	} else if (sw4_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_3;
+	} else if (sw5_pressed && sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1_2;
+	} else if (sw3_pressed) {
+		button = PUTM_CAN::buttonStates::button4;
+	} else if (sw4_pressed) {
+		button = PUTM_CAN::buttonStates::button3;
+	} else if (sw5_pressed) {
+		button = PUTM_CAN::buttonStates::button2;
+	} else if (sw6_pressed) {
+		button = PUTM_CAN::buttonStates::button1;
+	}
+
+	send_frame(button);
+
+	reset_flags();
+}
+
+void reset_flags()
+{
+	sw3_pressed = 0;
+	sw4_pressed = 0;
+	sw5_pressed = 0;
+	sw6_pressed = 0;
+	scroll_activated = 0;
+}
+
 /* USER CODE END 4 */
 
 /**
