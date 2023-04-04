@@ -1,0 +1,4 @@
+../Core/Src/rotary.cpp:10:1:Rotary::Rotary(const std::array<const GpioInElement*, 4>&)	4	static
+../Core/Src/rotary.cpp:12:6:void Rotary::handle() const	24	static
+../Core/Src/rotary.cpp:42:19:RotationDirection Rotary::getRotation()	0	static
+../Core/Src/rotary.cpp:47:26:const RotationDirection& Rotary::getRotationConstRefForDebug() const	0	static

@@ -1,0 +1,20 @@
+../Core/Inc/gpioElements.hpp:18:16:virtual void GpioElement::handle() const	0	static
+../Core/Inc/gpioElements.hpp:20:11:constexpr GpioElement::~GpioElement()	0	static
+../Core/Inc/gpioElements.hpp:43:3:GpioOutElement::~GpioOutElement()	0	static
+../Core/Inc/gpioElements.hpp:60:3:GpioInElement::~GpioInElement()	0	static
+../Core/Inc/gpioElements.hpp:20:11:virtual constexpr GpioElement::~GpioElement()	8	static
+../Core/Inc/gpioElements.hpp:43:3:virtual GpioOutElement::~GpioOutElement()	8	static
+../Core/Inc/gpioElements.hpp:60:3:virtual GpioInElement::~GpioInElement()	8	static
+../Core/Src/gpioElements.cpp:59:6:virtual void GpioInElement::handle() const	8	static
+../Core/Src/gpioElements.cpp:10:1:GpioElement::GpioElement(const GPIO_TypeDef*, uint32_t, bool)	4	static
+../Core/Src/gpioElements.cpp:13:1:GpioOutElement::GpioOutElement(const GPIO_TypeDef*, uint32_t)	8	static
+../Core/Src/gpioElements.cpp:16:1:GpioOutElement::GpioOutElement(const GPIO_TypeDef*, uint32_t, bool)	8	static
+../Core/Src/gpioElements.cpp:19:6:void GpioOutElement::activate()	8	static
+../Core/Src/gpioElements.cpp:24:6:void GpioOutElement::deactivate()	8	static
+../Core/Src/gpioElements.cpp:29:6:void GpioOutElement::toggle()	8	static
+../Core/Src/gpioElements.cpp:34:1:GpioInElement::GpioInElement(const GPIO_TypeDef*, uint32_t)	8	static
+../Core/Src/gpioElements.cpp:37:1:GpioInElement::GpioInElement(const GPIO_TypeDef*, uint32_t, bool)	8	static
+../Core/Src/gpioElements.cpp:40:6:bool GpioInElement::isActive() const	0	static
+../Core/Src/gpioElements.cpp:45:6:bool GpioInElement::risingEdge() const	0	static
+../Core/Src/gpioElements.cpp:52:6:bool GpioInElement::fallingEdge() const	0	static
+../Core/Src/gpioElements.cpp:80:13:const bool& GpioInElement::getStateConstRefForDebug() const	0	static
