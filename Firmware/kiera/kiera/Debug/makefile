@@ -75,8 +75,8 @@ all: main-build
 main-build: kiera.elf secondary-outputs
 
 # Tool invocations
-kiera.elf kiera.map: $(OBJS) $(USER_OBJS) C:\Users\pile\Desktop\wszytko\ inne\prywata\folder\PUTM_EV_STEERING_WHEEL_2022\Firmware\kiera\kiera\STM32L4P5RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "kiera.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\pile\Desktop\wszytko inne\prywata\folder\PUTM_EV_STEERING_WHEEL_2022\Firmware\kiera\kiera\STM32L4P5RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="kiera.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+kiera.elf kiera.map: $(OBJS) $(USER_OBJS) G:\wszytko\ inne\prywata\folder\PUTM_EV_STEERING_WHEEL_2022\Firmware\kiera\kiera\STM32L4P5RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "kiera.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"G:\wszytko inne\prywata\folder\PUTM_EV_STEERING_WHEEL_2022\Firmware\kiera\kiera\STM32L4P5RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="kiera.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

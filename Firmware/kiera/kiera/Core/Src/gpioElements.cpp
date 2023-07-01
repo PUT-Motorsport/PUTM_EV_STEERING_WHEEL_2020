@@ -16,17 +16,17 @@ GpioOutElement::GpioOutElement(const GPIO_TypeDef *port, const uint32_t pin) :
 GpioOutElement::GpioOutElement(const GPIO_TypeDef *port, const uint32_t pin, const bool is_inverted) :
 							   GpioElement(port, pin, is_inverted) { }
 
-void GpioOutElement::activate()
+void GpioOutElement::activate() const
 {
 	HAL_GPIO_WritePin((GPIO_TypeDef*)(this->port), this->pin, (this->is_inverted ? GPIO_PIN_RESET : GPIO_PIN_SET));
 }
 
-void GpioOutElement::deactivate()
+void GpioOutElement::deactivate() const
 {
 	HAL_GPIO_WritePin((GPIO_TypeDef*)(this->port), this->pin, (this->is_inverted ? GPIO_PIN_SET : GPIO_PIN_RESET));
 }
 
-void GpioOutElement::toggle()
+void GpioOutElement::toggle() const
 {
 	HAL_GPIO_TogglePin((GPIO_TypeDef*)(this->port), this->pin);
 }
@@ -72,8 +72,17 @@ void GpioInElement::handle() const
 	 *
 	 */
 	bool buff = ((HAL_GPIO_ReadPin((GPIO_TypeDef*)(this->port), this->pin) == GPIO_PIN_SET) != this->is_inverted);
-	if (buff && !this->state) this->rising_edge = true;
-	if (!buff && this->state) this->falling_edge = true;
+	if (buff == this->state) return;
+	if (buff && !this->state)
+	{
+		this->rising_edge = true;
+		this->falling_edge = false;
+	}
+	if (!buff && this->state)
+	{
+		this->rising_edge = false;
+		this->falling_edge = true;
+	}
 	this->state = buff;
 }
 

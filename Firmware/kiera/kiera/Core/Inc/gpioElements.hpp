@@ -34,11 +34,11 @@ class GpioOutElement : public GpioElement
 		GpioOutElement(const GPIO_TypeDef * const port, const uint32_t pin);
 		GpioOutElement(const GPIO_TypeDef * const port, const uint32_t pin, const bool is_inverted);
 
-		void activate();
-		void deactivate();
+		void activate() const;
+		void deactivate() const;
 
 		//virtual void handle() override = 0;
-		void toggle();
+		void toggle() const;
 
 		~GpioOutElement() { };
 };

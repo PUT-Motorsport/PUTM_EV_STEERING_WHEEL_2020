@@ -98,6 +98,8 @@ void Error_Handler(void);
 #define SW3_GPIO_Port GPIOC
 #define SW4_Pin GPIO_PIN_11
 #define SW4_GPIO_Port GPIOC
+#define SW5_Pin GPIO_PIN_12
+#define SW5_GPIO_Port GPIOC
 #define SW6_Pin GPIO_PIN_2
 #define SW6_GPIO_Port GPIOD
 #define ControlLed4_Pin GPIO_PIN_4

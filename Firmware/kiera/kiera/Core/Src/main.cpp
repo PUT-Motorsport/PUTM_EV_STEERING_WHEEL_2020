@@ -28,6 +28,7 @@
 #include "PUTM_EV_CAN_LIBRARY/lib/can_interface.hpp"
 #include "etl/list.h"
 #include "rotary.hpp"
+#include "timer.hpp"
 
 /* USER CODE END Includes */
 
@@ -37,6 +38,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+#define DEBUG_LED_MISSION 1
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,13 +53,13 @@ CAN_HandleTypeDef hcan1;
 
 /* USER CODE BEGIN PV */
 
-struct Config
+struct
 {
-	static constexpr size_t basic_delay = 10;
+	size_t basic_delay = 10;
 
-	static constexpr bool rotary_inverted = false;
-	static constexpr bool buttons_inverted = false;
-	static constexpr bool leds_inverted = true;
+	bool rotary_inverted = false;
+	bool buttons_inverted = false;
+	bool leds_inverted = true;
 } config;
 
 const GpioInElement sw1_1(SW1_1_GPIO_Port, SW1_1_Pin, config.rotary_inverted);
@@ -73,7 +77,7 @@ const std::array< GpioInElement const*, rotary_pin_count > rot2_arr = { &sw2_1, 
 
 const GpioInElement sw3(SW3_GPIO_Port, SW3_Pin, config.buttons_inverted);
 const GpioInElement sw4(SW4_GPIO_Port, SW4_Pin, config.buttons_inverted);
-//const GpioInElement sw5(SW5_GPIO_Port, SW5_Pin, config.buttons_inverted);
+const GpioInElement sw5(SW5_GPIO_Port, SW5_Pin, config.buttons_inverted);
 const GpioInElement sw6(SW6_GPIO_Port, SW6_Pin, config.buttons_inverted);
 const GpioInElement sw7(SW7_GPIO_Port, SW7_Pin, config.buttons_inverted);
 const GpioInElement sw8(SW8_GPIO_Port, SW8_Pin, config.buttons_inverted);
@@ -85,13 +89,12 @@ const GpioOutElement debug_led_2(ControlLed2_GPIO_Port, ControlLed2_Pin, config.
 const GpioOutElement debug_led_3(ControlLed3_GPIO_Port, ControlLed3_Pin, config.leds_inverted);
 const GpioOutElement debug_led_4(ControlLed4_GPIO_Port, ControlLed4_Pin, config.leds_inverted);
 
-GpioInElement const &r_button = sw3;
-GpioInElement const &g_button = sw4;
-GpioInElement const &b_button = sw6;
-GpioInElement const &y_button = sw7;
+GpioInElement const &r_button = sw8;
+GpioInElement const &g_button = sw6;
+GpioInElement const &b_button = sw9;
+GpioInElement const &y_button = sw4;
 
-//TODO: organise later
-const std::array< GpioInElement const*, 4 > buttons = { &r_button, &g_button, &b_button, &y_button };
+const std::array< GpioInElement const*, 4 > buttons = { &g_button, &r_button, &y_button, &b_button };
 
 etl::list < size_t, 2 > pressed_buttons_i;
 
@@ -107,9 +110,9 @@ struct
 	RotationDirection const& rot_left = left_rotary.getRotationConstRefForDebug();
 	RotationDirection const& rot_right = right_rotary.getRotationConstRefForDebug();
 
-	//PUTM_CAN::buttonStates button_states = PUTM_CAN::buttonStates::not_pressed;
-	//PUTM_CAN::scrollStates right_scroll_state;
-	//PUTM_CAN::scrollStates left_scroll_state;
+	PUTM_CAN::buttonStates button_states;
+	PUTM_CAN::scrollStates right_scroll_state;
+	PUTM_CAN::scrollStates left_scroll_state;
 } controls_states;
 
 enum struct Mission : uint8_t
@@ -119,6 +122,10 @@ enum struct Mission : uint8_t
 	SecondPressDetected // waits for all buttons to be released
 } mission;
 
+CAN_FilterTypeDef can_filtering_config = { 0 };
+
+Timer heartbeat_timer(100);
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -127,7 +134,7 @@ static void MX_GPIO_Init(void);
 static void MX_CAN1_Init(void);
 /* USER CODE BEGIN PFP */
 void setUpCan();
-
+void heartbeat();
 void sendStates(PUTM_CAN::scrollStates rotary_left, PUTM_CAN::scrollStates rotary_right, PUTM_CAN::buttonStates button);
 /* USER CODE END PFP */
 
@@ -167,6 +174,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
    setUpCan();
+   debug_led_1.deactivate();
+   debug_led_2.deactivate();
+   debug_led_3.deactivate();
+   debug_led_4.deactivate();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -174,14 +185,29 @@ int main(void)
   while (true)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
 	  //----------------------------------------------------------------------------------------------------
 	  //handle
+	  if(heartbeat_timer.checkIfTimedOutThenReset())
+		  heartbeat();
+
 	  HAL_Delay(config.basic_delay);
 
 	  for(const auto btn_ptr : buttons) btn_ptr->handle();
 	  right_rotary.handle();
 	  left_rotary.handle();
+
+#if DEBUG_LED_MISSION == 1
+	  if(controls_states.g_btn) debug_led_1.activate();
+	  else debug_led_1.deactivate();
+	  if(controls_states.r_btn) debug_led_2.activate();
+	  else debug_led_2.deactivate();
+	  if(controls_states.y_btn) debug_led_3.activate();
+	  else debug_led_3.deactivate();
+	  if(controls_states.b_btn) debug_led_4.activate();
+	  else debug_led_4.deactivate();
+#endif
 	  //----------------------------------------------------------------------------------------------------
 	  // Rotary outside of main logic
 	  auto left_rot = left_rotary.getRotation();
@@ -216,8 +242,8 @@ int main(void)
 	  	  {
 	  		  if(buttons[pressed_buttons_i.front()]->fallingEdge())
 	  		  {
-	  			  PUTM_CAN::buttonStates state;
-	  			  sendStates(PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::buttonStates(state));
+	  			  size_t state = pressed_buttons_i.front();
+	  			  sendStates(PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::scrollStates::scroll_1, PUTM_CAN::buttonStates(state + 1));
 	  			  pressed_buttons_i.clear();
 	  			  mission = Mission::Waiting;
 	  			  break;
@@ -252,6 +278,7 @@ int main(void)
 	  	  }break;
 	  	  case Mission::SecondPressDetected:
 		  {
+			  for (auto & btn : buttons) btn->fallingEdge();
 			  if(!buttons[pressed_buttons_i.front()]->isActive() && !buttons[pressed_buttons_i.back()]->isActive())
 			  {
 	  			  pressed_buttons_i.clear();
@@ -329,14 +356,14 @@ static void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 8;
+  hcan1.Init.Prescaler = 6;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_12TQ;
-  hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_14TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_5TQ;
   hcan1.Init.TimeTriggeredMode = DISABLE;
   hcan1.Init.AutoBusOff = DISABLE;
-  hcan1.Init.AutoWakeUp = ENABLE;
+  hcan1.Init.AutoWakeUp = DISABLE;
   hcan1.Init.AutoRetransmission = DISABLE;
   hcan1.Init.ReceiveFifoLocked = DISABLE;
   hcan1.Init.TransmitFifoPriority = DISABLE;
@@ -386,7 +413,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : IMU_INIT1_Pin IMU_INIT2_Pin */
   GPIO_InitStruct.Pin = IMU_INIT1_Pin|IMU_INIT2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SW1_1_Pin SW1_2_Pin SW1_3_Pin SW1_4_Pin */
@@ -396,9 +423,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SW2_1_Pin SW2_2_Pin SW2_3_Pin SW2_4_Pin
-                           SW3_Pin SW4_Pin */
+                           SW3_Pin SW4_Pin SW5_Pin */
   GPIO_InitStruct.Pin = SW2_1_Pin|SW2_2_Pin|SW2_3_Pin|SW2_4_Pin
-                          |SW3_Pin|SW4_Pin;
+                          |SW3_Pin|SW4_Pin|SW5_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -430,58 +457,70 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void sendStates(PUTM_CAN::scrollStates rotary_left, PUTM_CAN::scrollStates rotary_right, PUTM_CAN::buttonStates button)
 {
-	PUTM_CAN::Steering_Wheel_event payload
-	{
-		.button = button,
-		.l_s_1 = rotary_left,
-		.r_s_1 = rotary_right
-	};
+	controls_states.button_states = button;
+	controls_states.left_scroll_state = rotary_left;
+	controls_states.right_scroll_state = rotary_right;
 
-	auto steering_wheel_frame = PUTM_CAN::Can_tx_message< PUTM_CAN::Steering_Wheel_event >
-		(payload, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
-
-	if(steering_wheel_frame.send(hcan1) != HAL_OK)
+	if(button == PUTM_CAN::buttonStates::button4)
 	{
-		HAL_GPIO_TogglePin(ControlLed1_GPIO_Port, ControlLed1_Pin);
+		PUTM_CAN::AQ_ts_button aq_ts_button
+		{
+			.placeholder = 0
+		};
+
+		auto aq_ts_button_frame = PUTM_CAN::Can_tx_message(aq_ts_button, PUTM_CAN::can_tx_header_AQ_TS_BUTTON);
+
+		if(aq_ts_button_frame.send(hcan1) != HAL_OK) Error_Handler();
+	}
+	else
+	{
+		PUTM_CAN::Steering_Wheel_event payload
+		{
+			.button = button,
+			.l_s_1 = rotary_left,
+			.r_s_1 = rotary_right
+		};
+
+		auto steering_wheel_frame = PUTM_CAN::Can_tx_message(payload, PUTM_CAN::can_tx_header_STEERING_WHEEL_EVENT);
+
+		if(steering_wheel_frame.send(hcan1) != HAL_OK) Error_Handler();
 	}
 }
 
-/*void heartbeat()
+void heartbeat()
 {
-	PUTM_CAN::Steering_Wheel_main pcb_alive{0, PUTM_CAN::Steering_Wheel_states::OK};
+	PUTM_CAN::Steering_Wheel_main pcb_alive
+	{
+		.s_w_a = 0,
+		.device_state =PUTM_CAN::Steering_Wheel_states::OK
+	};
 
-	auto steering_wheel_heartbeat = PUTM_CAN::Can_tx_message<PUTM_CAN::Steering_Wheel_main>
-	(pcb_alive, PUTM_CAN::can_tx_header_STEERING_WHEEL_MAIN);
+	auto steering_wheel_heartbeat = PUTM_CAN::Can_tx_message(pcb_alive, PUTM_CAN::can_tx_header_STEERING_WHEEL_MAIN);
 
- 	steering_wheel_heartbeat.send(hcan1);
-}*/
+ 	if(steering_wheel_heartbeat.send(hcan1) != HAL_OK) Error_Handler();
+}
 
 void setUpCan()
 {
-	CAN_FilterTypeDef sFilterConfig;
-	sFilterConfig.FilterBank = 0;
-	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-	sFilterConfig.FilterIdHigh = 0x0000;
-	sFilterConfig.FilterIdLow = 0x0000;
-	sFilterConfig.FilterMaskIdHigh = 0x0000;
-	sFilterConfig.FilterMaskIdLow = 0x0000;
-	sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
-	sFilterConfig.FilterActivation = ENABLE;
+	can_filtering_config.FilterBank = 0;
+	can_filtering_config.FilterMode = CAN_FILTERMODE_IDMASK;
+	can_filtering_config.FilterScale = CAN_FILTERSCALE_32BIT;
+	can_filtering_config.FilterIdHigh = 0x0000;
+	can_filtering_config.FilterIdLow = 0x0000;
+	can_filtering_config.FilterMaskIdHigh = 0x0000;
+	can_filtering_config.FilterMaskIdLow = 0x0000;
+	can_filtering_config.FilterFIFOAssignment = CAN_RX_FIFO0;
+	can_filtering_config.FilterActivation = ENABLE;
+	can_filtering_config.SlaveStartFilterBank = 14;
 
-	if (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK) {
+	if ( HAL_CAN_ConfigFilter(&hcan1, &can_filtering_config) != HAL_OK )
 		Error_Handler();
-	}
 
-	if (HAL_CAN_Start(&hcan1) != HAL_OK) {
+	if ( HAL_CAN_Start(&hcan1) != HAL_OK )
 		Error_Handler();
-	}
 
-	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK) {
+	if ( HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK )
 		Error_Handler();
-	}
-
-	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
 /* USER CODE END 4 */
 

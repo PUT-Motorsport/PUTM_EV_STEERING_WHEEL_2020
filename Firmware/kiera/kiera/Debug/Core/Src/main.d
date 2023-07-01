@@ -71,7 +71,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Core/Inc/etl/atomic/../iterator.h ../Core/Inc/etl/parameter_type.h \
  ../Core/Inc/etl/initializer_list.h ../Core/Inc/rotary.hpp \
  ../Core/Inc/gpioElements.hpp ../Core/Inc/etl/array.h \
- ../Core/Inc/etl/nth_type.h
+ ../Core/Inc/etl/nth_type.h ../Core/Inc/timer.hpp
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -161,3 +161,4 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Core/Inc/gpioElements.hpp:
 ../Core/Inc/etl/array.h:
 ../Core/Inc/etl/nth_type.h:
+../Core/Inc/timer.hpp:
