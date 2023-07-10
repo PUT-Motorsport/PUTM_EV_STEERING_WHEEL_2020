@@ -59,7 +59,7 @@ struct
 
 	bool rotary_inverted = false;
 	bool buttons_inverted = false;
-	bool leds_inverted = true;
+	bool leds_inverted = false;
 } config;
 
 const GpioInElement sw1_1(SW1_1_GPIO_Port, SW1_1_Pin, config.rotary_inverted);
@@ -91,10 +91,11 @@ const GpioOutElement debug_led_4(ControlLed4_GPIO_Port, ControlLed4_Pin, config.
 
 GpioInElement const &r_button = sw8;
 GpioInElement const &g_button = sw6;
-GpioInElement const &b_button = sw9;
-GpioInElement const &y_button = sw4;
+GpioInElement const &b_button = sw3;
+GpioInElement const &y_button = sw10;
 
 const std::array< GpioInElement const*, 4 > buttons = { &g_button, &r_button, &y_button, &b_button };
+const std::array< GpioOutElement const*, 4 > leds = { &debug_led_1, &debug_led_2, &debug_led_3, &debug_led_4 };
 
 etl::list < size_t, 2 > pressed_buttons_i;
 
@@ -189,8 +190,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  //----------------------------------------------------------------------------------------------------
 	  //handle
-	  if(heartbeat_timer.checkIfTimedOutThenReset())
-		  heartbeat();
+//	  if(heartbeat_timer.checkIfTimedOutThenReset())
+//		  heartbeat();
 
 	  HAL_Delay(config.basic_delay);
 
@@ -553,9 +554,12 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
+  for (auto led : leds) led->deactivate();
   __disable_irq();
   while (1)
   {
+	  HAL_Delay(1000);
+	  for (auto led : leds) led->toggle();
   }
   /* USER CODE END Error_Handler_Debug */
 }
